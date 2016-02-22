@@ -36,7 +36,7 @@ p {
 button {
     border-radius: 10px;
 }
-div#button{
+div#step {
     position: absolute;
     vertical-align: middle;
     left: 50%;
@@ -47,7 +47,7 @@ div#button{
 div#about {
     /*I should leave it on the game*/
 }
-img#char {
+img#rr {
     width: 50px;
     height: 100px;
     position: absolute;

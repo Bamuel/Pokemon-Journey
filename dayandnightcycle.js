@@ -17,4 +17,4 @@ function changeImage() {
 }
 setInterval(function () {
     changeImage();
-}, 30000); /*Every 5 min*/
+}, 60000);
