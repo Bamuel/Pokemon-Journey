@@ -14,6 +14,9 @@ $messages = array(
     'pokemonsprites/aggron-mega.gif',
     'pokemonsprites/aggron.gif',
     'pokemonsprites/aipom.gif',
+    'pokemonsprites/alakazam.gif',
+    'pokemonsprites/alakazam-mega.gif',
+    'pokemonsprites/alomomola.gif',
     'pokemonsprites/abra.gif'
 );
 ?>
@@ -44,8 +47,10 @@ $messages = array(
     </style>
 </head>
 <body>
+<script>
+</script>
     <img id="bg" src="battle.jpg">
     <img id="pokemon" src="<?php echo $messages[rand(0, count($messages) - 1)]; ?>">
-    <button id="capture">capture</button>
+    <button id="capture" onclick="window.close()">Capture</button>
 </body>
 </html>
