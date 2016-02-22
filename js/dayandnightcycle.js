@@ -9,6 +9,7 @@ var x = 0;
 
 function changeImage() {
     document.getElementById('ad').src = images[x];
+    document.getElementById('ad2').src = images[x];
     if (x < 1) {
         x += 1;
     } else {
