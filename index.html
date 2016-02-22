@@ -3,33 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>Pokémon Journey</title>
-    <link href="main.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Anonymous+Pro" />
-    <script src="main.js"></script>
-    <script src="dayandnightcycle.js"></script>
-    <script src="character.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/dayandnightcycle.js"></script>
+    <script src="js/character.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
 <body>
 <div id="game">
     <h1 style="text-align: center">Pokémon Journey</h1>
     <img id="ad" src="bg%20day.png">
-    <button style="float: right">
+    <button style="float: right" disabled>
         <p>Steps = <a id="steps">0</a></p>
     </button>
-    <div id="character">
+    <div>
         <img id="rr" src="potagonist/1.gif">
-        <div id="pokemon spawning"> <!-- We will use .js to spawn a random Pokemon every nth clicks-->
-            <!--pokemon entity -->
-        </div>
         <div id="step" onClick="onClick()">
             <button name="A magic BUTTON" onclick="chng()"><p>Click to Move</p></button>
         </div>
     </div>
 </div>
 <div id="about">
-    <h1>This game is fun Pokémon Clicker game</h1>
+    <h1>This is a fun Pokémon Clicker game</h1>
     <h3>Created by Samuel Levin and Sam Zhu</h3>
+</div>
+<div id="howto">
+    <h1>How to play</h1>
+    <h3>To play the game you spam "Click to Move" Button to gain steps,</h3>
+    <h3>With the gradually going up, You will notice Pokémon will spawn in</h3>
+    <h3>Your job is too catch them all.</h3>
+    <p>**This game is also compatible on Mobile Phones**</p>
+</div>
+<div id="team" style="float: right">
+    <h1 id="team">The Team</h1>
+    <div id="Bamuel">
+        <h3>Samuel Levin</h3>
+        <a href="https://twitter.com/Bamuel_" target="_blank"><h3>Twitter: Bamuel_</h3></a>
+        <a href="https://github.com/Bamuel" target="_blank"><h3>Github: Bamuel</h3></a>
+        <a href="http://www.bamuel.com/" target="_blank"><h3>Website: www.bamuel.com</h3></a>
+    </div>
+    <div id="Sam">
+        <h3>Sam Zhu</h3>
+        <a href="https://github.com/shengbozhu" target="_blank"><h3>Github: shengbozhu</h3></a>
+    </div>
 </div>
 </body>
 </html>
