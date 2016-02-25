@@ -847,12 +847,20 @@ $pokemon = array(
     'pokemonsprites/zygrade.gif'
 );
 
-$field = array(
-    'battle/1.jpg',
-    'battle/2.jpg',
-    'battle/3.jpg',
-    'battle/4.jpg'
-);
+$ip = "$_SERVER[REMOTE_ADDR]";
+if($ip === "127.0.0.1"  || $ip === "58.172.56.231") { /*Only awesome people can have spacial field*/
+    $field = array(
+        'battle/spacial.jpg'
+    );
+}
+else{
+    $field = array(
+        'battle/1.jpg',
+        'battle/2.jpg',
+        'battle/3.jpg',
+        'battle/4.jpg'
+    );
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
