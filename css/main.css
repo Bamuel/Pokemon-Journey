@@ -86,15 +86,18 @@ p {
 	left: 1349px;
 	top: 0;
 }
-#ag {
-		
+#ag p {
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
 }
 
 .btn {
 	width: 200px;
 	height: 50px;
 }
-
 
 .btn-2 {
 	width: 100px;
