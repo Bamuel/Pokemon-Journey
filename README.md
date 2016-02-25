@@ -1,8 +1,8 @@
 # Pokemon-Journey-
-A 2D Pokemon Journey  Clicker for Hackathon 
+A 2D Pokemon Journey Clicker
 
 #TODO
-- Add every nth click a Pokemon appears
-- During a Pokemon Battle *pokemon ranger theme* you draw circles around the Pokemon
-- Information about us in the space belowe
-- Alot more
+- Add every 20-30 *random integer a Pokemon appears
+- A Pokemon Battle
+- Moving Background onclick 
+- A catch list *pokedex*
