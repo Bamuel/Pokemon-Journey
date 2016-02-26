@@ -33,24 +33,11 @@ else{
     <link rel="stylesheet" href="css/battle.css">
 </head>
 <body oncontextmenu="return false"> <!-- Prevent from right click-->
-<script>
-    document.onkeydown = function (e) {
-        if (e.keyCode === 116) {
-            return false; //Prevent from F5
-        }
-        else if(event.ctrlKey && event.shiftKey && event.keyCode==73) {
-            return false;  //Prevent from ctrl+shift+i
-        }
-         else if(event.ctrlKey && event.keyCode==85) {
-         return false;  //Prevent from ctrl+u
-         }
-        else if(event.keyCode==123){
-            return false; //Prevent from F12
-        }
-    };
-</script>
+<script src="js/throw.js"></script>
+<script src="js/disable.js"></script>
 <img id="bg" src="<?php echo $field[rand(0, count($field) - 1)]; ?>">
 <img id="pokemon" src="<?php echo $pokemon[rand(0, count($pokemon) - 1)]; ?>">
+<img id="throw" src="battle/male1.png">
 <div id="menu">
     <div>
         <button id="" onclick="window.close()">Fight</button>
