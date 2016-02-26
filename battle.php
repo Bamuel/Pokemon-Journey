@@ -1,5 +1,4 @@
 <?php
-
 $pokemon = glob("pokemonsprites/" . "*.gif"); // Gets all gifs in that folder
 ?>
 <?php

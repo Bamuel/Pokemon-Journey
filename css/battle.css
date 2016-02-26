@@ -20,6 +20,17 @@ div#menu {
 img#throw {
     position: absolute;
     bottom: 0;
-    left: 10%;
     width: 200px;
+    -webkit-animation: trainermove 5s forwards;
+    animation: trainermove 5s forwards;
+    animation-iteration-count: 1;
+}
+/* Chrome, Safari, Opera */
+@-webkit-keyframes trainermove {
+    0% {left: 10%}
+    100% {left: -500px}
+}
+@keyframes trainermove {
+    0% {left: 10%}
+    100% {left: -500px}
 }
