@@ -22,16 +22,4 @@ img#throw {
     bottom: 0;
     left: 10%;
     width: 200px;
-    -webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
-    animation: mymove 5s infinite;
-}
-/* Chrome, Safari, Opera */
-@-webkit-keyframes mymove {
-    from {left: 10%;}
-    to {left: -500px;}
-}
-
-@keyframes mymove {
-    from {left: 10%;}
-    to {left: -500px;}
 }
