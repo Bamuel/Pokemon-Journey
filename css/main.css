@@ -102,3 +102,11 @@ p {
 .btn-2 {
 	width: 100px;
 }
+div#battle {
+    width:700px;
+    margin:0 auto;
+}
+object {
+    position: absolute;
+    z-index: 2;
+}
