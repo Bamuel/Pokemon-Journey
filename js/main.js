@@ -1,9 +1,12 @@
 var steps = 0;
+var meetPokemon = Math.floor(Math.random() * 11) + 20;
 function onClick() {
+		
     steps += 1;
     document.getElementById("steps").innerHTML = steps;
 		
-		if(steps % 25 == 0) {
+		if(steps % meetPokemon == 0) {
+			meetPokemon += Math.floor(Math.random() * 11 + 20);
 			$("#ag").toggle(function() {
 					$("#ag2").toggle();
 			});
