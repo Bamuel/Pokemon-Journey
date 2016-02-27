@@ -33,12 +33,12 @@ else{
 <img id="throw" src="battle/male1.png">
 <div id="menu">
     <div>
-        <button id="" onclick="window.close()">Fight</button>
-        <button id="" onclick="window.close()">Throw Bait</button>
+        <button id="" onclick="window.close();">Fight</button>
+        <button id="" onclick="window.close();">Throw Bait</button>
     </div>
     <div>
-        <button id="" onclick="window.close()">Throw Pokeball</button>
-        <button id="" onclick="window.close()">Run</button>
+        <button id="" onclick="window.close();">Throw Pokeball</button>
+        <button id="" onclick="window.close();">Run</button>
     </div>
 </div>
 </body>

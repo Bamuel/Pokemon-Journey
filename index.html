@@ -50,12 +50,14 @@
         var x = document.createElement("OBJECT");
         x.setAttribute("data", "battle.php");
         x.setAttribute("width", "700");
-        x.setAttribute("height", "400");
-        document.body.appendChild(x);
+        x.setAttribute("height", "350");
+				x.id = "battle-scene";
+        document.getElementById("game-battle").appendChild(x);
     }
 </script>
 <div id="intro" style="display: none;"></div>
 <div id="game">
+	<div id="game-scene">
     <h1 style="text-align: center">Pokémon Journey</h1>
     <img id="ad" src="bg%20day.png">
 		<img id="ad2" src="bg%20day.png" />
@@ -75,6 +77,10 @@
             </button>
         </div>
     </div>
+	</div>
+	<div id="game-battle">
+		
+	</div>
 </div>
 <div id="about">
     <h1>This is a fun Pokémon Clicker game</h1>
