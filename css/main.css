@@ -60,7 +60,7 @@ h1 {
     font-style: normal;
     font-variant: normal;
     font-weight: 500;
-    line-height: 26.4px;
+    line-height: 26px;
 }
 h3 {
     font-family: 'Anonymous Pro';
@@ -68,7 +68,7 @@ h3 {
     font-style: normal;
     font-variant: normal;
     font-weight: 500;
-    line-height: 15.4px;
+    line-height: 15px;
 }
 p {
     font-family: 'Anonymous Pro';
@@ -101,10 +101,6 @@ p {
 
 .btn-2 {
 	width: 100px;
-}
-div#battle {
-    width:700px;
-    margin:0 auto;
 }
 object {
     position: absolute;

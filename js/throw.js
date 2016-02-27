@@ -1,4 +1,4 @@
-var images = new Array();
+var images = [];
 images[0] = "battle/male1.png";
 images[1] = "battle/male2.png";
 images[2] = "battle/male3.png";
