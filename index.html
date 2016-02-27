@@ -44,15 +44,14 @@
 <audio autoplay id="thethemesong">
     <source src="AquaDeepBasin%20-%20Pokemon%20Black%20and%20White%20Bike%20Remix.mp3" type="audio/mpeg">
 </audio>
+<script src="js/music.js"></script>
 <script>
-    var theme = document.getElementById("thethemesong");
-
-    function playAudio() {
-        theme.play();
-    }
-
-    function pauseAudio() {
-        theme.pause();
+    function battle() {
+        var x = document.createElement("OBJECT");
+        x.setAttribute("data", "battle.php");
+        x.setAttribute("width", "700");
+        x.setAttribute("height", "400");
+        document.body.appendChild(x);
     }
 </script>
 <div id="intro" style="display: none;"></div>
@@ -63,18 +62,17 @@
     <button class="btn-2" style="float: right;" disabled>
         <p>Steps: <a id="steps">0</a></p>
     </button>
-    <div id="battle">
-        <object type="text/html" data="battle.php" width="700px" height="400px"></object></div>
+<!--    <div id="battle">
+        <object type="text/html" data="battle.php" width="700px" height="400px"></object>
+    </div> -->
     <div>
         <img id="rr" src="potagonist/1.gif">
         <div id="step">
             <button class="btn" id="ag" name="A magic BUTTON" onclick="chng(); onClick(); playAudio();" type="button"><p>Click to Move</p></button>
-            <a href="battle.php" onclick="void window.open('battle.php','1456125284629','width=700,height=500,toolbar=0,menubar=0,location=0,status=0,scrollbars=0,resizable=1,left=0,top=0'); return false;">
-                <button class="btn" id="ag2" style="display: none;" onclick="pauseAudio()" type="button">
-							A Wild Pokemon has appeared. <br />
-							Click to battle
-                </button>
-            </a>
+            <button class="btn" id="ag2" style="display: none;" onclick="pauseAudio(); battle();" type="button">
+                A Wild Pokemon has appeared. <br />
+                Click to battle
+            </button>
         </div>
     </div>
 </div>
