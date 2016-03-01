@@ -1,7 +1,7 @@
-var images = new Array();
+var images = [];
 images[0] = "bg%20afternoon.jpg";
 images[1] = "bg%20night.jpg";
-images[2] = "bg%20day.jpg";
+images[2] = "bg%20day.png";
 for (var i = 2; i < 11; i++) {
     images.push("img" + i + ".gif");
 }

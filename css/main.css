@@ -1,5 +1,6 @@
 body {
     background-color: floralwhite;
+		overflow-x: hidden;
 }
 img {
     width: 100%;
@@ -30,8 +31,8 @@ img#rr {
     width: 50px;
     height: 100px;
     position: absolute;
-    left: 15%;
-    top: 222px;
+    left: 100px;
+    top: 180px;
 }
 a {
     text-decoration: none;
@@ -47,7 +48,7 @@ div#Sam {
     top: 400px;
     right: 10px;
 }
-h1#team {
+h1#teama {
     position: absolute;
     top: 360px;
     right: 150px;
@@ -59,7 +60,7 @@ h1 {
     font-style: normal;
     font-variant: normal;
     font-weight: 500;
-    line-height: 26.4px;
+    line-height: 26px;
 }
 h3 {
     font-family: 'Anonymous Pro';
@@ -67,7 +68,7 @@ h3 {
     font-style: normal;
     font-variant: normal;
     font-weight: 500;
-    line-height: 15.4px;
+    line-height: 15px;
 }
 p {
     font-family: 'Anonymous Pro';
@@ -85,8 +86,12 @@ p {
 	left: 1349px;
 	top: 0;
 }
-#ag {
-		
+#ag p {
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
 }
 
 .btn {
@@ -94,7 +99,12 @@ p {
 	height: 50px;
 }
 
-
 .btn-2 {
 	width: 100px;
+}
+object {
+    position: absolute;
+    z-index: 2;
+		top: 0;
+		left: calc(50% - 350px);
 }
