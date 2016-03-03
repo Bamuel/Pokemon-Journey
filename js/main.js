@@ -39,16 +39,3 @@ $(function() {
 		bg2.css("left", (parseInt(bg2.css("left")) - 10 + "px"));
 	});
 });
-var playMusic = true;
-$(document).keydown(function(e) {
-	if(e.which == 77 || e.keyCode == 77) {
-	var audio = document.getElementById("thethemesong");
-		if(playMusic) {
-			playMusic = false;
-			audio.muted = true;
-			return;
-		}
-		playMusic = true;
-		audio.muted = false;
-	}
-});
