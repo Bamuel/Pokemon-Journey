@@ -24,14 +24,14 @@ else{
     <meta charset="UTF-8">
     <title>Battle</title>
     <link rel="stylesheet" href="css/battle.css">
+    <link rel="stylesheet" href="animate.css">
 </head>
 <body oncontextmenu="return false"> <!-- Prevent from right click-->
-<script src="js/throw.js"></script>
 <script src="js/disable.js"></script>
 <img id="bg" src="<?php echo $field[rand(0, count($field) - 1)]; ?>">
-<img id="pokemon" src="<?php echo $pokemon[rand(0, count($pokemon) - 1)]; ?>">
-<img id="throw" src="battle/male1.png">
-<div id="menu">
+<img id="pokemon" class="animated slideInLeft" src="<?php echo $pokemon[rand(0, count($pokemon) - 1)]; ?>">
+<img id="urpokemon" class="animated slideInLeft" src="pikachu-f.gif">
+<div id="menu" class="animated fadeInRight">
     <div>
         <button id="" onclick="window.close();">Fight</button>
         <button id="" onclick="window.close();">Throw Bait</button>

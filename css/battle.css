@@ -1,3 +1,6 @@
+html {
+    overflow-y: hidden;
+}
 img#bg {
     width: 100%;
     height: 100%;
@@ -17,20 +20,10 @@ div#menu {
     right: 10%;
     bottom: 10%;
 }
-img#throw {
+img#urpokemon{
     position: absolute;
-    bottom: 0;
-    width: 200px;
-    -webkit-animation: trainermove 5s forwards;
-    animation: trainermove 5s forwards;
-    animation-iteration-count: 1;
+    bottom: -40px;
+    width: 150px;
+    left: 10%;
 }
-/* Chrome, Safari, Opera */
-@-webkit-keyframes trainermove {
-    0% {left: 10%}
-    100% {left: -500px}
-}
-@keyframes trainermove {
-    0% {left: 10%}
-    100% {left: -500px}
-}
+
