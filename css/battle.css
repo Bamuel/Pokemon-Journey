@@ -17,8 +17,9 @@ img#pokemon {
 }
 div#menu {
     position: absolute;
-    right: 10%;
-    bottom: 10%;
+    right: 1%;
+    bottom: 5%;
+    display: flex;
 }
 img#urpokemon{
     position: absolute;
@@ -26,4 +27,38 @@ img#urpokemon{
     width: 150px;
     left: 10%;
 }
-
+button {
+    width: 100px;
+    height: 25px;
+    margin: auto;
+    background-color: gray;
+    color: white;
+    border-radius: 10px;
+}
+button:hover{
+    background-color: lightsteelblue;
+}
+div#status {
+    position: absolute;
+    bottom: 15%;
+    right: 1%;
+}
+p#pika{
+    position: absolute;
+    top: 2px;
+    left: 25px;
+}
+img#status {
+    height: 100px;
+    border-radius: 10px;
+}
+div#oppstatus {
+    position: absolute;
+    top: 15%;
+    left: 1%;
+}
+p#opp{
+    position: absolute;
+    top: 2px;
+    left: 25px;
+}

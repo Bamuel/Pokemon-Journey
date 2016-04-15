@@ -17,6 +17,7 @@ else{
         'battle/4.jpg'
     );
 }
+$opp=$pokemon[rand(0, count($pokemon) - 1)];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,16 +29,24 @@ else{
 </head>
 <body oncontextmenu="return false"> <!-- Prevent from right click-->
 <script src="js/disable.js"></script>
+<script src="js/battle%20menu.js"></script>
 <img id="bg" src="<?php echo $field[rand(0, count($field) - 1)]; ?>">
-<img id="pokemon" class="animated slideInLeft" src="<?php echo $pokemon[rand(0, count($pokemon) - 1)]; ?>">
+<img id="pokemon" class="animated slideInLeft" src="<?php echo $opp; ?>">
 <img id="urpokemon" class="animated slideInLeft" src="pikachu-f.gif">
+<div id="status">
+    <img id="status" src="battle/your%20status.png">
+    <p id="pika">Pikachu</p>
+</div>
+<div id="oppstatus">
+    <img id="status" src="battle/oppenent%20status.png">
+    <p id="opp"><?php echo $opp; ?></p>
+</div>
 <div id="menu" class="animated fadeInRight">
     <div>
         <button id="" onclick="window.close();">Fight</button>
-        <button id="" onclick="window.close();">Throw Bait</button>
-    </div>
-    <div>
-        <button id="" onclick="window.close();">Throw Pokeball</button>
+        <button id="" onclick="window.close();">Bait</button>
+        <br>
+        <button id="" onclick="window.close();">Pokeball</button>
         <button id="" onclick="window.close();">Run</button>
     </div>
 </div>
