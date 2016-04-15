@@ -18,6 +18,30 @@ else{
     );
 }
 $opp=$pokemon[rand(0, count($pokemon) - 1)];
+$opp1 = str_replace('pokemonsprites/', '', $opp);
+$opp2 = str_replace('.gif', '', $opp1);
+$opp3 = str_replace('-1', '', $opp2);
+$opp4 = str_replace('-2', '', $opp3);
+$opp5 = str_replace('-3', '', $opp4);
+$opp6 = str_replace('-4', '', $opp5);
+$opp7 = str_replace('-5', '', $opp6);
+$opp8 = str_replace('-m', '', $opp7);
+$opp9 = str_replace('-f', '', $opp8);
+$opp10 = str_replace('-mega', '', $opp9);
+$opp11 = str_replace('-megax', '', $opp10);
+$opp12 = str_replace('-megay', '', $opp11);
+$opp13 = str_replace('-pirouette', '', $opp12);
+$opp14 = str_replace('-large', '', $opp13);
+$opp15 = str_replace('-small', '', $opp14);
+$opp16 = str_replace('-super', '', $opp15);
+$opp17 = str_replace('-sky', '', $opp16);
+$opp18 = str_replace('-east', '', $opp17);
+$opp19 = str_replace('-therian', '', $opp18);
+$opp20 = str_replace('-active', '', $opp19);
+$opp21 = str_replace('-blade', '', $opp20);
+$opp22 = str_replace('-sunshine', '', $opp21);
+$opp23 = str_replace('-zen', '', $opp22);
+$opplast= ucfirst($opp23);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +63,7 @@ $opp=$pokemon[rand(0, count($pokemon) - 1)];
 </div>
 <div id="oppstatus">
     <img id="status" src="battle/oppenent%20status.png">
-    <p id="opp"><?php echo $opp; ?></p>
+    <p id="opp"><?php echo $opplast ?></p>
 </div>
 <div id="menu" class="animated fadeInRight">
     <div>

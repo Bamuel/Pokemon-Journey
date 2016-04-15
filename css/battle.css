@@ -50,6 +50,7 @@ p#pika{
 }
 img#status {
     height: 100px;
+    width: inherit;
     border-radius: 10px;
 }
 div#oppstatus {
