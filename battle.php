@@ -54,7 +54,6 @@ if (isset($_SERVER['HTTP_COOKIE'])) {
     }
 }
 ?>
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,11 +68,11 @@ if (isset($_SERVER['HTTP_COOKIE'])) {
 <img id="bg" src="<?php echo $field[rand(0, count($field) - 1)]; ?>">
 <img id="pokemon" class="animated slideInLeft" src="<?php echo $opp; ?>">
 <img id="urpokemon" class="animated slideInLeft" src="pikachu-f.gif">
-<div id="status">
+<div id="status" class="animated fadeInRight">
     <img id="status" src="battle/your%20status.png">
     <p id="pika">Pikachu</p>
 </div>
-<div id="oppstatus">
+<div id="oppstatus" class="animated fadeInLeft">
     <img id="status" src="battle/oppenent%20status.png">
     <p id="opp"><?php echo $opplast ?></p>
 </div>
