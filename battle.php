@@ -25,11 +25,11 @@ $opp4 = str_replace('-2', '', $opp3);
 $opp5 = str_replace('-3', '', $opp4);
 $opp6 = str_replace('-4', '', $opp5);
 $opp7 = str_replace('-5', '', $opp6);
-$opp8 = str_replace('-m', '', $opp7);
-$opp9 = str_replace('-f', '', $opp8);
-$opp10 = str_replace('-mega', '', $opp9);
-$opp11 = str_replace('-megax', '', $opp10);
-$opp12 = str_replace('-megay', '', $opp11);
+$opp8 = str_replace('-mega', '', $opp7);
+$opp9 = str_replace('-megax', '', $opp8);
+$opp10 = str_replace('-megay', '', $opp9);
+$opp11 = str_replace('-m', '', $opp10);
+$opp12 = str_replace('-f', '', $opp11);
 $opp13 = str_replace('-pirouette', '', $opp12);
 $opp14 = str_replace('-large', '', $opp13);
 $opp15 = str_replace('-small', '', $opp14);
@@ -67,7 +67,7 @@ if (isset($_SERVER['HTTP_COOKIE'])) {
 <script src="js/battle%20menu.js"></script>
 <img id="bg" src="<?php echo $field[rand(0, count($field) - 1)]; ?>">
 <img id="pokemon" class="animated slideInLeft" src="<?php echo $opp; ?>">
-<img id="urpokemon" class="animated slideInLeft" src="pikachu-f.gif">
+<img id="urpokemon" class="animated slideInLeft" src="battle/pikachu-f.gif">
 <div id="status" class="animated fadeInRight">
     <img id="status" src="battle/your%20status.png">
     <p id="pika">Pikachu</p>

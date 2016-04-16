@@ -93,7 +93,6 @@ p {
 		-ms-user-select: none;
 		user-select: none;
 }
-
 .btn {
 	width: 200px;
 	height: 50px;
@@ -102,9 +101,15 @@ p {
 .btn-2 {
 	width: 100px;
 }
-object {
+div#footer{
     position: absolute;
-    z-index: 2;
-		top: 0;
-		left: calc(50% - 350px);
+    bottom: 5px;
+    left: 5px;
+}
+img#image {
+    width: 30px;
+    height: 30px;
+}
+a:hover{
+    color: blue;
 }

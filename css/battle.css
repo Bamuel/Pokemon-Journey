@@ -1,3 +1,9 @@
+@font-face {
+    font-family:"Pokemon Pixel Font Regular";
+    src:url("../font/pokemon_pixel_font.eot?") format("eot"),url("../font/pokemon_pixel_font.woff") format("woff"),url("../font/pokemon_pixel_font.ttf") format("truetype"),url("../font/pokemon_pixel_font.svg#Pokemon-Pixel-Font") format("svg");
+    font-weight:normal;
+    font-style:normal;
+}
 html {
     overflow-y: hidden;
 }
@@ -11,7 +17,7 @@ img#bg {
 }
 img#pokemon {
     position: absolute;
-    right: 20%;
+    left: 65%;
     bottom: 40%;
     zoom: 130%;
 }
@@ -33,6 +39,8 @@ button {
     margin: auto;
     background-color: gray;
     color: white;
+    font-family: "Pokemon Pixel Font Regular";
+    font-size: 20px;
     border-radius: 10px;
 }
 button:hover{
@@ -43,23 +51,21 @@ div#status {
     bottom: 15%;
     right: 1%;
 }
-p#pika{
+p#pika, p#opp{
     position: absolute;
-    top: 2px;
+    top: -10px;
     left: 25px;
+    font-family: "Pokemon Pixel Font Regular";
+    font-size: 25px;
 }
 img#status {
     height: 100px;
     width: inherit;
     border-radius: 10px;
+    opacity: 0.8;
 }
 div#oppstatus {
     position: absolute;
     top: 15%;
     left: 1%;
-}
-p#opp{
-    position: absolute;
-    top: 2px;
-    left: 25px;
 }
