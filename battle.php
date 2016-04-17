@@ -63,6 +63,9 @@ if (isset($_SERVER['HTTP_COOKIE'])) {
     <link rel="stylesheet" href="animate.css">
 </head>
 <body oncontextmenu="return false"> <!-- Prevent from right click-->
+<audio autoplay id="battle theme">
+    <source src="Pokemon%20Stadium%20-%20Gym%20Leader%20Battle.mp3" type="audio/mpeg">
+</audio>
 <script src="js/disable.js"></script>
 <script src="js/battle%20menu.js"></script>
 <img id="bg" src="<?php echo $field[rand(0, count($field) - 1)]; ?>">
