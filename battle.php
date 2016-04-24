@@ -44,18 +44,10 @@ $opp23 = str_replace('-zen', '', $opp22);
 $opplast= ucfirst($opp23);
 ?>
 <?php
-if (isset($_SERVER['HTTP_COOKIE'])) {
-    $cookies = explode(';', $_SERVER['HTTP_COOKIE']);
-    foreach($cookies as $cookie) {
-        $parts = explode('=', $cookie);
-        $name = trim($parts[0]);
-        setcookie($name, '', time()-1000);
-        setcookie($name, '', time()-1000, '/');
-    }
-}
+include 'php/cookie clean.php';
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Battle</title>
@@ -67,7 +59,7 @@ if (isset($_SERVER['HTTP_COOKIE'])) {
     <source src="Pokemon%20Stadium%20-%20Gym%20Leader%20Battle.mp3" type="audio/mpeg">
 </audio>
 <script src="js/disable.js"></script>
-<script src="js/battle%20menu.js"></script>
+<script src="js/battlemenu.js"></script>
 <img id="bg" src="<?php echo $field[rand(0, count($field) - 1)]; ?>">
 <img id="pokemon" class="animated slideInLeft" src="<?php echo $opp; ?>">
 <img id="urpokemon" class="animated slideInLeft" src="battle/pikachu-f.gif">
@@ -81,11 +73,18 @@ if (isset($_SERVER['HTTP_COOKIE'])) {
 </div>
 <div id="menu" class="animated fadeInRight">
     <div>
-        <button id="" onclick="window.close();">Fight</button>
-        <button id="" onclick="window.close();">Bait</button>
+        <button id="" onclick="fight(); setTimeout('window.close()', 2000);">Fight</button>
+        <button id="" onclick="bait(); Alert.render('You threw some Bait at <?php echo $opplast ?> !'); setTimeout('Alert.ok()', 2000); ">Bait</button>
         <br>
-        <button id="" onclick="window.close();">Pokeball</button>
-        <button id="" onclick="window.close();">Run</button>
+        <button id="" onclick="pokeball(); Alert.render('You caught a <?php echo $opplast ?>   ****COMING SOON****'); setTimeout('Alert.ok()', 2000);">Pokeball</button>
+        <button id="" onclick="run(); setTimeout('window.close()', 2000);">Run</button>
+    </div>
+</div>
+<div id="dialogbox">
+    <div>
+        <div id="dialogboxhead"></div>
+        <div id="dialogboxbody"></div>
+        <div id="dialogboxfoot"></div>
     </div>
 </div>
 </body>
