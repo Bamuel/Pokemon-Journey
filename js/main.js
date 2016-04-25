@@ -1,4 +1,3 @@
-var steps = 0;
 var meetPokemon = Math.floor(Math.random() * 11) + 20;
 function onClick() {
 		

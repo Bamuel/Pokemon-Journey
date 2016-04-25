@@ -1,4 +1,19 @@
-
+<?php
+$ip = "$_SERVER[REMOTE_ADDR]";
+$start = "0";
+/* 
+Need to find a way to detect Curent Step, and save it to the saveip/127.0.0.1.txt file
+*/
+if (file_exists("saveip/" . $ip . ".txt")) {
+    $fileip = file_get_contents("saveip/" . $ip . ".txt");
+}
+else {
+    $myfile = fopen("saveip/" . $ip . ".txt", "w") or die("Unable to open file!");
+    fwrite($myfile, "$start");
+    fclose($myfile);
+}
+$step = $fileip;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,7 +67,8 @@
         <img id="ad" src="bg%20day.png">
         <img id="ad2" src="bg%20day.png" />
         <button class="btn-2" style="float: right;" disabled>
-            <p>Steps: <a id="steps">0</a></p>
+            <script>var steps = <?php echo $step; ?>;</script>
+            <p>Steps: <a id="steps"><?php echo $step; ?></a></p>
         </button>
         <div>
             <img id="rr" src="potagonist/1.gif">
