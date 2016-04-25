@@ -1,6 +1,5 @@
 <?php
 $ip = "$_SERVER[REMOTE_ADDR]";
-$start = "0";
 /* 
 Need to find a way to detect Curent Step, and save it to the saveip/127.0.0.1.txt file
 */
@@ -9,8 +8,9 @@ if (file_exists("saveip/" . $ip . ".txt")) {
 }
 else {
     $myfile = fopen("saveip/" . $ip . ".txt", "w") or die("Unable to open file!");
-    fwrite($myfile, "$start");
+    fwrite($myfile, "0");
     fclose($myfile);
+    header("Refresh:0");
 }
 $step = $fileip;
 ?>
