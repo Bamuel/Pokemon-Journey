@@ -55,7 +55,7 @@ include 'php/cookie clean.php';
     <link rel="stylesheet" href="animate.css">
 </head>
 <body oncontextmenu="return false"> <!-- Prevent from right click-->
-<audio autoplay id="battle theme">
+<audio autoplay id="battlemusic">
     <source src="Pokemon%20Stadium%20-%20Gym%20Leader%20Battle.mp3" type="audio/mpeg">
 </audio>
 <script src="js/disable.js"></script>
@@ -73,11 +73,11 @@ include 'php/cookie clean.php';
 </div>
 <div id="menu" class="animated fadeInRight">
     <div>
-        <button id="" onclick="fight(); setTimeout('window.close()', 2000);">Fight</button>
-        <button id="" onclick="bait(); Alert.render('You threw some Bait at <?php echo $opplast ?> !'); setTimeout('Alert.ok()', 2000); ">Bait</button>
+        <button id="" onclick="fight();">Fight</button>
+        <button id="" onclick="bait(); Alert.render('You threw some Bait at <?php echo $opplast ?>! <br> <?php echo $opplast ?> is eating!'); ">Bait</button>
         <br>
-        <button id="" onclick="pokeball(); Alert.render('You caught a <?php echo $opplast ?>   ****COMING SOON****'); setTimeout('Alert.ok()', 2000);">Pokeball</button>
-        <button id="" onclick="run(); setTimeout('window.close()', 2000);">Run</button>
+        <button id="" onclick="pokeball(); Alert.render('You caught a <?php echo $opplast ?> <br> ****COMING SOON****'); ">Pokeball</button>
+        <button id="" onclick="run(); ">Run</button>
     </div>
 </div>
 <div id="dialogbox">
@@ -87,5 +87,20 @@ include 'php/cookie clean.php';
         <div id="dialogboxfoot"></div>
     </div>
 </div>
+<audio id="run">
+    <source src="battle/soundeffects/run.mp3" type="audio/mpeg">
+</audio>
+<audio id="pokeball">
+    <source src="battle/soundeffects/thrownpokeball.mp3" type="audio/mpeg">
+</audio>
+<audio id="thunderbolt">
+    <source src="battle/soundeffects/thunderbolt.mp3" type="audio/mpeg">
+</audio>
+<audio id="bait">
+    <source src="battle/soundeffects/bait.mp3" type="audio/mpeg">
+</audio>
+<audio id="error">
+    <source src="battle/soundeffects/error.mp3" type="audio/mpeg">
+</audio>
 </body>
 </html>

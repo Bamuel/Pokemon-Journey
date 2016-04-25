@@ -71,13 +71,30 @@ div#oppstatus {
 }
 #dialogbox{
     display: none;
+    font-family: "Pokemon Pixel Font Regular";
     position: fixed;
     background: #000;
     border-radius:7px;
     width:550px;
     z-index: 10;
 }
-#dialogbox > div{ background:#FFF; margin:8px; }
-#dialogbox > div > #dialogboxhead{ background: #666; font-size:19px; padding:10px; color:#CCC; }
-#dialogbox > div > #dialogboxbody{ background:#333; padding:20px; color:#FFF; }
-#dialogbox > div > #dialogboxfoot{ background: #666; padding:10px; text-align:right; }
+#dialogbox > div{
+    background:#FFF;
+    margin:5px;
+}
+#dialogbox > div > #dialogboxhead{
+    background: #666;
+    padding:5px;
+    color:#CCC;
+}
+#dialogbox > div > #dialogboxbody{
+    background:#333;
+    padding:20px;
+    font-size:30px;
+    color:#FFF;
+}
+#dialogbox > div > #dialogboxfoot{
+    background: #666;
+    padding:5px;
+    text-align:right;
+}
