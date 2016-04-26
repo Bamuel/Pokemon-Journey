@@ -38,3 +38,17 @@ $(function() {
 		bg2.css("left", (parseInt(bg2.css("left")) - 10 + "px"));
 	});
 });
+
+var Alert = new CustomAlert2();
+function CustomAlert2(){
+	this.pop = function(dialog){
+		var winW = window.innerWidth;
+		var winH = window.innerHeight;
+		var popup = document.getElementById('popup');
+		popup.style.display = "block"
+		document.getElementById('popup').innerHTML = dialog + '<br> <button onclick="Alert.done()" id=done>Done</button>';
+	}
+	this.done = function(){
+		document.getElementById('popup').style.display = "none";
+	}
+}

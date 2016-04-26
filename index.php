@@ -1,18 +1,26 @@
 <?php
 $ip = "$_SERVER[REMOTE_ADDR]";
-/* 
-Need to find a way to detect Curent Step, and save it to the saveip/127.0.0.1.txt file
-*/
-if (file_exists("saveip/" . $ip . ".txt")) {
-    $fileip = file_get_contents("saveip/" . $ip . ".txt");
+/* Need to find a way to detect Curent Step, and save it to the saveip/127.0.0.1.txt file */
+if (file_exists("save/savestep/" . $ip . ".txt")) {
+    $filestep = file_get_contents("save/savestep/" . $ip . ".txt");
 }
 else {
-    $myfile = fopen("saveip/" . $ip . ".txt", "w") or die("Unable to open file!");
+    $myfile = fopen("save/savestep/" . $ip . ".txt", "w") or die("Unable to open file!");
     fwrite($myfile, "0");
     fclose($myfile);
     header("Refresh:0");
 }
-$step = $fileip;
+$step = $filestep;
+?>
+<?php
+if (file_exists("save/savename/" . $ip . ".txt")) {
+    $filename = file_get_contents("save/savename/" . $ip . ".txt");
+}
+else {
+    header("Location: register.php");
+    die();
+}
+$name = $filename;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,20 +74,24 @@ $step = $fileip;
         <h1 style="text-align: center">Pokémon Journey</h1>
         <img id="ad" src="bg%20day.png">
         <img id="ad2" src="bg%20day.png" />
-        <button class="btn-2" style="float: right;" disabled>
+        <button class="btn-1" style="float: right;" disabled>
             <script>var steps = <?php echo $step; ?>;</script>
             <p>Steps: <a id="steps"><?php echo $step; ?></a></p>
         </button>
         <div>
             <img id="rr" src="potagonist/1.gif">
             <div id="step">
-                <button class="btn" id="ag" name="A magic BUTTON" onclick="chng(); onClick(); playAudio();" type="button"><p>Click to Move</p></button>
+                <button class="btn-2" onclick="Alert.pop('Pokedex <br> Coming soon');">Pokedex</button>
+                <button class="btn-2" onclick="Alert.pop('Pokemon <br> Coming soon');">Pokemon</button>
+                <button class="btn" id="ag" name="A magic BUTTON" onclick="chng(); onClick(); playAudio(); Alert.done();" type="button"><p>Click to Move</p></button>
                 <a href="battle.php" onclick="javascript:void window.open('battle.php','1456998408033','width=700,height=500,toolbar=0,menubar=0,location=0,status=0,scrollbars=0,resizable=0,left=30,top=0');return false;">
                     <button class="btn" id="ag2" style="display: none;" onclick="pauseAudio();" type="button">
                         A Wild Pokemon has appeared. <br />
                         Click to battle
                     </button>
                 </a>
+                <button class="btn-2" onclick="Alert.pop('Trainer ID <br> Coming soon <br> by the way you can change your username <br> by redoing the form /register.php<br>');"><?php echo $name; ?></button>
+                <button class="btn-2" onclick="Alert.pop('Saving <br> Coming soon <br> this will save your current steps for next time you play');">Save</button>
             </div>
         </div>
     </div>
@@ -93,7 +105,7 @@ $step = $fileip;
     <h3>To play the game you spam "Click to Move" Button to gain steps,</h3>
     <h3>With the gradually going up, You will notice Pokémon will spawn in</h3>
     <h3>Your job is too catch them all.</h3>
-    <p>**This game is also compatible on Mobile Phones**</p>
+    <p>**This game is also semi-compatible on Mobile Phones**</p>
     <br>
     <h1>Hint</h1>
     <p>Press "M" to mute music</p>
@@ -117,6 +129,10 @@ $step = $fileip;
         <br>
         <p>Star this project on Github, it will mean alot</p>
     </a>
+</div>
+<div id="popup">
+</div>
+    
 </div>
 </body>
 </html>
