@@ -32,6 +32,7 @@ $name = $filename;
     <meta name="apple-mobile-web-app-capable" content="yes"><!-- iOS Safari -->
     <meta name="apple-mobile-web-app-status-bar-style" content="red"> <!-- iOS Safari -->
     <!-- Phone END -->
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name='keywords' content='Pokemon Journey, Clicker, Fun, Pokemon, Journey, game, Hackathon, Javascript Game, HTML'>
     <meta name='description' content='This is a fun Pokémon Clicker game'>
     <meta name='subject' content='Pokemon Journey'>
@@ -109,6 +110,13 @@ $name = $filename;
     <br>
     <h1>Hint</h1>
     <p>Press "M" to mute music</p>
+    <div id="footer">
+        <a href="https://github.com/Bamuel/Pokemon-Journey">
+            <img id="image" src="githubtransparent.png">
+            <br>
+            <p>Star this project on Github, it will mean alot</p>
+        </a>
+    </div>
 </div>
 <div id="team" style="float: right">
     <h1 id="teama">The Team</h1>
@@ -123,16 +131,6 @@ $name = $filename;
         <a href="https://github.com/shengbozhu" target="_blank"><h3>Github: shengbozhu</h3></a>
     </div>
 </div>
-<div id="footer">
-    <a href="https://github.com/Bamuel/Pokemon-Journey">
-        <img id="image" src="githubtransparent.png">
-        <br>
-        <p>Star this project on Github, it will mean alot</p>
-    </a>
-</div>
-<div id="popup">
-</div>
-    
-</div>
+<div id="popup"></div>
 </body>
 </html>

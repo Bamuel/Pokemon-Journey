@@ -56,6 +56,7 @@ include 'php/cookie clean.php';
     <meta name="apple-mobile-web-app-capable" content="yes"><!-- iOS Safari -->
     <meta name="apple-mobile-web-app-status-bar-style" content="red"> <!-- iOS Safari -->
     <!-- Phone END -->
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name='author' content='Samuel Levin, Samuel_ipad2@hotmail.com'>
     <meta name='author' content='Sam Zhu, shengbozhu@yahoo.com'>
     <meta name="application-name" content="Pokemon Journey" />
