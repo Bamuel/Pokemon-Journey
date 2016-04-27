@@ -107,11 +107,6 @@ p {
 	width: 100px;
     height: 25px;
 }
-div#footer{
-    position: absolute;
-    bottom: 5px;
-    left: 5px;
-}
 img#image {
     width: 30px;
     height: 30px;
