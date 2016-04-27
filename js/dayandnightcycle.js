@@ -1,15 +1,15 @@
-var images = [];
-images[0] = "bg%20afternoon.jpg";
-images[1] = "bg%20night.jpg";
-images[2] = "bg%20day.png";
+var iimages = [];
+iimages[0] = "bg%20afternoon.jpg";
+iimages[1] = "bg%20night.jpg";
+iimages[2] = "bg%20day.png";
 for (var i = 2; i < 11; i++) {
-    images.push("img" + i + ".gif");
+    iimages.push("img" + i + ".gif");
 }
 var x = 0;
 
 function changeImage() {
-    document.getElementById('ad').src = images[x];
-    document.getElementById('ad2').src = images[x];
+    document.getElementById('ad').src = iimages[x];
+    document.getElementById('ad2').src = iimages[x];
     if (x < 1) {
         x += 1;
     } else {

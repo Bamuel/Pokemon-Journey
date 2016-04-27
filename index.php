@@ -26,6 +26,20 @@ $name = $filename;
 $filesex = file_get_contents("save/savegender/" . $ip . ".txt");
 $sex= ucfirst($filesex);
 ?>
+<?php
+if ($sex == "Male"){
+    $class = str_replace('Male', 'Young Boy', $sex);
+    $photo = "potagonist/trainer000.1.png";
+    $startchar = "potagonist/1.png";
+    $char = " '1.png', '2.png', '3.png', '4.png'";
+}
+else if ($sex == "Female"){
+    $class = str_replace('Female', 'Young Girl', $sex);
+    $photo = "potagonist/trainer001.1.png";
+    $startchar = "potagonist/5.png";
+    $char = " '5.png', '6.png', '7.png', '8.png'";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,6 +81,9 @@ $sex= ucfirst($filesex);
     <script src="js/main.js"></script>
     <script src="js/dayandnightcycle.js"></script>
     <script src="js/character.js"></script>
+    <script>
+        var images = [<?php echo $char; ?>];
+    </script>
 </head>
 <body>
 <audio autoplay id="thethemesong">
@@ -84,7 +101,7 @@ $sex= ucfirst($filesex);
             <p>Steps: <a id="steps"><?php echo $step; ?></a></p>
         </button>
         <div>
-            <img id="rr" src="potagonist/1.gif">
+            <img id="rr" src="<?php echo $startchar; ?>">
             <div id="step">
                 <button class="btn-2" onclick="Alert.pop('Pokedex <br> Coming soon');">Pokedex</button>
                 <button class="btn-2" onclick="Alert.pop('Pokemon <br> Coming soon');">Pokemon</button>
@@ -150,13 +167,14 @@ $sex= ucfirst($filesex);
                 <p>&nbsp;Gender : <?php echo $sex; ?></p>
             </div>
             <div id="class">
-                <p>&nbsp;Class : <?php echo $sex; ?></p>
+                <p>&nbsp;Class : <?php echo $class; ?></p>
             </div>
             <div id="pokemonid">
                 <p>&nbsp;Pokemon : null</p>
             </div>
         </div>
         <div id="rightside">
+            <img id="rightsidepic" src="<?php echo $photo; ?>">
         </div>
     </div>
     <div id="bottomside">

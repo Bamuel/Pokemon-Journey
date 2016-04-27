@@ -1,4 +1,4 @@
-var dd = 9;
+var dd = 4;
 var cnt = 0;
 function chng() {
 
@@ -6,7 +6,6 @@ function chng() {
     var imageDir = 'potagonist/';                          // change to match images folder
 
 
-    var images = ['2.gif', '3.gif', '4.gif', '5.gif', '6.gif', '7.gif', '8.gif', '9.gif', '10.gif'];
 
     cnt++;
 

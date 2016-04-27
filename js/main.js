@@ -23,7 +23,7 @@ $(function() {
 	});
 	$("#ag").click(function() {
 		if(parseInt(protag.css("left")) < 400) {
-			protag.css("left", (parseInt(protag.css("left")) + 5 + "px"));
+			protag.css("left", (parseInt(protag.css("left")) + 12 + "px"));
 			return;
 		}
 		

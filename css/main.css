@@ -29,11 +29,11 @@ div#howto {
     top: 400px;
 }
 img#rr {
-    width: 50px;
-    height: 100px;
+    width: 40px;
+    height: 56px;
     position: absolute;
     left: 100px;
-    top: 180px;
+    top: 240px;
 }
 a {
     text-decoration: none;
@@ -182,6 +182,7 @@ div#pokemonid {
 div#rightside{
     display: none;
     position: relative;
+    z-index: 11;
     top: -182px;
     float: right;
     margin-right: 15px;
@@ -189,6 +190,12 @@ div#rightside{
     width: 30%;
     height: 182px;
     border-radius: 7px;
+}
+img#rightsidepic{
+    position: relative;
+    z-index: 12;
+    float: right;
+    height: 182px;
 }
 div#bottomside{
     display: none;
