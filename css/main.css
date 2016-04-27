@@ -140,3 +140,71 @@ button#done {
     bottom: 1px;
     transform: translateX(-50%);
 }
+div#trainercard{
+    display: none;
+    position: absolute;
+    z-index: 10;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50px;
+    width: 450px;
+    height: 250px;
+    background-color: #91A298;
+    border-style: solid;
+    border-color: #555A5C;
+    border-radius: 10px;
+    border-width: 7px;
+}
+div#leftside{
+    display: none;
+    width: 60%;
+    padding-left: 10px;
+}
+div#name {
+    display: none;
+    background-color: #A2B2A7;
+    height: 20px;
+    border-radius: 7px;
+}
+div#gender {
+    display: none;
+    background-color: #A2B2A7;
+    height: 20px;
+    border-radius: 7px;
+}
+div#class {
+    display: none;
+    background-color: #A2B2A7;
+    height: 20px;
+    border-radius: 7px;
+}
+div#pokemonid {
+    display: none;
+    background-color: #A2B2A7;
+    height: 80px;
+    border-radius: 7px;
+}
+div#rightside{
+    display: none;
+    position: relative;
+    top: -182px;
+    float: right;
+    margin-right: 15px;
+    background-color: #A2B2A7;
+    width: 30%;
+    height: 182px;
+    border-radius: 7px;
+}
+div#bottomside{
+    display: none;
+    width: 425px;
+    position: absolute;
+    left: 10px;
+    bottom: 7px;
+}
+div#startdate{
+    display: none;
+    height: 20px;
+    background-color: #A2B2A7;
+    border-radius: 7px;
+}

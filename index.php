@@ -3,6 +3,7 @@ $ip = "$_SERVER[REMOTE_ADDR]";
 /* Need to find a way to detect Curent Step, and save it to the saveip/127.0.0.1.txt file */
 if (file_exists("save/savestep/" . $ip . ".txt")) {
     $filestep = file_get_contents("save/savestep/" . $ip . ".txt");
+    $step = $filestep;
 }
 else {
     $myfile = fopen("save/savestep/" . $ip . ".txt", "w") or die("Unable to open file!");
@@ -10,7 +11,6 @@ else {
     fclose($myfile);
     header("Refresh:0");
 }
-$step = $filestep;
 ?>
 <?php
 if (file_exists("save/savename/" . $ip . ".txt")) {
@@ -21,6 +21,10 @@ else {
     die();
 }
 $name = $filename;
+?>
+<?php
+$filesex = file_get_contents("save/savegender/" . $ip . ".txt");
+$sex= ucfirst($filesex);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -84,14 +88,14 @@ $name = $filename;
             <div id="step">
                 <button class="btn-2" onclick="Alert.pop('Pokedex <br> Coming soon');">Pokedex</button>
                 <button class="btn-2" onclick="Alert.pop('Pokemon <br> Coming soon');">Pokemon</button>
-                <button class="btn" id="ag" name="A magic BUTTON" onclick="chng(); onClick(); playAudio(); Alert.done();" type="button"><p>Click to Move</p></button>
-                <a href="battle.php" onclick="javascript:void window.open('battle.php','1456998408033','width=700,height=500,toolbar=0,menubar=0,location=0,status=0,scrollbars=0,resizable=0,left=30,top=0');return false;">
+                <button class="btn" id="ag" name="A magic BUTTON" onclick="chng(); onClick(); playAudio(); Alert.done(); trainerid.done();" type="button"><p>Click to Move</p></button>
+                <a href="battle.php" onclick="void window.open('battle.php','1456998408033','width=700,height=500,toolbar=0,menubar=0,location=0,status=0,scrollbars=0,resizable=0,left=30,top=0');return false;">
                     <button class="btn" id="ag2" style="display: none;" onclick="pauseAudio();" type="button">
                         A Wild Pokemon has appeared. <br />
                         Click to battle
                     </button>
                 </a>
-                <button class="btn-2" onclick="Alert.pop('Trainer ID <br> Coming soon <br> by the way you can change your username <br> by redoing the form /register.php<br>');"><?php echo $name; ?></button>
+                <button class="btn-2" onclick="trainerid.pop('');"><?php echo $name; ?></button>
                 <button class="btn-2" onclick="Alert.pop('Saving <br> Coming soon <br> this will save your current steps for next time you play');">Save</button>
             </div>
         </div>
@@ -132,5 +136,34 @@ $name = $filename;
     </div>
 </div>
 <div id="popup"></div>
+<div id="trainercard">
+    <p style="position: absolute; left: 50%; transform: translateX(-50%); top: -5px;">Trainer Card</p>
+    <button onclick="trainerid.done()" style="float: right">Close</button>
+    <br>
+    <br>
+    <div style="margin-top: -20px">
+        <div id="leftside">
+            <div id="name">
+                <p>&nbsp;Name : <?php echo $name; ?></p>
+            </div>
+            <div id="gender">
+                <p>&nbsp;Gender : <?php echo $sex; ?></p>
+            </div>
+            <div id="class">
+                <p>&nbsp;Class : <?php echo $sex; ?></p>
+            </div>
+            <div id="pokemonid">
+                <p>&nbsp;Pokemon : null</p>
+            </div>
+        </div>
+        <div id="rightside">
+        </div>
+    </div>
+    <div id="bottomside">
+        <div id="startdate">
+            <p>&nbsp;Start Date: null</p>
+        </div>
+    </div>
+</div>
 </body>
 </html>
