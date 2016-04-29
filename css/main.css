@@ -39,21 +39,6 @@ a {
     text-decoration: none;
     color: black;
 }
-div#Bamuel {
-    position: absolute;
-    top: 400px;
-    right: 200px;
-}
-div#Sam {
-    position: absolute;
-    top: 400px;
-    right: 10px;
-}
-h1#teama {
-    position: absolute;
-    top: 360px;
-    right: 150px;
-}
 
 h1 {
     font-family: 'Anonymous Pro';

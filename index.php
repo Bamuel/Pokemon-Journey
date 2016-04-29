@@ -1,45 +1,48 @@
 <?php
-$ip = "$_SERVER[REMOTE_ADDR]";
-/* Need to find a way to detect Curent Step, and save it to the saveip/127.0.0.1.txt file */
-if (file_exists("save/savestep/" . $ip . ".txt")) {
-    $filestep = file_get_contents("save/savestep/" . $ip . ".txt");
-    $step = $filestep;
+$username = $_GET['username'];
+$password = md5(sha1($_GET['password']));
+$userlist = file ('save/' . $username . '.txt');
+
+$success = false;
+foreach ($userlist as $user) {
+    $user_details = explode('|', $user);
+    if ($user_details[0] == $username && $user_details[1] == $password) {
+        $gender = $user_details[2];
+        $step = $user_details[3];
+        $success = true;
+        break;
+    }
 }
-else {
-    $myfile = fopen("save/savestep/" . $ip . ".txt", "w") or die("Unable to open file!");
-    fwrite($myfile, "0");
-    fclose($myfile);
-    header("Refresh:0");
+if ($success) {
+} else {
+    header('Location: login.php');
 }
 ?>
+
 <?php
-if (file_exists("save/savename/" . $ip . ".txt")) {
-    $filename = file_get_contents("save/savename/" . $ip . ".txt");
-}
-else {
-    header("Location: register.php");
-    die();
-}
-$name = $filename;
-?>
-<?php
-$filesex = file_get_contents("save/savegender/" . $ip . ".txt");
-$sex= ucfirst($filesex);
-?>
-<?php
-if ($sex == "Male"){
-    $class = str_replace('Male', 'Young Boy', $sex);
+if ($gender == "Male"){
+    $class = str_replace('Male', 'Young Boy', $gender);
     $photo = "potagonist/trainer000.1.png";
     $startchar = "potagonist/1.png";
     $char = " '1.png', '2.png', '3.png', '4.png'";
 }
-else if ($sex == "Female"){
-    $class = str_replace('Female', 'Young Girl', $sex);
+else if ($gender == "Female"){
+    $class = str_replace('Female', 'Young Girl', $gender);
     $photo = "potagonist/trainer001.1.png";
     $startchar = "potagonist/5.png";
     $char = " '5.png', '6.png', '7.png', '8.png'";
 }
+else {
+    $class = "Young Boy";
+    $photo = "potagonist/trainer000.1.png";
+    $startchar = "potagonist/1.png";
+    $char = " '1.png', '2.png', '3.png', '4.png'";
+}
 ?>
+<?php
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -94,6 +97,7 @@ else if ($sex == "Female"){
 <div>
     <div>
         <h1 style="text-align: center">Pokémon Journey</h1>
+        <img src="mute.png" onclick="mute()" style="position: absolute; right: 5px; top: 0px; z-index: 20; width: 30px; height: 30px">
         <img id="ad" src="bg%20day.png">
         <img id="ad2" src="bg%20day.png" />
         <button class="btn-1" style="float: right;" disabled>
@@ -112,14 +116,14 @@ else if ($sex == "Female"){
                         Click to battle
                     </button>
                 </a>
-                <button class="btn-2" onclick="trainerid.pop('');"><?php echo $name; ?></button>
+                <button class="btn-2" onclick="trainerid.pop('');"><?php echo $username; ?></button>
                 <button class="btn-2" onclick="Alert.pop('Saving <br> Coming soon <br> this will save your current steps for next time you play');">Save</button>
             </div>
         </div>
     </div>
 </div>
 <div id="about">
-    <h1>This is a fun Pokémon Clicker game</h1>
+    <h1>This is a Pokémon Clicker game</h1>
     <h3>Created by Samuel Levin and Sam Zhu</h3>
 </div>
 <div id="howto">
@@ -139,19 +143,6 @@ else if ($sex == "Female"){
         </a>
     </div>
 </div>
-<div id="team" style="float: right">
-    <h1 id="teama">The Team</h1>
-    <div id="Bamuel">
-        <h3>Samuel Levin</h3>
-        <a href="https://twitter.com/Bamuel_" target="_blank"><h3>Twitter: Bamuel_</h3></a>
-        <a href="https://github.com/Bamuel" target="_blank"><h3>Github: Bamuel</h3></a>
-        <a href="http://www.bamuel.com/" target="_blank"><h3>Website: www.bamuel.com</h3></a>
-    </div>
-    <div id="Sam">
-        <h3>Sam Zhu</h3>
-        <a href="https://github.com/shengbozhu" target="_blank"><h3>Github: shengbozhu</h3></a>
-    </div>
-</div>
 <div id="popup"></div>
 <div id="trainercard">
     <p style="position: absolute; left: 50%; transform: translateX(-50%); top: -5px;">Trainer Card</p>
@@ -161,10 +152,10 @@ else if ($sex == "Female"){
     <div style="margin-top: -20px">
         <div id="leftside">
             <div id="name">
-                <p>&nbsp;Name : <?php echo $name; ?></p>
+                <p>&nbsp;Name : <?php echo $username; ?></p>
             </div>
             <div id="gender">
-                <p>&nbsp;Gender : <?php echo $sex; ?></p>
+                <p>&nbsp;Gender : <?php echo $gender; ?></p>
             </div>
             <div id="class">
                 <p>&nbsp;Class : <?php echo $class; ?></p>

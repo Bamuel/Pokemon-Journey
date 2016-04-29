@@ -1,23 +1,4 @@
-<?php
-$username = htmlspecialchars($_GET['username']);
-$password = md5(sha1($_GET['password']));
-$gender = ucfirst($_GET['gender']);
-if (file_exists("save/" . $username . ".txt")) {
-    echo "Username already exsist" . "<br>";
-    echo "Try a different username";
-    $redirct = "<script> setTimeout(function () { window.location.href= 'register.php'; },1000); </script>";
-}
-else {
-$register = $username . "|" . $password . "|" . $gender . "|0";
-   $myfile = fopen("save/" . $username . ".txt", "w") or die("Unable to open file!");
-    fwrite($myfile, $register);
-    fclose($myfile);
-    echo "Hi " . $username . "<br>";
-    echo "You have successfully registered." . "<br>";
-    echo "You will be redirected to the login screen within 3 seconds.";
-    $redirct = "<script> setTimeout(function () { window.location.href= 'index.php'; },3000); </script>";
-}
-?>
+
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -49,10 +30,27 @@ $register = $username . "|" . $password . "|" . $gender . "|0";
     <meta name="msapplication-TileColor" content="red">
     <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="red">
-    <title>Register</title>
+    <title>Login</title>
 </head>
 <body>
-    <?php echo $redirct ?>
+<style>
+    a{
+        font-size: large;
+        color: red;
+    }
+    a:hover{
+        color: blue;
+    }
+</style>
+<h1>Login</h1>
+<pre>To register click <a href="register.php"><b>here</b></a></pre>
+<pre>If you are getting redirected back here, Than your password/username is wrong</pre>
+<pre></pre>
+
+<form action="index.php" method="get">
+    <p>Username: <input type="text" name="username" maxlength="15" minlength="3" required/></p>
+    <p>Password: <input type="password" name="password" maxlength="15" minlength="5" required/></p>
+    <p><input type="submit" /></p>
+</form>
 </body>
 </html>
-

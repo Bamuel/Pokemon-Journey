@@ -8,6 +8,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes"><!-- iOS Safari -->
     <meta name="apple-mobile-web-app-status-bar-style" content="red"> <!-- iOS Safari -->
     <!-- Phone END -->
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name='author' content='Samuel Levin, Samuel_ipad2@hotmail.com'>
     <meta name='author' content='Sam Zhu, shengbozhu@yahoo.com'>
     <meta name="application-name" content="Pokemon Journey" />
@@ -31,8 +32,22 @@
     <title>Register</title>
 </head>
 <body>
+<style>
+    a{
+        font-size: large;
+        color: red;
+    }
+    a:hover{
+        color: blue;
+    }
+</style>
+<h1>Register</h1>
+<pre>Your password will be saved as a hash (md5 & sha1), Meaning that noone will be able to access to your password *Not even me*</pre>
+<pre>The same thing that Google, Youtube, Facebook, etc... use</pre>
+<pre>For more information click <a href="http://php.net/manual/en/faq.passwords.php" target="_blank"><b>here</b></a> </pre>
 <form action="action.php" method="get">
-    <p>Your name: <input type="text" name="name" maxlength="15" minlength="3" required/></p>
+    <p>Your username: <input type="text" name="username" maxlength="15" minlength="3" required/></p>
+    <p>Your password: <input type="password" name="password" maxlength="15" minlength="5" required/></p>
     <p>Your gender: </p>
     <input type="radio" name="gender" value="male" checked required> Male<br>
     <input type="radio" name="gender" value="female" required> Female<br>
