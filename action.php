@@ -2,13 +2,15 @@
 $username = htmlspecialchars($_GET['username']);
 $password = md5(sha1($_GET['password']));
 $gender = ucfirst($_GET['gender']);
+$number = new FilesystemIterator('save/', FilesystemIterator::SKIP_DOTS);
+$idnumber = iterator_count($number);
 if (file_exists("save/" . $username . ".txt")) {
     echo "Username already exsist" . "<br>";
     echo "Try a different username";
     $redirct = "<script> setTimeout(function () { window.location.href= 'register.php'; },1000); </script>";
 }
 else {
-$register = $username . "|" . $password . "|" . $gender . "|0";
+$register = $username . "|" . $password . "|" . $gender . "|0|a|" . date("d/m/Y") . "|" . $idnumber ;
    $myfile = fopen("save/" . $username . ".txt", "w") or die("Unable to open file!");
     fwrite($myfile, $register);
     fclose($myfile);

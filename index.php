@@ -9,38 +9,78 @@ foreach ($userlist as $user) {
     if ($user_details[0] == $username && $user_details[1] == $password) {
         $gender = $user_details[2];
         $step = $user_details[3];
+        $premiumuser = $user_details[4];
+        $startdate = $user_details[5];
+        $idnumber = $user_details[6];
         $success = true;
         break;
     }
 }
 if ($success) {
+    $idnumber2 = sprintf("%08d", $idnumber);
 } else {
     header('Location: login.php');
 }
 ?>
-
 <?php
-if ($gender == "Male"){
-    $class = str_replace('Male', 'Young Boy', $gender);
-    $photo = "potagonist/trainer000.1.png";
-    $startchar = "potagonist/1.png";
-    $char = " '1.png', '2.png', '3.png', '4.png'";
-}
-else if ($gender == "Female"){
-    $class = str_replace('Female', 'Young Girl', $gender);
-    $photo = "potagonist/trainer001.1.png";
-    $startchar = "potagonist/5.png";
-    $char = " '5.png', '6.png', '7.png', '8.png'";
-}
-else {
-    $class = "Young Boy";
-    $photo = "potagonist/trainer000.1.png";
-    $startchar = "potagonist/1.png";
-    $char = " '1.png', '2.png', '3.png', '4.png'";
-}
+
 ?>
 <?php
+if ($gender == "Male"){
+    $photo = "potagonist/trainer000.1.png";
 
+    if ($premiumuser == "a"){
+        $startchar = "potagonist/1.png";
+        $premiumname = "Not Premium User";
+        $char = " '1.png', '2.png', '3.png', '4.png'";
+    }
+    else if ($premiumuser == "b"){
+        $startchar = "potagonist/b1.png";
+        $premiumname = "Premium User";
+        $char = " 'b1.png', 'b2.png', 'b3.png', 'b4.png'";
+    }
+    else{
+        $startchar = "potagonist/1.png";
+        $premiumname = "A fatal Error has occured";
+        $char = " '1.png', '2.png', '3.png', '4.png'";
+    }
+}
+else if ($gender == "Female"){
+    $photo = "potagonist/trainer001.1.png";
+    if ($premiumuser == "a"){
+        $startchar = "potagonist/5.png";
+        $premiumname = "Not Premium User";
+        $char = " '5.png', '6.png', '7.png', '8.png'";
+    }
+    else if ($premiumuser == "b"){
+        $startchar = "potagonist/b5.png";
+        $premiumname = "<img id='crown' src=\"crown.png\">";
+        $char = " 'b5.png', 'b6.png', 'b7.png', 'b8.png'";;
+    }
+    else{
+        $startchar = "potagonist/5.png";
+        $premiumname = "A fatal Error has occured";
+        $char = " '5.png', '6.png', '7.png', '8.png'";
+    }
+}
+else {
+    $photo = "potagonist/trainer000.1.png";
+    if ($premiumuser == "a"){
+        $startchar = "potagonist/1.png";
+        $premiumname = "Not Premium User";
+        $char = " '1.png', '2.png', '3.png', '4.png'";
+    }
+    else if ($premiumuser == "b"){
+        $startchar = "potagonist/b1.png";
+        $premiumname = "Premium User";
+        $char = " 'b1.png', 'b2.png', 'b3.png', 'b4.png'";
+    }
+    else{
+        $startchar = "potagonist/1.png";
+        $premiumname = "A fatal Error has occured";
+        $char = " '1.png', '2.png', '3.png', '4.png'";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -145,6 +185,7 @@ else {
 </div>
 <div id="popup"></div>
 <div id="trainercard">
+    <p style="position: absolute; left: 5px; top: -10px;"><?php echo $idnumber2 ?></p>
     <p style="position: absolute; left: 50%; transform: translateX(-50%); top: -5px;">Trainer Card</p>
     <button onclick="trainerid.done()" style="float: right">Close</button>
     <br>
@@ -158,7 +199,7 @@ else {
                 <p>&nbsp;Gender : <?php echo $gender; ?></p>
             </div>
             <div id="class">
-                <p>&nbsp;Class : <?php echo $class; ?></p>
+                <p>&nbsp;Premium User : <?php echo $premiumname; ?></p>
             </div>
             <div id="pokemonid">
                 <p>&nbsp;Pokemon : null</p>
@@ -170,7 +211,7 @@ else {
     </div>
     <div id="bottomside">
         <div id="startdate">
-            <p>&nbsp;Start Date: null</p>
+            <p>&nbsp;Start Date: <?php echo $startdate; ?></p>
         </div>
     </div>
 </div>
