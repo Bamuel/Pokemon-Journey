@@ -36,7 +36,7 @@ if ($gender == "Male"){
     }
     else if ($premiumuser == "b"){
         $startchar = "potagonist/b1.png";
-        $premiumname = "Premium User";
+        $premiumname = "<img id='crown' src=\"crown.png\">";
         $char = " 'b1.png', 'b2.png', 'b3.png', 'b4.png'";
     }
     else{
