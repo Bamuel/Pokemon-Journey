@@ -50,7 +50,7 @@
 <form action="index.php" method="get">
     <p>Username: <input type="text" name="username" maxlength="15" minlength="3" required/></p>
     <p>Password: <input type="password" name="password" maxlength="15" minlength="5" required/></p>
-    <p><input type="submit" /></p>
+    <p><input type="submit" value="Login"/></p>
 </form>
 </body>
 </html>
