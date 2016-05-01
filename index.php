@@ -23,9 +23,6 @@ if ($success) {
 }
 ?>
 <?php
-
-?>
-<?php
 if ($gender == "Male"){
     $photo = "potagonist/trainer000.1.png";
 
@@ -72,7 +69,7 @@ else {
     }
     else if ($premiumuser == "b"){
         $startchar = "potagonist/b1.png";
-        $premiumname = "Premium User";
+        $premiumname = "<img id='crown' src=\"crown.png\">";;
         $char = " 'b1.png', 'b2.png', 'b3.png', 'b4.png'";
     }
     else{
@@ -82,7 +79,8 @@ else {
     }
 }
 ?>
-
+<?php
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,7 +93,7 @@ else {
     <!-- Phone END -->
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name='keywords' content='Pokemon Journey, Clicker, Fun, Pokemon, Journey, game, Hackathon, Javascript Game, HTML'>
-    <meta name='description' content='This is a fun Pokémon Clicker game'>
+    <meta name='description' content='This is a Pokémon Clicker game'>
     <meta name='subject' content='Pokemon Journey'>
     <meta name='author' content='Samuel Levin, Samuel_ipad2@hotmail.com'>
     <meta name='author' content='Sam Zhu, shengbozhu@yahoo.com'>
@@ -121,6 +119,7 @@ else {
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Anonymous+Pro" />
     <link href="css/main.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js">></script>
     <script src="js/main.js"></script>
     <script src="js/dayandnightcycle.js"></script>
     <script src="js/character.js"></script>
@@ -129,6 +128,16 @@ else {
     </script>
 </head>
 <body>
+<script>
+    function saveSteps()
+    {
+        var steps = parseInt($("#steps").text());
+        $.post("save.php", {id: steps},
+            function(result){
+            //Whatever you want to do, or just don't do anything
+        });
+        //Need to make it open a new page save.php?id=*youractualstep*
+</script>
 <audio autoplay id="thethemesong">
     <source src="AquaDeepBasin%20-%20Pokemon%20Black%20and%20White%20Bike%20Remix.mp3" type="audio/mpeg">
 </audio>
@@ -142,14 +151,14 @@ else {
         <img id="ad2" src="bg%20day.png" />
         <button class="btn-1" style="float: right;" disabled>
             <script>var steps = <?php echo $step; ?>;</script>
-            <p>Steps: <a id="steps"><?php echo $step; ?></a></p>
+            <p>Steps: <span id="steps"><?php echo $step; ?></span></p>
         </button>
         <div>
             <img id="rr" src="<?php echo $startchar; ?>">
             <div id="step">
                 <button class="btn-2" onclick="Alert.pop('Pokedex <br> Coming soon');">Pokedex</button>
                 <button class="btn-2" onclick="Alert.pop('Pokemon <br> Coming soon');">Pokemon</button>
-                <button class="btn" id="ag" name="A magic BUTTON" onclick="chng(); onClick(); playAudio(); Alert.done(); trainerid.done();" type="button"><p>Click to Move</p></button>
+                <button class="btn" id="ag" onclick="chng(); onClick(); playAudio(); Alert.done(); trainerid.done();" type="button"><p>Click to Move</p></button>
                 <a href="battle.php" onclick="void window.open('battle.php','1456998408033','width=700,height=500,toolbar=0,menubar=0,location=0,status=0,scrollbars=0,resizable=0,left=30,top=0');return false;">
                     <button class="btn" id="ag2" style="display: none;" onclick="pauseAudio();" type="button">
                         A Wild Pokemon has appeared. <br />
@@ -157,7 +166,7 @@ else {
                     </button>
                 </a>
                 <button class="btn-2" onclick="trainerid.pop('');"><?php echo $username; ?></button>
-                <button class="btn-2" onclick="Alert.pop('Saving <br> Coming soon <br> this will save your current steps for next time you play');">Save</button>
+                <button class="btn-2" onclick="saveSteps()">Save</button>
             </div>
         </div>
     </div>
@@ -202,7 +211,7 @@ else {
                 <p>&nbsp;Premium User : <?php echo $premiumname; ?></p>
             </div>
             <div id="pokemonid">
-                <p>&nbsp;Pokemon : null</p>
+                <p>&nbsp;Pokemon : </p>
             </div>
         </div>
         <div id="rightside">
