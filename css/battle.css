@@ -98,3 +98,9 @@ div#oppstatus {
     padding:5px;
     text-align:right;
 }
+div#thunder {
+    display: none;
+    position: absolute;
+    right: 10%;
+    bottom: 35%;
+}

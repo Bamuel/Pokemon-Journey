@@ -17,6 +17,19 @@ function CustomAlert(){
         document.getElementById('dialogoverlay').style.display = "none";
     }
 }
+
+var thunder = new CustomAlert5();
+function CustomAlert5(){
+    this.attack = function(dialog){
+        var winW = window.innerWidth;
+        var winH = window.innerHeight;
+        var dialogbox = document.getElementById('thunder');
+        dialogbox.style.display = "block";
+    }
+    this.done = function(){
+        document.getElementById('thunder').style.display = "none";
+    }
+}
 var battlemusic = document.getElementById("battlemusic")
 
 function fight() {
@@ -25,7 +38,9 @@ function fight() {
     var fight = document.getElementById("thunderbolt");
     fight.volume = 1;
     fight.play();
+    thunder.attack();
     setTimeout('battlemusic.volume = 1', 3500);
+    setTimeout('thunder.done();', 3500);
     setTimeout('window.close()', 3500);
 }
 function pokeball() {

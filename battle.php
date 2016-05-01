@@ -129,5 +129,8 @@ include 'php/cookie clean.php';
 <audio id="error">
     <source src="battle/soundeffects/error.mp3" type="audio/mpeg">
 </audio>
+<div id="thunder">
+    <img src="battle/thunderbolt.gif">
+</div>
 </body>
 </html>
