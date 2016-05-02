@@ -20,6 +20,7 @@ $register = $username . "|" . $password . "|" . $gender . "|0|a|" . date("d/m/Y"
     $redirct = "<script> setTimeout(function () { window.location.href= 'index.php'; },3000); </script>";
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>

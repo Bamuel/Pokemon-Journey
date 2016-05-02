@@ -23,6 +23,19 @@ if ($success) {
 }
 ?>
 <?php
+if ($step > "200"){
+    $username = $_GET['username'];
+    $premiumm = "b";
+    $myfile = file_get_contents("save/$username.txt");
+    $userData = explode('|', $myfile);
+    $userData[4] = $premiumm;
+    file_put_contents("save/$username.txt", implode("|", $userData));
+}
+else {
+
+}
+?>
+<?php
 if ($gender == "Male"){
     $photo = "potagonist/trainer000.1.png";
 
@@ -79,8 +92,6 @@ else {
     }
 }
 ?>
-<?php
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -129,14 +140,10 @@ else {
 </head>
 <body>
 <script>
-    function saveSteps()
-    {
-        var steps = parseInt($("#steps").text());
-        $.post("save.php", {id: steps},
-            function(result){
-            //Whatever you want to do, or just don't do anything
-        });
-        //Need to make it open a new page save.php?id=*youractualstep*
+    function savestep(){
+    var x = document.getElementById('steps').innerHTML;
+        void window.open('save.php?id=' + x + '&username=<?php echo $username ?>','_self',false);
+    }
 </script>
 <audio autoplay id="thethemesong">
     <source src="AquaDeepBasin%20-%20Pokemon%20Black%20and%20White%20Bike%20Remix.mp3" type="audio/mpeg">
@@ -166,7 +173,7 @@ else {
                     </button>
                 </a>
                 <button class="btn-2" onclick="trainerid.pop('');"><?php echo $username; ?></button>
-                <button class="btn-2" onclick="saveSteps()">Save</button>
+                <button class="btn-2" onclick="savestep();">Save</button>
             </div>
         </div>
     </div>
@@ -184,6 +191,7 @@ else {
     <br>
     <h1>Hint</h1>
     <p>Press "M" to mute music</p>
+    <p>To unlock Premium you must walk till 200 steps, *then Save & Refresh</p>
     <div id="footer">
         <a href="https://github.com/Bamuel/Pokemon-Journey">
             <img id="image" src="githubtransparent.png">
