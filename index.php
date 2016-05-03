@@ -23,16 +23,81 @@ if ($success) {
 }
 ?>
 <?php
-if ($step > "200"){
-    $username = $_GET['username'];
-    $premiumm = "b";
-    $myfile = file_get_contents("save/$username.txt");
-    $userData = explode('|', $myfile);
-    $userData[4] = $premiumm;
-    file_put_contents("save/$username.txt", implode("|", $userData));
-}
-else {
-
+switch ($step){
+    case ($step >= -9999999999 && $step <= 0);
+        $achievement = "Seriously stop breaking the game";
+        break;
+    case ($step >= 0 && $step < 100);
+        $achievement = "Welcome to the game <br> Try to get 100 steps and save the game";
+        break;
+    case ($step >= 100 && $step < 300);
+        $achievement = "1st Gym badge achieved <br> Try to get 300 steps and save the game";
+        break;
+    case ($step >= 300 && $step < 600);
+        $achievement = "2nd Gym badge achieved <br> Try to get 600 steps and save the game";
+        break;
+    case ($step >= 600 && $step < 900);
+        $achievement = "3rd Gym badge achieved <br> Try to get 900 steps and save the game";
+        break;
+    case ($step >= 900 && $step < 1200);
+        $achievement = "4th Gym badge achieved <br> Try to get 1200 steps and save the game";
+        $username = $_GET['username'];
+        $premiumm = "b";
+        $myfile = file_get_contents("save/$username.txt");
+        $userData = explode('|', $myfile);
+        $userData[4] = $premiumm;
+        file_put_contents("save/$username.txt", implode("|", $userData));
+        break;
+    case ($step >= 1200 && $step < 1500);
+        $achievement = "5th Gym badge achieved <br> Try to get 1500 steps and save the game";
+        if ($premiumuser == "a") {
+            header("Location: delete.php?username=" . $username );
+        }
+        else{
+        }
+        break;
+    case ($step >= 1500 && $step < 1800);
+        $achievement = "6th Gym badge achieved <br> Try to get 1800 steps and save the game";
+        if ($premiumuser == "a") {
+            header("Location: delete.php?username=" . $username );
+        }
+        else{
+        }
+        break;
+    case ($step >= 1800 && $step < 2100);
+        $achievement = "7th Gym badge achieved <br> Try to get 2100 steps and save the game";
+        if ($premiumuser == "a") {
+            header("Location: delete.php?username=" . $username );
+        }
+        else{
+        }
+        break;
+    case ($step >= 2100 && $step < 5000);
+        $achievement = "8th Gym badge achieved <br> Try to get 5000 steps and save the game";
+        if ($premiumuser == "a") {
+            header("Location: delete.php?username=" . $username );
+        }
+        else{
+        }
+        break;
+    case ($step >= 3000 && $step < 4000);
+        $achievement = "Try to get 5000 to become Pokemon Champion";
+        if ($premiumuser == "a") {
+            header("Location: delete.php?username=" . $username );
+        }
+        else{
+        }
+        break;
+    case ($step >= 5000);
+        if ($premiumuser == "a") {
+            header("Location: delete.php?username=" . $username );
+        }
+        else{
+        }
+        $achievement = "You are the Pokemon Champion";
+        break;
+    default:
+        echo "a fatal error has occured";
 }
 ?>
 <?php
@@ -144,6 +209,11 @@ else {
     var x = document.getElementById('steps').innerHTML;
         void window.open('save.php?id=' + x + '&username=<?php echo $username ?>','_self',false);
     }
+/*    if(steps = 900){
+        void window.open('save.php?id=' + x + '&username=<?php echo $username ?>','_self',false);
+    }*/
+</script>
+<script>
 </script>
 <audio autoplay id="thethemesong">
     <source src="AquaDeepBasin%20-%20Pokemon%20Black%20and%20White%20Bike%20Remix.mp3" type="audio/mpeg">
@@ -164,7 +234,7 @@ else {
             <img id="rr" src="<?php echo $startchar; ?>">
             <div id="step">
                 <button class="btn-2" onclick="Alert.pop('Pokedex <br> Coming soon');">Pokedex</button>
-                <button class="btn-2" onclick="Alert.pop('Pokemon <br> Coming soon');">Pokemon</button>
+                <button class="btn-2" onclick="Alert.pop('Achievements <br> <?php echo $achievement; ?>');">Achievements</button>
                 <button class="btn" id="ag" onclick="chng(); onClick(); playAudio(); Alert.done(); trainerid.done();" type="button"><p>Click to Move</p></button>
                 <a href="battle.php" onclick="void window.open('battle.php','1456998408033','width=700,height=500,toolbar=0,menubar=0,location=0,status=0,scrollbars=0,resizable=0,left=30,top=0');return false;">
                     <button class="btn" id="ag2" style="display: none;" onclick="pauseAudio();" type="button">
@@ -191,7 +261,7 @@ else {
     <br>
     <h1>Hint</h1>
     <p>Press "M" to mute music</p>
-    <p>To unlock Premium you must walk till 200 steps, *then Save & Refresh</p>
+    <p>To unlock Premium you must walk till 900 steps, *then Save & Refresh</p>
     <div id="footer">
         <a href="https://github.com/Bamuel/Pokemon-Journey">
             <img id="image" src="githubtransparent.png">

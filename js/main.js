@@ -3,7 +3,7 @@ function onClick() {
 		
     steps += 1;
     document.getElementById("steps").innerHTML = steps;
-		
+
 		if(steps % meetPokemon == 0) {
 			meetPokemon += Math.floor(Math.random() * 11 + 20);
 			$("#ag").toggle(function() {
@@ -42,40 +42,38 @@ $(function() {
 var Alert = new CustomAlert2();
 function CustomAlert2(){
 	this.pop = function(dialog){
-		var winW = window.innerWidth;
-		var winH = window.innerHeight;
-		var popup = document.getElementById('popup');
-		popup.style.display = "block"
+        
+var winH = window.innerHeight;
+        
+		popup.style.display = "block";
 		document.getElementById('popup').innerHTML = dialog + '<br> <button onclick="Alert.done()" id=done>Done</button>';
-	}
+	};
 	this.done = function(){
 		document.getElementById('popup').style.display = "none";
 	}
 }
 var trainerid = new trainerid1();
 function trainerid1(){
-	this.pop = function(dialog){
-		var winW = window.innerWidth;
-		var winH = window.innerHeight;
-		var a = document.getElementById('trainercard');
-		a.style.display = "block"
+    this.pop = function () {
+        var a = document.getElementById('trainercard');
+		a.style.display = "block";
 		var b = document.getElementById('leftside');
-		b.style.display = "block"
+		b.style.display = "block";
 		var c = document.getElementById('name');
-		c.style.display = "block"
+		c.style.display = "block";
 		var d = document.getElementById('gender');
-		d.style.display = "block"
+		d.style.display = "block";
 		var e = document.getElementById('class');
-		e.style.display = "block"
+		e.style.display = "block";
 		var f = document.getElementById('pokemonid');
-		f.style.display = "block"
+		f.style.display = "block";
 		var g = document.getElementById('rightside');
-		g.style.display = "block"
+		g.style.display = "block";
 		var h = document.getElementById('bottomside');
-		h.style.display = "block"
+		h.style.display = "block";
 		var i = document.getElementById('startdate');
 		i.style.display = "block"
-	}
+	};
 	this.done = function(){
 		document.getElementById('trainercard').style.display = "none";
 		document.getElementById('leftside').style.display = "none";
