@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 $username = $_GET['username'];
 $password = md5(sha1($_GET['password']));
 $userlist = file ('save/' . $username . '.txt');
@@ -20,6 +21,7 @@ if ($success) {
     $idnumber2 = sprintf("%08d", $idnumber);
 } else {
     header('Location: login.php');
+    die();
 }
 ?>
 <?php
