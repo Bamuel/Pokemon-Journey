@@ -1,8 +1,9 @@
 <?php
 error_reporting(0);
 $username = $_GET['username'];
-$password = md5(sha1($_GET['password']));
+$password = hash('whirlpool' ,hash('sha256' ,md5(sha1($_GET['password']))));
 $userlist = file ('save/' . $username . '.txt');
+$oldpassword = md5(sha1($_GET['password']));
 
 $success = false;
 foreach ($userlist as $user) {
@@ -16,6 +17,18 @@ foreach ($userlist as $user) {
         $success = true;
         break;
     }
+    elseif ($user_details[0] == $username && $user_details[1] == $oldpassword) {
+        echo "We have updated the encryption of the password <br>";
+        echo "from  md5(sha1( <b>to</b> hash('whirlpool' ,hash('sha256' ,md5(sha1(<br>";
+        echo "meaning that it is less hackable<br>";
+        echo "<form action=\"newpass.php\" method=\"get\">
+    <p>Your username: <input type=\"text\" name=\"username\" maxlength=\"15\" minlength=\"3\" required/></p>
+    <p>Old Password: <input type=\"password\" name=\"oldpassword\" maxlength=\"15\" minlength=\"5\" required/></p>
+    <p>New Password: <input type=\"password\" name=\"password\" maxlength=\"15\" minlength=\"5\" required/></p>
+    <p><input type=\"submit\" /></p>
+</form>";
+        echo "<br>You can use the same Password if you like";
+    }
 }
 if ($success) {
     $idnumber2 = sprintf("%08d", $idnumber);
@@ -28,6 +41,7 @@ if ($success) {
 switch ($step){
     case ($step >= -9999999999 && $step <= 0);
         $achievement = "Seriously stop breaking the game";
+        echo "Seriously stop breaking the game";
         break;
     case ($step >= 0 && $step < 100);
         $achievement = "Welcome to the game <br> Try to get 100 steps and save the game";
@@ -41,7 +55,7 @@ switch ($step){
     case ($step >= 600 && $step < 900);
         $achievement = "3rd Gym badge achieved <br> Try to get 900 steps and save the game";
         break;
-    case ($step >= 900 && $step < 1200);
+    case ($step >= 900 && $step < 1800);
         $achievement = "4th Gym badge achieved <br> Try to get 1200 steps and save the game";
         $username = $_GET['username'];
         $premiumm = "b";

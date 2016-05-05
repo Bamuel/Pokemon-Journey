@@ -1,6 +1,6 @@
 <?php
 $username = htmlspecialchars($_GET['username']);
-$password = md5(sha1($_GET['password']));
+$password = hash('whirlpool' ,hash('sha256' ,md5(sha1($_GET['password']))));
 $gender = ucfirst($_GET['gender']);
 $number = new FilesystemIterator('save/', FilesystemIterator::SKIP_DOTS);
 $idnumber = iterator_count($number);

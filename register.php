@@ -44,6 +44,8 @@
 <h1>Register</h1>
 <pre>Your password will be saved as a hash (md5 & sha1), Meaning that noone will be able to access to your password *Not even me*</pre>
 <pre>The same thing that Google, Youtube, Facebook, etc... use</pre>
+<pre>currently used hash(whirlpool ,hash(sha256 ,md5(sha1(</pre>
+<pre>Your password will be encrypted 4 diffrent ways</pre>
 <pre>For more information click <a href="http://php.net/manual/en/faq.passwords.php" target="_blank"><b>here</b></a> </pre>
 <form action="action.php" method="get">
     <p>Your username: <input type="text" name="username" maxlength="15" minlength="3" required/></p>
