@@ -20,7 +20,7 @@ foreach ($userlist as $user) {
     elseif ($user_details[0] == $username && $user_details[1] == $oldpassword) {
         echo "We have updated the encryption of the password <br>";
         echo "meaning that it is less hackable<br>";
-        echo "<form action=\"newpass.php\" method=\"get\">
+        echo "<form action=\"newpass.php\" method=\"post\">
     <p>Your username: <input type=\"text\" name=\"username\" maxlength=\"15\" minlength=\"3\" required/></p>
     <p>Old Password: <input type=\"password\" name=\"oldpassword\" maxlength=\"15\" minlength=\"5\" required/></p>
     <p>New Password: <input type=\"password\" name=\"password\" maxlength=\"15\" minlength=\"5\" required/></p>
@@ -258,7 +258,7 @@ else {
                     </button>
                 </a>
                 <button class="btn-2" onclick="trainerid.pop('');"><?php echo $username; ?></button>
-                <button class="btn-2" onclick="savestep();">Save</button>
+                <button class="btn-2" onclick="savestep();">Save & Logout</button>
             </div>
         </div>
     </div>

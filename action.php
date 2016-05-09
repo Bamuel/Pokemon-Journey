@@ -1,7 +1,7 @@
 <?php
-$username = htmlspecialchars($_GET['username']);
-$password = hash('whirlpool' ,hash('sha256' ,md5(sha1($_GET['password']))));
-$gender = ucfirst($_GET['gender']);
+$username = htmlspecialchars($_POST['username']);
+$password = hash('whirlpool' ,hash('sha256' ,md5(sha1($_POST['password']))));
+$gender = ucfirst($_POST['gender']);
 $number = new FilesystemIterator('save/', FilesystemIterator::SKIP_DOTS);
 $idnumber = iterator_count($number);
 if (file_exists("save/" . $username . ".txt")) {

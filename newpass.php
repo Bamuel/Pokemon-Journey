@@ -1,9 +1,9 @@
 <?php
 error_reporting(0);
-$username = $_GET['username'];
-$password = hash('whirlpool' ,hash('sha256' ,md5(sha1($_GET['password']))));
+$username = $_POST['username'];
+$password = hash('whirlpool' ,hash('sha256' ,md5(sha1($_POST['password']))));
 $userlist = file ('save/' . $username . '.txt');
-$oldpassword = md5(sha1($_GET['oldpassword']));
+$oldpassword = md5(sha1($_POST['oldpassword']));
 
 $success = false;
 foreach ($userlist as $user) {

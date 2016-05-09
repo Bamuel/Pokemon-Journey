@@ -8,8 +8,8 @@ $userData = explode('|', $myfile);
 $userData[3] = $steps;
 //put the exploded string back together with the new steps value
 file_put_contents("save/$username.txt", implode("|", $userData));
-$backtoold = $_SERVER['HTTP_REFERER'];
-$redirct = "<script> setTimeout(function () { window.location.href= '" . $backtoold . "'; },1); </script>";
+$backtogame = $_SERVER['HTTP_REFERER'];
+$redirct = "<script> setTimeout(function () { window.location.href= '" . $backtogame . "'; },1); </script>";
 ?>
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
