@@ -46,7 +46,7 @@
 <pre>If you are getting redirected back here, Than your password/username is wrong</pre>
 <pre></pre>
 
-<form action="index.php" method="get">
+<form action="index.php" method="post">
     <p>Username: <input type="text" name="username" maxlength="15" minlength="3" required/></p>
     <p>Password: <input type="password" name="password" maxlength="15" minlength="5" required/></p>
     <p><input type="submit" value="Login"/></p>

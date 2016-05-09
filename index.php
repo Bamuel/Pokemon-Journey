@@ -1,9 +1,9 @@
 <?php
 error_reporting(0);
-$username = $_GET['username'];
-$password = hash('whirlpool' ,hash('sha256' ,md5(sha1($_GET['password']))));
+$username = $_POST['username'];
+$password = hash('whirlpool' ,hash('sha256' ,md5(sha1($_POST['password']))));
 $userlist = file ('save/' . $username . '.txt');
-$oldpassword = md5(sha1($_GET['password']));
+$oldpassword = md5(sha1($_POST['password']));
 
 $success = false;
 foreach ($userlist as $user) {
@@ -19,7 +19,6 @@ foreach ($userlist as $user) {
     }
     elseif ($user_details[0] == $username && $user_details[1] == $oldpassword) {
         echo "We have updated the encryption of the password <br>";
-        echo "from  md5(sha1( <b>to</b> hash('whirlpool' ,hash('sha256' ,md5(sha1(<br>";
         echo "meaning that it is less hackable<br>";
         echo "<form action=\"newpass.php\" method=\"get\">
     <p>Your username: <input type=\"text\" name=\"username\" maxlength=\"15\" minlength=\"3\" required/></p>
@@ -239,7 +238,7 @@ else {
 <div>
     <div>
         <h1 style="text-align: center">Pokémon Journey</h1>
-        <img src="mute.png" onclick="mute()" style="position: absolute; right: 5px; top: 0px; z-index: 20; width: 30px; height: 30px">
+        <img src="mute.png" onclick="mute()" style="position: absolute; right: 5px; top: 0; z-index: 20; width: 30px; height: 30px">
         <img id="ad" src="bg%20day.png">
         <img id="ad2" src="bg%20day.png" />
         <button class="btn-1" style="float: right;" disabled>
