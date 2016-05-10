@@ -35,6 +35,13 @@ if ($success) {
     header('Location: login.php');
     die();
 }
+if ($username == "Bamuel" ?: "Gh3rkins"){
+//    ADMIN PAGE
+    echo "<a href=\"admin.php\"><button class=\"btn-1\" style=\"float:left;\">Admin login</button></a><br>";
+}
+else{
+
+}
 ?>
 <?php
 switch ($step){
