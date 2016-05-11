@@ -109,6 +109,6 @@ foreach($a as $user) {
 }
 
 ?>
-</table> 
+</table>
 </body>
 </html>
