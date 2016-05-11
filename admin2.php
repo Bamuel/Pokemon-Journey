@@ -8,9 +8,11 @@ $ip = $_SERVER['REMOTE_ADDR'];
 $success = false;
 foreach ($userlist as $user) {
     $user_details = explode('|', $user);
-    if ("Bamuel" ?: "Gh3rkins" == $username && $user_details[1] == $password) {
-        $success = true;
-        break;
+    if ($user_details[0] == $username && $user_details[1] == $password) {
+        if ("Bamuel" == $username){
+            $success = true;
+            break;
+        }
     }
 }
 if ($success){
@@ -60,15 +62,53 @@ $idnumber = iterator_count($number);
         <td><?php echo $idnumber; ?></td>
     </tr>
 </table>
-<ol>
+<br>
+<pre>Registered Users</pre>
+<table>
+    <tr>
+        <td>User</td>
+        <td>Gender</td>
+        <td>Steps</td>
+        <td>Bike</td>
+        <td>Start Date</td>
+        <td>Trainer ID</td>
+        <td>Delete</td>
+    </tr>
 <?php
 $dir = "save/";
 // Sort in ascending order
 $a = scandir($dir);
 foreach($a as $user) {
-    echo "<li>" . $user . "</li>";
+    $users = str_replace('.txt', '', $user);
+    $userlist = file ('save/' . $users . '.txt');
+    foreach ($userlist as $user2) {
+        $user_details = explode('|', $user2);
+        $username = $user_details[0];
+        $password = $user_details[1];
+        $gender = $user_details[2];
+        $step = $user_details[3];
+        $premiumuser = $user_details[4];
+        $startdate = $user_details[5];
+        $idnumber = $user_details[6];
+        $idnumber2 = sprintf("%08d", $idnumber);
+        $del = "<a style='font-size: larger'>&#x2421</a>";
+        if ($premiumuser == "a"){
+            $bike = "&#x2717";
+        }
+        elseif ($premiumuser == "b"){
+            $bike = "&#10004;";
+        }
+        elseif ($username == "null"){
+            $bike = "null";
+        }
+        else{
+            $bike = "error";
+        }
+    }
+    echo "<tr><td>" . $username . "</td><td>" . $gender . "</td><td>" . $step . "</td><td>" . $bike . "</td><td>" . $startdate . "</td><td>" . $idnumber2 . "</td><td>" . $del . "</td></tr>";
 }
+
 ?>
-</ol>
+</table>
 </body>
 </html>
