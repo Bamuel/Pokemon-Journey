@@ -1,6 +1,6 @@
 <?php
 $username = $_GET['username'];
-$steps = $_GET['id'];
+$steps = is_numeric($_GET['id']);
 $myfile = file_get_contents("save/$username.txt");
 //explode on the |
 $userData = explode('|', $myfile);

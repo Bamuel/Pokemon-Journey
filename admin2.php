@@ -13,6 +13,9 @@ foreach ($userlist as $user) {
             $success = true;
             break;
         }
+        echo "You are not an admin";
+        $redirct = "<script> setTimeout(function () { window.location.href= 'index.php'; },3000); </script>";
+        echo $redirct;
     }
 }
 if ($success){

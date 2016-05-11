@@ -290,6 +290,8 @@ else {
             <br>
             <p>Star this project on Github, it will mean alot</p>
         </a>
+        <br>
+        <pre>This uses images from Game Freak Inc. (Pokemon)  and 3 party sources. This game is only for educational and entertainment purposes</pre>
     </div>
 </div>
 <div id="popup"></div>
