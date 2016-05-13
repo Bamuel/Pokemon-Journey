@@ -3,25 +3,21 @@ error_reporting(0);
 $username = $_POST['username'];
 $password = hash('whirlpool' ,hash('sha256' ,md5(sha1($_POST['password']))));
 $userlist = file ('save/' . $username . '.txt');
-$oldpassword = md5(sha1($_POST['password']));
 $ip = $_SERVER['REMOTE_ADDR'];
+$redirct = "<script> setTimeout(function () { window.location.href= 'index.php'; },3000); </script>";
 $success = false;
 foreach ($userlist as $user) {
     $user_details = explode('|', $user);
-    if ($user_details[0] == $username && $user_details[1] == $password) {
-        if ("Bamuel" == $username){
-            $success = true;
-            break;
-        }
-        echo "You are not an admin";
-        $redirct = "<script> setTimeout(function () { window.location.href= 'index.php'; },3000); </script>";
-        echo $redirct;
+    if ($user_details[0] == $username && $user_details[1] == $password && $user_details[7] == "admin") {
+        $success = true;
+        break;
     }
 }
 if ($success){
 }
 else{
-    header('Location: login.php');
+    echo "Incorrect Password";
+    echo $redirct;
     die();
 }
 $number = new FilesystemIterator('save/', FilesystemIterator::SKIP_DOTS);
@@ -86,15 +82,21 @@ foreach($a as $user) {
     $userlist = file ('save/' . $users . '.txt');
     foreach ($userlist as $user2) {
         $user_details = explode('|', $user2);
-        $username = $user_details[0];
+        $username2 = $user_details[0];
         $password = $user_details[1];
         $gender = $user_details[2];
         $step = $user_details[3];
         $premiumuser = $user_details[4];
         $startdate = $user_details[5];
         $idnumber = $user_details[6];
+        $admin2 = $user_details[7];
         $idnumber2 = sprintf("%08d", $idnumber);
-        $del = "<a style='font-size: larger'>&#x2421</a>";
+        if ($admin2 == "admin"){
+            $del = "Admin";
+        }
+        else{
+            $del = "<a>&#x2421</a>";
+        }
         if ($premiumuser == "a"){
             $bike = "&#x2717";
         }
@@ -108,7 +110,7 @@ foreach($a as $user) {
             $bike = "error";
         }
     }
-    echo "<tr><td>" . $username . "</td><td>" . $gender . "</td><td>" . $step . "</td><td>" . $bike . "</td><td>" . $startdate . "</td><td>" . $idnumber2 . "</td><td>" . $del . "</td></tr>";
+    echo "<tr><td>" . $username2 . "</td><td>" . $gender . "</td><td>" . $step . "</td><td>" . $bike . "</td><td>" . $startdate . "</td><td>" . $idnumber2 . "</td><td>" . $del . "</td></tr>";
 }
 
 ?>

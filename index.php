@@ -14,6 +14,7 @@ foreach ($userlist as $user) {
         $premiumuser = $user_details[4];
         $startdate = $user_details[5];
         $idnumber = $user_details[6];
+        $admin = $user_details[7];
         $success = true;
         break;
     }
@@ -35,7 +36,7 @@ if ($success) {
     header('Location: login.php');
     die();
 }
-if ($username == "Bamuel" ?: "Gh3rkins"){
+if ($admin == "admin"){
 //    ADMIN PAGE
     echo "<a href=\"admin.php\"><button class=\"btn-1\" style=\"float:left;\">Admin login</button></a><br>";
 }
