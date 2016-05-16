@@ -37,6 +37,7 @@ $idnumber = iterator_count($number);
     th, td {
         padding: 5px;
         text-align: left;
+        height: 1px;
     }
     a{
         font-size: medium;
@@ -77,7 +78,7 @@ $idnumber = iterator_count($number);
         <td>Bike</td>
         <td>Start Date</td>
         <td>Trainer ID</td>
-        <td>Disable</td>
+        <td>Status</td>
     </tr>
 <?php
 $dir = "save/";
@@ -98,13 +99,13 @@ foreach($a as $user) {
         $admin2 = $user_details[7];
         $idnumber2 = sprintf("%08d", $idnumber);
         if ($admin2 == "admin"){
-            $disable = "<p style='color: red'>Admin</p>";
+            $disable = "<p style='color: red; font-size: xx-small'>Admin</p>";
         }
         elseif ($admin2 == "disable"){
-            $disable = "<p style='color: blue'>Disabled</p>";
+            $disable = "Disabled";
         }
         else{
-            $disable = "<p style='color: white'>Active</p>";
+            $disable = "";
         }
         if ($premiumuser == "a"){
             $bike = "&#x2717";
