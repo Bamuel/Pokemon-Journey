@@ -40,6 +40,10 @@ if ($admin == "admin"){
 //    ADMIN PAGE
     echo "<a href=\"admin.php\"><button class=\"btn-1\" style=\"float:left;\">Admin login</button></a><br>";
 }
+if ($admin == "disable"){
+    echo "Your account has been blocked";
+    die();
+}
 else{
 
 }

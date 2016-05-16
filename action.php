@@ -2,6 +2,22 @@
 $username = htmlspecialchars($_POST['username']);
 $password = hash('whirlpool' ,hash('sha256' ,md5(sha1($_POST['password']))));
 $gender = ucfirst($_POST['gender']);
+if (strpos($username, '|') !== false) {
+    echo "invalided Username";
+    echo "<script> setTimeout(function () { window.location.href= 'register.php'; },1000); </script>";
+    exit();
+}
+if ($gender == "Male"){
+    $gender2 = "Male";
+}
+elseif ($gender == "Female"){
+    $gender2 = "Female";
+}
+else{
+    echo "Please refrain from changing the webpage settings";
+    echo "<script> setTimeout(function () { window.location.href= 'register.php'; },1000); </script>";
+    exit();
+}
 $number = new FilesystemIterator('save/', FilesystemIterator::SKIP_DOTS);
 $idnumber = iterator_count($number);
 if (file_exists("save/" . $username . ".txt")) {
@@ -10,7 +26,7 @@ if (file_exists("save/" . $username . ".txt")) {
     $redirct = "<script> setTimeout(function () { window.location.href= 'register.php'; },1000); </script>";
 }
 else {
-$register = $username . "|" . $password . "|" . $gender . "|0|a|" . date("d/m/Y") . "|" . $idnumber ;
+$register = $username . "|" . $password . "|" . $gender2 . "|0|a|" . date("d/m/Y") . "|" . $idnumber ;
    $myfile = fopen("save/" . $username . ".txt", "w") or die("Unable to open file!");
     fwrite($myfile, $register);
     fclose($myfile);
