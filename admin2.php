@@ -94,6 +94,9 @@ foreach($a as $user) {
         if ($admin2 == "admin"){
             $del = "Admin";
         }
+        elseif ($admin2 == "disable"){
+            $del = "Disabled";
+        }
         else{
             $del = "<a>&#x2421</a>";
         }
