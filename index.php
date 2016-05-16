@@ -41,6 +41,7 @@ if ($admin == "admin"){
     echo "<a href=\"admin.php\"><button class=\"btn-1\" style=\"float:left;\">Admin login</button></a><br>";
 }
 if ($admin == "disable"){
+//    DISABLE PAGE
     echo "Your account has been blocked";
     die();
 }
@@ -50,7 +51,7 @@ else{
 ?>
 <?php
 switch ($step){
-    case ($step >= -9999999999 && $step <= 0);
+    case ($step < 0);
         $achievement = "Seriously stop breaking the game";
         echo "Seriously stop breaking the game";
         break;
@@ -66,8 +67,28 @@ switch ($step){
     case ($step >= 600 && $step < 900);
         $achievement = "3rd Gym badge achieved <br> Try to get 900 steps and save the game";
         break;
-    case ($step >= 900 && $step < 1800);
+    case ($step >= 900 && $step < 1200);
         $achievement = "4th Gym badge achieved <br> Try to get 1200 steps and save the game";
+        break;
+    case ($step >= 1200 && $step < 1500);
+        $achievement = "5th Gym badge achieved <br> Try to get 1500 steps and save the game";
+        break;
+    case ($step >= 1500 && $step < 1800);
+        $achievement = "6th Gym badge achieved <br> Try to get 1800 steps and save the game";
+        break;
+    case ($step >= 1800 && $step < 2100);
+        $achievement = "7th Gym badge achieved <br> Try to get 2100 steps and save the game";
+        break;
+    case ($step >= 2100 && $step < 5000);
+        $achievement = "8th Gym badge achieved <br> Try to get 5000 steps and save the game";
+        break;
+    case ($step >= 3000 && $step < 4000);
+        $achievement = "Try to get 5000 to become Pokemon Champion";
+        break;
+    case ($step >= 5000);
+        $achievement = "You are the Pokemon Champion";
+        break;
+    case ($step >= 900);
         $username = $_GET['username'];
         $premiumm = "b";
         $myfile = file_get_contents("save/$username.txt");
@@ -75,56 +96,8 @@ switch ($step){
         $userData[4] = $premiumm;
         file_put_contents("save/$username.txt", implode("|", $userData));
         break;
-    case ($step >= 1200 && $step < 1500);
-        $achievement = "5th Gym badge achieved <br> Try to get 1500 steps and save the game";
-        if ($premiumuser == "a") {
-            header("Location: delete.php?username=" . $username );
-        }
-        else{
-        }
-        break;
-    case ($step >= 1500 && $step < 1800);
-        $achievement = "6th Gym badge achieved <br> Try to get 1800 steps and save the game";
-        if ($premiumuser == "a") {
-            header("Location: delete.php?username=" . $username );
-        }
-        else{
-        }
-        break;
-    case ($step >= 1800 && $step < 2100);
-        $achievement = "7th Gym badge achieved <br> Try to get 2100 steps and save the game";
-        if ($premiumuser == "a") {
-            header("Location: delete.php?username=" . $username );
-        }
-        else{
-        }
-        break;
-    case ($step >= 2100 && $step < 5000);
-        $achievement = "8th Gym badge achieved <br> Try to get 5000 steps and save the game";
-        if ($premiumuser == "a") {
-            header("Location: delete.php?username=" . $username );
-        }
-        else{
-        }
-        break;
-    case ($step >= 3000 && $step < 4000);
-        $achievement = "Try to get 5000 to become Pokemon Champion";
-        if ($premiumuser == "a") {
-            header("Location: delete.php?username=" . $username );
-        }
-        else{
-        }
-        break;
-    case ($step >= 5000);
-        if ($premiumuser == "a") {
-            header("Location: delete.php?username=" . $username );
-        }
-        else{
-        }
-        $achievement = "You are the Pokemon Champion";
-        break;
     default:
-        echo "a fatal error has occured";
+        echo "a fatal error has occurred";
 }
 ?>
 <?php

@@ -3,7 +3,12 @@ $username = htmlspecialchars($_POST['username']);
 $password = hash('whirlpool' ,hash('sha256' ,md5(sha1($_POST['password']))));
 $gender = ucfirst($_POST['gender']);
 if (strpos($username, '|') !== false) {
-    echo "invalided Username";
+    echo "Invalided Username";
+    echo "<script> setTimeout(function () { window.location.href= 'register.php'; },1000); </script>";
+    exit();
+}
+elseif (strpos($username, 'null') !== false) {
+    echo "Invalided Username";
     echo "<script> setTimeout(function () { window.location.href= 'register.php'; },1000); </script>";
     exit();
 }
@@ -14,7 +19,7 @@ elseif ($gender == "Female"){
     $gender2 = "Female";
 }
 else{
-    echo "Please refrain from changing the webpage settings";
+    echo "Invalided Gender";
     echo "<script> setTimeout(function () { window.location.href= 'register.php'; },1000); </script>";
     exit();
 }

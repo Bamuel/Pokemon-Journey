@@ -62,6 +62,12 @@ $idnumber = iterator_count($number);
     </tr>
 </table>
 <br>
+<pre>Disable an account</pre>
+<form action="disable.php" method="post">
+    <p>Username: <input type="text" name="username"required/></p>
+    <p><input type="submit" /></p>
+</form>
+<br>
 <pre>Registered Users</pre>
 <table>
     <tr>
@@ -71,7 +77,7 @@ $idnumber = iterator_count($number);
         <td>Bike</td>
         <td>Start Date</td>
         <td>Trainer ID</td>
-        <td>Delete</td>
+        <td>Disable</td>
     </tr>
 <?php
 $dir = "save/";
@@ -92,13 +98,13 @@ foreach($a as $user) {
         $admin2 = $user_details[7];
         $idnumber2 = sprintf("%08d", $idnumber);
         if ($admin2 == "admin"){
-            $del = "Admin";
+            $disable = "<p>Admin</p>";
         }
         elseif ($admin2 == "disable"){
-            $del = "Disabled";
+            $disable = "<p style='color: olivedrab'>Disabled</p>";
         }
         else{
-            $del = "<a>&#x2421</a>";
+            $disable = "<p>Active</p>";
         }
         if ($premiumuser == "a"){
             $bike = "&#x2717";
@@ -113,7 +119,7 @@ foreach($a as $user) {
             $bike = "error";
         }
     }
-    echo "<tr><td>" . $username2 . "</td><td>" . $gender . "</td><td>" . $step . "</td><td>" . $bike . "</td><td>" . $startdate . "</td><td>" . $idnumber2 . "</td><td>" . $del . "</td></tr>";
+    echo "<tr><td>" . $username2 . "</td><td>" . $gender . "</td><td>" . $step . "</td><td>" . $bike . "</td><td>" . $startdate . "</td><td>" . $idnumber2 . "</td><td>" . $disable . "</td></tr>";
 }
 
 ?>

@@ -45,7 +45,7 @@ $redirct = "<script> setTimeout(function () { window.location.href= '" . $backto
     <title>Register</title>
 </head>
 <body>
-<?php echo $redirct ?>
+<?php echo $redirct; ?>
 <p>Save complete</p>
 </body>
 </html>
