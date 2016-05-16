@@ -207,11 +207,8 @@ else {
 <script>
     function savestep(){
     var x = document.getElementById('steps').innerHTML;
-        void window.open('save.php?id=' + x + '&username=<?php echo $username ?>','_self',false);
+        document.getElementById('stepss').value = x
     }
-/*    if(steps = 900){
-        void window.open('save.php?id=' + x + '&username=<?php echo $username ?>','_self',false);
-    }*/
 </script>
 <script>
 </script>
@@ -235,7 +232,7 @@ else {
             <div id="step">
                 <button class="btn-2" onclick="Alert.pop('Pokedex <br> Coming soon');">Pokedex</button>
                 <button class="btn-2" onclick="Alert.pop('Achievements <br> <?php echo $achievement; ?>');">Achievements</button>
-                <button class="btn" id="ag" onclick="chng(); onClick(); playAudio(); Alert.done(); trainerid.done();" type="button"><p>Click to Move</p></button>
+                <button class="btn" id="ag" onclick="chng(); onClick(); playAudio(); Alert.done(); trainerid.done(); savestep();" type="button"><p>Click to Move</p></button>
                 <a href="battle.php" onclick="void window.open('battle.php','1456998408033','width=700,height=500,toolbar=0,menubar=0,location=0,status=0,scrollbars=0,resizable=0,left=30,top=0');return false;">
                     <button class="btn" id="ag2" style="display: none;" onclick="pauseAudio();" type="button">
                         A Wild Pokemon has appeared. <br />
@@ -243,7 +240,11 @@ else {
                     </button>
                 </a>
                 <button class="btn-2" onclick="trainerid.pop('');"><?php echo $username; ?></button>
-                <button class="btn-2" onclick="savestep();">Save & Logout</button>
+                <form action="save.php" method="post">
+                    <input type="hidden" name="username" value="<?php echo $username; ?>"/>
+                    <input type="hidden" name="steps" id="stepss" value=""/>
+                    <input class="btn-2" type="submit" value="Save & Logout"/>
+                </form>
             </div>
         </div>
     </div>
