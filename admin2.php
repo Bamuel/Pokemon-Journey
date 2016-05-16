@@ -98,13 +98,13 @@ foreach($a as $user) {
         $admin2 = $user_details[7];
         $idnumber2 = sprintf("%08d", $idnumber);
         if ($admin2 == "admin"){
-            $disable = "<p>Admin</p>";
+            $disable = "<p style='color: red'>Admin</p>";
         }
         elseif ($admin2 == "disable"){
-            $disable = "<p style='color: olivedrab'>Disabled</p>";
+            $disable = "<p style='color: blue'>Disabled</p>";
         }
         else{
-            $disable = "<p>Active</p>";
+            $disable = "<p style='color: white'>Active</p>";
         }
         if ($premiumuser == "a"){
             $bike = "&#x2717";
