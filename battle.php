@@ -1,8 +1,8 @@
 <?php
-$pokemon = glob("pokemonsprites/" . "*.gif"); // Gets all gifs in that folder
+error_reporting(0);
+include 'src/PokemonAPI.php';
 ?>
 <?php
-
 $ip = "$_SERVER[REMOTE_ADDR]";
 if($ip === "127.0.0.1"  || $ip === "58.172.56.231"  || $ip === "203.29.155.29") { /*Only awesome people can have spacial field*/
     $field = array(
@@ -17,6 +17,8 @@ else{
         'battle/4.jpg'
     );
 }
+
+$pokemon = glob("pokemonsprites/" . "*.gif"); // Gets all gifs in that folder
 $opp=$pokemon[rand(0, count($pokemon) - 1)];
 $opp1 = str_replace('pokemonsprites/', '', $opp);
 $opp2 = str_replace('.gif', '', $opp1);
@@ -25,9 +27,9 @@ $opp4 = str_replace('-2', '', $opp3);
 $opp5 = str_replace('-3', '', $opp4);
 $opp6 = str_replace('-4', '', $opp5);
 $opp7 = str_replace('-5', '', $opp6);
-$opp8 = str_replace('-mega', '', $opp7);
-$opp9 = str_replace('-megax', '', $opp8);
-$opp10 = str_replace('-megay', '', $opp9);
+$opp8 = str_replace('-megax', '', $opp7);
+$opp9 = str_replace('-megay', '', $opp8);
+$opp10 = str_replace('-mega', '', $opp9);
 $opp11 = str_replace('-m', '', $opp10);
 $opp12 = str_replace('-f', '', $opp11);
 $opp13 = str_replace('-pirouette', '', $opp12);
@@ -41,7 +43,86 @@ $opp20 = str_replace('-active', '', $opp19);
 $opp21 = str_replace('-blade', '', $opp20);
 $opp22 = str_replace('-sunshine', '', $opp21);
 $opp23 = str_replace('-zen', '', $opp22);
-$opplast= ucfirst($opp23);
+$opp24 = str_replace('-rainy', '', $opp23);
+$opp25 = str_replace('-snowy', '', $opp24);
+$opp26 = str_replace('-sunny', '', $opp25);
+$opp27 = str_replace('-sunshine', '', $opp26);
+$opp28 = str_replace('-autumn', '', $opp27);
+$opp29 = str_replace('-summer', '', $opp28);
+$opp30 = str_replace('-winter', '', $opp29);
+$opp31 = str_replace('-attack', '', $opp30);
+$opp32 = str_replace('-defense', '', $opp31);
+$opp33 = str_replace('-speed', '', $opp32);
+$opp34 = str_replace('-blue', '', $opp33);
+$opp35 = str_replace('-orange', '', $opp34);
+$opp36 = str_replace('-white', '', $opp35);
+$opp37 = str_replace('-yellow', '', $opp36);
+$opp38 = str_replace('-eternal', '', $opp37);
+$opp39 = str_replace('-resolute', '', $opp38);
+$opp40 = str_replace('-origin', '', $opp39);
+$opp41 = str_replace('-black', '', $opp40);
+$opp42 = str_replace('-white', '', $opp41);
+$opp43 = str_replace('-fan', '', $opp42);
+$opp44 = str_replace('-frost', '', $opp43);
+$opp45 = str_replace('-heat', '', $opp44);
+$opp46 = str_replace('-mow', '', $opp45);
+$opp47 = str_replace('-wash', '', $opp46);
+$opp48 = str_replace('-bravo', '', $opp47);
+$opp49 = str_replace('-charlie', '', $opp48);
+$opp50 = str_replace('-delta', '', $opp49);
+$opp51 = str_replace('-echo', '', $opp50);
+$opp52 = str_replace('-exclamation', '', $opp51);
+$opp53 = str_replace('-foxtrot', '', $opp52);
+$opp54 = str_replace('-golf', '', $opp53);
+$opp55 = str_replace('-hotel', '', $opp54);
+$opp56 = str_replace('-india', '', $opp55);
+$opp57 = str_replace('-interrogation', '', $opp56);
+$opp58 = str_replace('-juliet', '', $opp57);
+$opp59 = str_replace('-kilo', '', $opp58);
+$opp60 = str_replace('-lima', '', $opp59);
+$opp61 = str_replace('-mike', '', $opp60);
+$opp62 = str_replace('-november', '', $opp61);
+$opp63 = str_replace('-oscar', '', $opp62);
+$opp64 = str_replace('-papa', '', $opp63);
+$opp65 = str_replace('-quebec', '', $opp64);
+$opp66 = str_replace('-romeo', '', $opp65);
+$opp67 = str_replace('-sierra', '', $opp66);
+$opp68 = str_replace('-tango', '', $opp67);
+$opp69 = str_replace('-uniform', '', $opp68);
+$opp70 = str_replace('-victor', '', $opp69);
+$opp71 = str_replace('-whiskey', '', $opp70);
+$opp72 = str_replace('-xray', '', $opp71);
+$opp73 = str_replace('-yankee', '', $opp72);
+$opp74 = str_replace('-zulu', '', $opp73);
+$opp75 = str_replace('-archipelago', '', $opp74);
+$opp76 = str_replace('-continental', '', $opp75);
+$opp77 = str_replace('-elegant', '', $opp76);
+$opp78 = str_replace('-fancy', '', $opp77);
+$opp79 = str_replace('-garden', '', $opp78);
+$opp80 = str_replace('-highplains', '', $opp79);
+$opp81 = str_replace('-jungle', '', $opp80);
+$opp82 = str_replace('-marine', '', $opp81);
+$opp83 = str_replace('-meadow', '', $opp82);
+$opp84 = str_replace('-modern', '', $opp83);
+$opp85 = str_replace('-monsoon', '', $opp84);
+$opp86 = str_replace('-ocean', '', $opp85);
+$opp87 = str_replace('-pokeball', '', $opp86);
+$opp88 = str_replace('-polar', '', $opp87);
+$opp89 = str_replace('-sandstorm', '', $opp88);
+$opp90 = str_replace('-savannah', '', $opp89);
+$opp91 = str_replace('-sun', '', $opp90);
+$opp92 = str_replace('-tundra', '', $opp91);
+$opp93 = str_replace('-sandy', '', $opp92);
+$opp94 = str_replace('-trash', '', $opp93);
+$opp95= ucfirst($opp94);
+$opplast = new \PokemonAPI\Pokemon($opp95);
+$pokemonname = $opplast->getName();
+$pokemonhp = $opplast->getHp();
+
+if ($pokemonname == ""){
+    $pokemonname = "A fatal error";
+    $pokemonhp = "";
+}
 ?>
 <?php
 include 'php/cookie clean.php';
@@ -96,14 +177,14 @@ include 'php/cookie clean.php';
 </div>
 <div id="oppstatus" class="animated fadeInLeft">
     <img id="status" src="battle/oppenent%20status.png">
-    <p id="opp"><?php echo $opplast ?></p>
+    <p id="opp"><?php echo $pokemonname ?><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $pokemonhp; ?></p>
 </div>
 <div id="menu" class="animated fadeInRight">
     <div>
         <button id="" onclick="fight();">Fight</button>
-        <button id="" onclick="bait(); Alert.render('You threw some Bait at <?php echo $opplast ?>! <br> <?php echo $opplast ?> is eating!'); ">Bait</button>
+        <button id="" onclick="bait(); Alert.render('You threw some Bait at <?php echo $pokemonname ?>! <br> <?php echo $pokemonname ?> is eating!'); ">Bait</button>
         <br>
-        <button id="" onclick="pokeball(); Alert.render('You caught a <?php echo $opplast ?> <br> ****COMING SOON****'); ">Pokeball</button>
+        <button id="" onclick="pokeball(); Alert.render('You caught a <?php echo $pokemonname ?> <br> ****COMING SOON****'); ">Pokeball</button>
         <button id="" onclick="run(); ">Run</button>
     </div>
 </div>

@@ -1,0 +1,45 @@
+%!Adobe-FontList 1.16
+%Locale:0xc09
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:C:\Users\Elizabeth\Desktop\Pokemon-Journey\Font\pokemon_pixel_font.eot
+FileModTime:1299437786
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:C:\Users\Elizabeth\Desktop\Pokemon-Journey\Font\pokemon_pixel_font.svg
+FileModTime:1299437786
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:Pokemon-Pixel-Font
+FamilyName:Pokemon Pixel Font
+StyleName:Regular
+FullName:Pokemon Pixel Font Regular
+MenuName:Pokemon Pixel Font
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:C:\Users\Elizabeth\Desktop\Pokemon-Journey\Font\pokemon_pixel_font.ttf
+DataFormat:sfntData
+FileLength:8672
+FileModTime:1299437786
+WeightClass:400
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,Pokemon Pixel Font Regular
+NameArray:0,Win,1,Pokemon Pixel Font
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:C:\Users\Elizabeth\Desktop\Pokemon-Journey\Font\pokemon_pixel_font.woff
+FileModTime:1299437786
+%EndFont
+
