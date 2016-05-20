@@ -111,7 +111,7 @@ if ($gender == "Male"){
     }
     else if ($premiumuser == "b"){
         $startchar = "potagonist/b1.png";
-        $premiumname = "<img id='crown' src=\"crown.png\">";
+        $premiumname = "<img id='crown' src=\"img/crown.png\">";
         $char = " 'b1.png', 'b2.png', 'b3.png', 'b4.png'";
     }
     else{
@@ -129,7 +129,7 @@ else if ($gender == "Female"){
     }
     else if ($premiumuser == "b"){
         $startchar = "potagonist/b5.png";
-        $premiumname = "<img id='crown' src=\"crown.png\">";
+        $premiumname = ">";
         $char = " 'b5.png', 'b6.png', 'b7.png', 'b8.png'";;
     }
     else{
@@ -147,7 +147,7 @@ else {
     }
     else if ($premiumuser == "b"){
         $startchar = "potagonist/b1.png";
-        $premiumname = "<img id='crown' src=\"crown.png\">";;
+        $premiumname = "<img id='crown' src=\"img/crown.png\">";;
         $char = " 'b1.png', 'b2.png', 'b3.png', 'b4.png'";
     }
     else{
@@ -213,16 +213,16 @@ else {
 <script>
 </script>
 <audio autoplay id="thethemesong">
-    <source src="AquaDeepBasin%20-%20Pokemon%20Black%20and%20White%20Bike%20Remix.mp3" type="audio/mpeg">
+    <source src="music/AquaDeepBasin%20-%20Pokemon%20Black%20and%20White%20Bike%20Remix.mp3" type="audio/mpeg">
 </audio>
 <script src="js/music.js"></script>
 <div id="intro" style="display: none;"></div>
 <div>
     <div>
         <h1 style="text-align: center">Pokémon Journey</h1>
-        <img src="mute.png" onclick="mute()" style="position: absolute; right: 5px; top: 0; z-index: 20; width: 30px; height: 30px">
-        <img id="ad" src="bg%20day.png">
-        <img id="ad2" src="bg%20day.png" />
+        <img src="img/mute.png" onclick="mute()" style="position: absolute; right: 5px; top: 0; z-index: 20; width: 30px; height: 30px">
+        <img id="ad" src="img/bg%20day.png">
+        <img id="ad2" src="img/bg%20day.png" />
         <button class="btn-1" style="float: right;" disabled>
             <script>var steps = <?php echo $step; ?>;</script>
             <p>Steps: <span id="steps"><?php echo $step; ?></span></p>
@@ -233,11 +233,22 @@ else {
                 <button class="btn-2" onclick="Alert.pop('Pokedex <br> Coming soon');">Pokedex</button>
                 <button class="btn-2" onclick="Alert.pop('Achievements <br> <?php echo $achievement; ?>');">Achievements</button>
                 <button class="btn" id="ag" onclick="chng(); onClick(); playAudio(); Alert.done(); trainerid.done(); savestep();" type="button"><p>Click to Move</p></button>
-                <a href="battle.php" onclick="void window.open('battle.php','1456998408033','width=700,height=500,toolbar=0,menubar=0,location=0,status=0,scrollbars=0,resizable=0,left=30,top=0');return false;">
-                    <button class="btn" id="ag2" style="display: none;" onclick="pauseAudio();" type="button">
-                        A Wild Pokemon has appeared. <br />
-                        Click to battle
-                    </button>
+                <form id="battle" name="view_form" method="post" action="battle.php"  target="Map" >
+                    <input type="hidden" value="<?php echo $username; ?>" name="username"/>
+                    <input type="hidden" value="<?php echo $password; ?>" name="password"/>
+                    <input type="button" class="btn" id="ag2" style="display: none;" value="A wild Pokemon has appeared" onclick="battle(); pauseAudio();"   />
+                </form>
+                <script>
+                    function battle()
+                    {
+                        var mapForm = document.getElementById("battle");             map=window.open("","Map","status=0,title=0,height=600,width=800,scrollbars=0,menubar=0,toolbar=0");
+                        if (map) {
+                            mapForm.submit();
+                        } else {
+                            alert('You must allow popups for this map to work.');
+                        }
+                    }
+                </script>
                 </a>
                 <button class="btn-2" onclick="trainerid.pop('');"><?php echo $username; ?></button>
                 <form action="save.php" method="post">
@@ -265,7 +276,7 @@ else {
     <p>To unlock Premium you must walk till 900 steps, *then Save & Refresh</p>
     <div id="footer">
         <a href="https://github.com/Bamuel/Pokemon-Journey">
-            <img id="image" src="githubtransparent.png">
+            <img id="image" src="img/githubtransparent.png">
             <br>
             <p>Star this project on Github, it will mean alot</p>
         </a>

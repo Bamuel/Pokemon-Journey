@@ -9,7 +9,7 @@ If you manage to break the game in any sort of way make sure to create a github 
 ### Contributors
  - Samuel Levin
  - Sam Zhu
-
+ - Jorge González 
  
 ### Sources
  - PokeAPI

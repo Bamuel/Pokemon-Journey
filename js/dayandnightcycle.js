@@ -6,10 +6,10 @@ for (var i = 2; i < 11; i++) {
     iimages.push("img" + i + ".gif");
 }
 var x = 0;
-
+var imagedirr = 'img/';
 function changeImage() {
-    document.getElementById('ad').src = iimages[x];
-    document.getElementById('ad2').src = iimages[x];
+    document.getElementById('ad').src = imagedirr + iimages[x];
+    document.getElementById('ad2').src = imagedirr + iimages[x];
     if (x < 1) {
         x += 1;
     } else {

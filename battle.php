@@ -1,6 +1,7 @@
 <?php
 error_reporting(0);
 include 'src/PokemonAPI.php';
+include 'src/cookie clean.php';
 ?>
 <?php
 $ip = "$_SERVER[REMOTE_ADDR]";
@@ -125,8 +126,33 @@ if ($pokemonname == ""){
 }
 ?>
 <?php
-include 'php/cookie clean.php';
+//Future Pokedex Coming Soon
+//Also prevents them from spaming the refresh button to Battle
+$username = $_POST['username'];
+$password = $_POST['password'];
+$userlist = file ('save/' . $username . '.txt');
+$success = false;
+foreach ($userlist as $user) {
+    $user_details = explode('|', $user);
+    if ($user_details[0] == $username && $user_details[1] == $password) {
+        $gender = $user_details[2];
+        $step = $user_details[3];
+        $premiumuser = $user_details[4];
+        $startdate = $user_details[5];
+        $idnumber = $user_details[6];
+        $admin = $user_details[7];
+        $success = true;
+        break;
+    }
+}
+if ($success) {
+}
+else {
+    echo "A Fatal Error has occurred";
+    die();
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -160,11 +186,11 @@ include 'php/cookie clean.php';
     <meta name="theme-color" content="red">
     <title>Battle</title>
     <link rel="stylesheet" href="css/battle.css">
-    <link rel="stylesheet" href="animate.css">
+    <link rel="stylesheet" href="css/animate.css">
 </head>
 <body oncontextmenu="return false"> <!-- Prevent from right click-->
 <audio autoplay id="battlemusic">
-    <source src="Pokemon%20Stadium%20-%20Gym%20Leader%20Battle.mp3" type="audio/mpeg">
+    <source src="music/Pokemon%20Stadium%20-%20Gym%20Leader%20Battle.mp3" type="audio/mpeg">
 </audio>
 <script src="js/disable.js"></script>
 <script src="js/battlemenu.js"></script>
