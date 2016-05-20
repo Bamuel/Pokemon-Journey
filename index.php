@@ -88,16 +88,16 @@ switch ($step){
     case ($step >= 5000);
         $achievement = "You are the Pokemon Champion";
         break;
-    case ($step >= 900);
-        $username = $_GET['username'];
-        $premiumm = "b";
-        $myfile = file_get_contents("save/$username.txt");
-        $userData = explode('|', $myfile);
-        $userData[4] = $premiumm;
-        file_put_contents("save/$username.txt", implode("|", $userData));
-        break;
     default:
         echo "a fatal error has occurred";
+}
+if ($steps >= 900){
+    $username = $_GET['username'];
+    $premiumm = "b";
+    $myfile = file_get_contents("save/$username.txt");
+    $userData = explode('|', $myfile);
+    $userData[4] = $premiumm;
+    file_put_contents("save/$username.txt", implode("|", $userData));
 }
 ?>
 <?php
