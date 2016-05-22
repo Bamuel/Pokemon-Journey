@@ -99,106 +99,63 @@ img#image {
 a:hover{
     color: blue;
 }
-#popup{
-    display: none;
-    position: absolute;
-    z-index: 10;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 50px;
-    border: darkcyan;
-    border-style: double;
-    border-radius: 10px;
-    background-color: #666666;
-    color: white;
-    width: 60%;
-    height: 200px;
-    text-align: center;
-}
 button#done {
     position: absolute;
     bottom: 1px;
     transform: translateX(-50%);
 }
-div#trainercard{
+div#red{
     display: none;
     position: absolute;
     z-index: 10;
     left: 50%;
     transform: translateX(-50%);
-    top: 50px;
-    width: 450px;
-    height: 250px;
-    background-color: #91A298;
-    border-style: solid;
-    border-color: #555A5C;
-    border-radius: 10px;
-    border-width: 7px;
+    top: 75px;
+    width: 550px;
+    height: 30px;
+    background-color: #F3796B;
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
 }
-div#leftside{
+div#white{
     display: none;
-    width: 60%;
-    padding-left: 10px;
-}
-div#name {
-    display: none;
-    background-color: #A2B2A7;
-    height: 20px;
-    border-radius: 7px;
-}
-div#gender {
-    display: none;
-    background-color: #A2B2A7;
-    height: 20px;
-    border-radius: 7px;
-}
-div#class {
-    display: none;
-    background-color: #A2B2A7;
-    height: 20px;
-    border-radius: 7px;
-}
-div#pokemonid {
-    display: none;
-    background-color: #A2B2A7;
-    height: 80px;
-    border-radius: 7px;
-}
-div#rightside{
-    display: none;
-    position: relative;
+    position: absolute;
     z-index: 11;
-    top: -182px;
-    float: right;
-    margin-right: 15px;
-    background-color: #A2B2A7;
-    width: 30%;
-    height: 182px;
-    border-radius: 7px;
+    top: 30px;
+    width: 550px;
+    height: 170px;
+    background-color: white;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
 }
-img#rightsidepic{
-    position: relative;
+img#profile{
+    position: absolute;
+    background-color: #DCDCDC;
+    border-radius: 10px;
     z-index: 12;
-    float: right;
-    height: 182px;
+    margin: 5px;
+    height: 160px;
+    width: 130px;
 }
-div#bottomside{
-    display: none;
-    width: 425px;
+div#profileabout{
     position: absolute;
-    left: 10px;
-    bottom: 7px;
+    left: 150px;
 }
-div#startdate{
-    display: none;
-    height: 20px;
-    background-color: #A2B2A7;
-    border-radius: 7px;
-}
-img#crown{
+div#badges{
     position: absolute;
-    z-index: 20;
+    z-index: 12;
+    bottom: 15px;
+    left: 110px;
+}
+ul{
+    display: inline-flex;
+    list-style-type: none;
+}
+li{
     width: 25px;
-    height: 20px;
-    zoom: 90%;
+    margin: 12px;
+}
+img#badge{
+    width: 25px;
+    height: 25px;
 }

@@ -38,51 +38,16 @@ $(function() {
 		bg2.css("left", (parseInt(bg2.css("left")) - 10 + "px"));
 	});
 });
-
-var Alert = new CustomAlert2();
-function CustomAlert2(){
-	this.pop = function(dialog){
-        
-var winH = window.innerHeight;
-        
-		popup.style.display = "block";
-		document.getElementById('popup').innerHTML = dialog + '<br> <button onclick="Alert.done()" id=done>Done</button>';
-	};
-	this.done = function(){
-		document.getElementById('popup').style.display = "none";
-	}
-}
 var trainerid = new trainerid1();
 function trainerid1(){
     this.pop = function () {
-        var a = document.getElementById('trainercard');
+        var a = document.getElementById('red');
 		a.style.display = "block";
-		var b = document.getElementById('leftside');
+		var b = document.getElementById('white');
 		b.style.display = "block";
-		var c = document.getElementById('name');
-		c.style.display = "block";
-		var d = document.getElementById('gender');
-		d.style.display = "block";
-		var e = document.getElementById('class');
-		e.style.display = "block";
-		var f = document.getElementById('pokemonid');
-		f.style.display = "block";
-		var g = document.getElementById('rightside');
-		g.style.display = "block";
-		var h = document.getElementById('bottomside');
-		h.style.display = "block";
-		var i = document.getElementById('startdate');
-		i.style.display = "block"
 	};
 	this.done = function(){
-		document.getElementById('trainercard').style.display = "none";
-		document.getElementById('leftside').style.display = "none";
-		document.getElementById('name').style.display = "none";
-		document.getElementById('gender').style.display = "none";
-		document.getElementById('class').style.display = "none";
-		document.getElementById('pokemonid').style.display = "none";
-		document.getElementById('rightside').style.display = "none";
-		document.getElementById('bottomside').style.display = "none";
-		document.getElementById('startdate').style.display = "none";
+		document.getElementById('red').style.display = "none";
+		document.getElementById('white').style.display = "none";
 	}
 }

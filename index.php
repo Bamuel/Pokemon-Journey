@@ -57,30 +57,102 @@ switch ($step){
         break;
     case ($step >= 0 && $step < 100);
         $achievement = "Welcome to the game <br> Try to get 100 steps and save the game";
+        $badge1 = "img/badge0.png";
+        $badge2 = "img/badge0.png";
+        $badge3 = "img/badge0.png";
+        $badge4 = "img/badge0.png";
+        $badge5 = "img/badge0.png";
+        $badge6 = "img/badge0.png";
+        $badge7 = "img/badge0.png";
+        $badge8 = "img/badge0.png";
         break;
     case ($step >= 100 && $step < 300);
         $achievement = "1st Gym badge achieved <br> Try to get 300 steps and save the game";
+        $badge1 = "img/badge1.png";
+        $badge2 = "img/badge0.png";
+        $badge3 = "img/badge0.png";
+        $badge4 = "img/badge0.png";
+        $badge5 = "img/badge0.png";
+        $badge6 = "img/badge0.png";
+        $badge7 = "img/badge0.png";
+        $badge8 = "img/badge0.png";
         break;
     case ($step >= 300 && $step < 600);
         $achievement = "2nd Gym badge achieved <br> Try to get 600 steps and save the game";
+        $badge1 = "img/badge1.png";
+        $badge2 = "img/badge2.png";
+        $badge3 = "img/badge0.png";
+        $badge4 = "img/badge0.png";
+        $badge5 = "img/badge0.png";
+        $badge6 = "img/badge0.png";
+        $badge7 = "img/badge0.png";
+        $badge8 = "img/badge0.png";
         break;
     case ($step >= 600 && $step < 900);
         $achievement = "3rd Gym badge achieved <br> Try to get 900 steps and save the game";
+        $badge1 = "img/badge1.png";
+        $badge2 = "img/badge2.png";
+        $badge3 = "img/badge3.png";
+        $badge4 = "img/badge0.png";
+        $badge5 = "img/badge0.png";
+        $badge6 = "img/badge0.png";
+        $badge7 = "img/badge0.png";
+        $badge8 = "img/badge0.png";
         break;
     case ($step >= 900 && $step < 1200);
         $achievement = "4th Gym badge achieved <br> Try to get 1200 steps and save the game";
+        $badge1 = "img/badge1.png";
+        $badge2 = "img/badge2.png";
+        $badge3 = "img/badge3.png";
+        $badge4 = "img/badge4.png";
+        $badge5 = "img/badge0.png";
+        $badge6 = "img/badge0.png";
+        $badge7 = "img/badge0.png";
+        $badge8 = "img/badge0.png";
         break;
     case ($step >= 1200 && $step < 1500);
         $achievement = "5th Gym badge achieved <br> Try to get 1500 steps and save the game";
+        $badge1 = "img/badge1.png";
+        $badge2 = "img/badge2.png";
+        $badge3 = "img/badge3.png";
+        $badge4 = "img/badge4.png";
+        $badge5 = "img/badge5.png";
+        $badge6 = "img/badge0.png";
+        $badge7 = "img/badge0.png";
+        $badge8 = "img/badge0.png";
         break;
     case ($step >= 1500 && $step < 1800);
         $achievement = "6th Gym badge achieved <br> Try to get 1800 steps and save the game";
+        $badge1 = "img/badge1.png";
+        $badge2 = "img/badge2.png";
+        $badge3 = "img/badge3.png";
+        $badge4 = "img/badge4.png";
+        $badge5 = "img/badge5.png";
+        $badge6 = "img/badge6.png";
+        $badge7 = "img/badge0.png";
+        $badge8 = "img/badge0.png";
         break;
     case ($step >= 1800 && $step < 2100);
         $achievement = "7th Gym badge achieved <br> Try to get 2100 steps and save the game";
+        $badge1 = "img/badge1.png";
+        $badge2 = "img/badge2.png";
+        $badge3 = "img/badge3.png";
+        $badge4 = "img/badge4.png";
+        $badge5 = "img/badge5.png";
+        $badge6 = "img/badge6.png";
+        $badge7 = "img/badge7.png";
+        $badge8 = "img/badge0.png";
         break;
     case ($step >= 2100 && $step < 5000);
         $achievement = "8th Gym badge achieved <br> Try to get 5000 steps and save the game";
+        $badge1 = "img/badge1.png";
+        $badge2 = "img/badge2.png";
+        $badge3 = "img/badge3.png";
+        $badge4 = "img/badge4.png";
+        $badge5 = "img/badge5.png";
+        $badge6 = "img/badge6.png";
+        $badge7 = "img/badge7.png";
+        $badge8 = "img/badge8.png";
         break;
     case ($step >= 3000 && $step < 4000);
         $achievement = "Try to get 5000 to become Pokemon Champion";
@@ -230,8 +302,7 @@ else {
         <div>
             <img id="rr" src="<?php echo $startchar; ?>">
             <div id="step">
-                <button class="btn-2" onclick="Alert.pop('Pokedex <br> Coming soon');">Pokedex</button>
-                <button class="btn-2" onclick="Alert.pop('Achievements <br> <?php echo $achievement; ?>');">Achievements</button>
+                <button class="btn-2" onclick="trainerid.pop();"><?php echo $username; ?></button>
                 <button class="btn" id="ag" onclick="chng(); onClick(); playAudio(); Alert.done(); trainerid.done(); savestep();" type="button"><p>Click to Move</p></button>
                 <form id="battle" name="view_form" method="post" action="battle.php"  target="Map" >
                     <input type="hidden" value="<?php echo $username; ?>" name="username"/>
@@ -250,7 +321,6 @@ else {
                     }
                 </script>
                 </a>
-                <button class="btn-2" onclick="trainerid.pop('');"><?php echo $username; ?></button>
                 <form action="save.php" method="post">
                     <input type="hidden" name="username" value="<?php echo $username; ?>"/>
                     <input type="hidden" name="steps" id="stepss" value=""/>
@@ -281,38 +351,31 @@ else {
             <p>Star this project on Github, it will mean alot</p>
         </a>
         <br>
-        <pre>This uses images from Game Freak Inc. (Pokemon)  and 3 party sources. This game is only for educational and entertainment purposes</pre>
+        <pre>This uses images from Game Freak Inc. (Pokemon)  and 3rd party sources. This game is only for educational and entertainment purposes</pre>
     </div>
 </div>
-<div id="popup"></div>
-<div id="trainercard">
-    <p style="position: absolute; left: 5px; top: -10px;"><?php echo $idnumber2 ?></p>
-    <p style="position: absolute; left: 50%; transform: translateX(-50%); top: -5px;">Trainer Card</p>
-    <button onclick="trainerid.done()" style="float: right">Close</button>
-    <br>
-    <br>
-    <div style="margin-top: -20px">
-        <div id="leftside">
-            <div id="name">
-                <p>&nbsp;Name : <?php echo $username; ?></p>
-            </div>
-            <div id="gender">
-                <p>&nbsp;Gender : <?php echo $gender; ?></p>
-            </div>
-            <div id="class">
-                <p>&nbsp;Premium User : <?php echo $premiumname; ?></p>
-            </div>
-            <div id="pokemonid">
-                <p>&nbsp;Pokemon : </p>
-            </div>
+<div id="red">
+    <p style="text-align: center; position: relative; top: -7.5px;"><?php echo $username; ?></p>
+    <button onclick="trainerid.done()" style="float: right; position: relative; z-index: 13; top: -45px;">Close</button>
+    <div id="white">
+        <img id="profile" src="<?php echo $photo; ?>">
+        <div id="profileabout">
+            <pre>POKEMON SEEN : ###</pre>
+            <pre>POKEMON CAUGHT : ###</pre>
+            <pre>TRAINER ID : <?php echo $idnumber2; ?></pre>
+            <pre>START DATE : <?php echo $startdate; ?></pre>
         </div>
-        <div id="rightside">
-            <img id="rightsidepic" src="<?php echo $photo; ?>">
-        </div>
-    </div>
-    <div id="bottomside">
-        <div id="startdate">
-            <p>&nbsp;Start Date: <?php echo $startdate; ?></p>
+        <div id="badges">
+            <ul>
+                <li><img id="badge" src="<?php echo $badge1; ?>"></li>
+                <li><img id="badge" src="<?php echo $badge2; ?>"></li>
+                <li><img id="badge" src="<?php echo $badge3; ?>"></li>
+                <li><img id="badge" src="<?php echo $badge4; ?>"></li>
+                <li><img id="badge" src="<?php echo $badge5; ?>"></li>
+                <li><img id="badge" src="<?php echo $badge6; ?>"></li>
+                <li><img id="badge" src="<?php echo $badge7; ?>"></li>
+                <li><img id="badge" src="<?php echo $badge8; ?>"></li>
+            </ul>
         </div>
     </div>
 </div>
