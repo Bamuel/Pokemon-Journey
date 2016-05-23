@@ -321,9 +321,9 @@ else {
                     }
                 </script>
                 </a>
-                <form action="save.php" method="post">
+                <form action="save.php" method="post" onclick="savestep()">
                     <input type="hidden" name="username" value="<?php echo $username; ?>"/>
-                    <input type="hidden" name="steps" id="stepss" value=""/>
+                    <input type="hidden" name="steps" id="stepss" value="" />
                     <input class="btn-2" type="submit" value="Save & Logout"/>
                 </form>
             </div>
