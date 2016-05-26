@@ -119,6 +119,14 @@ $opp95= ucfirst($opp94);
 $opplast = new \PokemonAPI\Pokemon($opp95);
 $pokemonname = $opplast->getName();
 $pokemonhp = $opplast->getHp();
+$pokemonhpmax = $pokemonhp;
+$pokemonhp75 = $pokemonhpmax * 3 / 4;
+$pokemonhp85 = $pokemonhpmax * 17 / 20;
+$pokemonhp25 = $pokemonhpmax * 1 / 4;
+
+$pikachu = new \PokemonAPI\Pokemon(25);
+$pikachuhp = $pikachu->getHp();
+$pikachuname = $pikachu->getName();
 
 if ($pokemonname == ""){
     $pokemonname = "A fatal error";
@@ -151,6 +159,7 @@ else {
     echo "A Fatal Error has occurred";
     die();
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -192,18 +201,19 @@ else {
 <audio autoplay id="battlemusic">
     <source src="music/Pokemon%20Stadium%20-%20Gym%20Leader%20Battle.mp3" type="audio/mpeg">
 </audio>
-<script src="js/disable.js"></script>
+<!--<script src="js/disable.js"></script>-->
 <script src="js/battlemenu.js"></script>
 <img id="bg" src="<?php echo $field[rand(0, count($field) - 1)]; ?>">
 <img id="pokemon" class="animated slideInLeft" src="<?php echo $opp; ?>">
 <img id="urpokemon" class="animated slideInLeft" src="battle/pikachu-f.gif">
 <div id="status" class="animated fadeInRight">
     <img id="status" src="battle/your%20status.png">
-    <p id="pika">Pikachu</p>
+    <p id="pika"><?php echo $pikachuname ?> <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $pikachuhp; ?></p>
 </div>
 <div id="oppstatus" class="animated fadeInLeft">
     <img id="status" src="battle/oppenent%20status.png">
-    <p id="opp"><?php echo $pokemonname ?><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $pokemonhp; ?></p>
+    <meter id="opphealthbar" value="<?php echo $pokemonhpmax; ?>" low="<?php echo $pokemonhp25; ?>" optimum="<?php echo $pokemonhp85; ?>" high="<?php echo $pokemonhp75; ?>" max="<?php echo $pokemonhpmax; ?>"></meter><br>
+    <p id="opp"><?php echo $pokemonname ?> <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $pokemonhpmax; ?></p>
 </div>
 <div id="menu" class="animated fadeInRight">
     <div>

@@ -6,6 +6,7 @@
 }
 html {
     overflow-y: hidden;
+    overflow-x: hidden;
 }
 img#bg {
     width: 100%;
@@ -29,7 +30,7 @@ div#menu {
 }
 img#urpokemon{
     position: absolute;
-    bottom: -40px;
+    bottom: 0;
     width: 150px;
     left: 10%;
 }
@@ -60,13 +61,14 @@ p#pika, p#opp{
 }
 img#status {
     height: 100px;
-    width: inherit;
+    width: 300px;
     border-radius: 10px;
     opacity: 0.8;
 }
 div#oppstatus {
     position: absolute;
     top: 15%;
+    width: 400px;
     left: 1%;
 }
 #dialogbox{
@@ -101,6 +103,27 @@ div#oppstatus {
 div#thunder {
     display: none;
     position: absolute;
-    right: 10%;
-    bottom: 35%;
+    left: 65%;
+    bottom: 40%;
+}
+meter#opphealthbar {
+    background-color: #33FF33;
+    position: absolute;
+    z-index: 0;
+    left: 41px;
+    top: 60px;
+    width: 130px;
+    height: 19px;
+    border-radius: 4px;
+}
+meter#opphealthbar::-webkit-meter-optimum-value {
+    background: none;
+    background-color: #33FF33;
+    box-shadow: 0 5px 5px -5px #333 inset;
+    border-radius: 5px;
+}
+meter#opphealthbar::-webkit-meter-bar {
+    background: none; /* Required to get rid of the default background property */
+    background-color: whiteSmoke;
+    box-shadow: 0 5px 5px -5px #333 inset;
 }

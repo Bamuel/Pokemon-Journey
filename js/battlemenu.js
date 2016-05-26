@@ -33,6 +33,10 @@ function CustomAlert5(){
 var battlemusic = document.getElementById("battlemusic")
 
 function fight() {
+    var damage = Math.floor((Math.random() * 20) + 10);
+    var health = document.getElementById("opphealthbar").value;
+    var output = health - damage;
+    document.getElementById("opphealthbar").value = output
     Alert.render('Pikachu used thunderbolt!');
     battlemusic.volume = 0.4;
     var fight = document.getElementById("thunderbolt");
@@ -40,8 +44,8 @@ function fight() {
     fight.play();
     thunder.attack();
     setTimeout('battlemusic.volume = 1', 3500);
-    setTimeout('thunder.done();', 3500);
-    setTimeout('window.close()', 3500);
+    setTimeout('thunder.done();', 3501);
+    setTimeout('Alert.ok()', 3500);
 }
 function pokeball() {
     battlemusic.volume = 0.4;
