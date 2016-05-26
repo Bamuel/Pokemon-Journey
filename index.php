@@ -52,11 +52,17 @@ else{
 <?php
 switch ($step){
     case ($step < 0);
-        $achievement = "Seriously stop breaking the game";
+        $badge1 = "img/badge0.png";
+        $badge2 = "img/badge0.png";
+        $badge3 = "img/badge0.png";
+        $badge4 = "img/badge0.png";
+        $badge5 = "img/badge0.png";
+        $badge6 = "img/badge0.png";
+        $badge7 = "img/badge0.png";
+        $badge8 = "img/badge0.png";
         echo "Seriously stop breaking the game";
         break;
     case ($step >= 0 && $step < 100);
-        $achievement = "Welcome to the game <br> Try to get 100 steps and save the game";
         $badge1 = "img/badge0.png";
         $badge2 = "img/badge0.png";
         $badge3 = "img/badge0.png";
@@ -155,10 +161,24 @@ switch ($step){
         $badge8 = "img/badge8.png";
         break;
     case ($step >= 3000 && $step < 4000);
-        $achievement = "Try to get 5000 to become Pokemon Champion";
+        $badge1 = "img/badge1.png";
+        $badge2 = "img/badge2.png";
+        $badge3 = "img/badge3.png";
+        $badge4 = "img/badge4.png";
+        $badge5 = "img/badge5.png";
+        $badge6 = "img/badge6.png";
+        $badge7 = "img/badge7.png";
+        $badge8 = "img/badge8.png";
         break;
     case ($step >= 5000);
-        $achievement = "You are the Pokemon Champion";
+        $badge1 = "img/badge1.png";
+        $badge2 = "img/badge2.png";
+        $badge3 = "img/badge3.png";
+        $badge4 = "img/badge4.png";
+        $badge5 = "img/badge5.png";
+        $badge6 = "img/badge6.png";
+        $badge7 = "img/badge7.png";
+        $badge8 = "img/badge8.png";
         break;
     default:
         echo "a fatal error has occurred";
@@ -307,7 +327,7 @@ else {
                 <form id="battle" name="view_form" method="post" action="battle.php"  target="Map" >
                     <input type="hidden" value="<?php echo $username; ?>" name="username"/>
                     <input type="hidden" value="<?php echo $password; ?>" name="password"/>
-                    <input type="button" class="btn" id="ag2" style="display: none;" value="A wild Pokemon has appeared" onclick="battle(); pauseAudio();"   />
+                    <input type="submit" class="btn" id="ag2" style="display: none;" value="A wild Pokemon has appeared" onclick="battle(); pauseAudio();"   />
                 </form>
                 <script>
                     function battle()
