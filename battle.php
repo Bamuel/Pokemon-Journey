@@ -116,27 +116,33 @@ $opp92 = str_replace('-tundra', '', $opp91);
 $opp93 = str_replace('-sandy', '', $opp92);
 $opp94 = str_replace('-trash', '', $opp93);
 $opp95= ucfirst($opp94);
+
 $opplast = new \PokemonAPI\Pokemon($opp95);
 $pokemonname = $opplast->getName();
 $pokemonhp = $opplast->getHp();
+if ($pokemonname == ""){
+    $pokemonname = "Error";
+    $pokemonhp = "50";
+}
 $pokemonhpmax = $pokemonhp;
-$pokemonhp75 = $pokemonhpmax * 3 / 4;
 $pokemonhp85 = $pokemonhpmax * 17 / 20;
+$pokemonhp75 = $pokemonhpmax * 3 / 4;
 $pokemonhp25 = $pokemonhpmax * 1 / 4;
 
 $pikachu = new \PokemonAPI\Pokemon(25);
 $pikachuhp = $pikachu->getHp();
 $pikachuname = $pikachu->getName();
+$pikachuhpmax = $pikachuhp * 2;
+$pikachuhp85 = $pikachuhpmax * 17 / 20;
+$pikachuhp75 = $pikachuhpmax * 3 / 4;
+$pikachuhp25 = $pikachuhpmax * 1 / 4;
 
-if ($pokemonname == ""){
-    $pokemonname = "A fatal error";
-    $pokemonhp = "";
-}
+
 ?>
 <?php
 //Future Pokedex Coming Soon
 //Also prevents them from spaming the refresh button to Battle
-/*$username = $_POST['username'];
+$username = $_POST['username'];
 $password = $_POST['password'];
 $userlist = file ('save/' . $username . '.txt');
 $success = false;
@@ -158,8 +164,7 @@ if ($success) {
 else {
     echo "A Fatal Error has occurred";
     die();
-}*/
-
+}
 ?>
 
 <!DOCTYPE html>
@@ -201,6 +206,7 @@ else {
 <audio autoplay id="battlemusic">
     <source src="music/Pokemon%20Stadium%20-%20Gym%20Leader%20Battle.mp3" type="audio/mpeg">
 </audio>
+<span style="display: none" id="opppokemons"><?php echo $pokemonname ?></span>
 <!--<script src="js/disable.js"></script>-->
 <script src="js/battlemenu.js"></script>
 <img id="bg" src="<?php echo $field[rand(0, count($field) - 1)]; ?>">
@@ -208,7 +214,8 @@ else {
 <img id="urpokemon" class="animated slideInLeft" src="battle/pikachu-f.gif">
 <div id="status" class="animated fadeInRight">
     <img id="status" src="battle/your%20status.png">
-    <p id="pika"><?php echo $pikachuname ?> <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $pikachuhp; ?></p>
+    <meter id="healthbar" value="<?php echo $pikachuhpmax; ?>" low="<?php echo $pikachuhp25; ?>" optimum="<?php echo $pikachuhp85; ?>" high="<?php echo $pikachuhp75; ?>" max="<?php echo $pikachuhpmax; ?>"></meter>
+    <p id="pika"><?php echo $pikachuname ?> <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="health"><?php echo $pikachuhpmax; ?></span></p>
 </div>
 <div id="oppstatus" class="animated fadeInLeft">
     <img id="status" src="battle/oppenent%20status.png">

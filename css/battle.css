@@ -127,3 +127,24 @@ meter#opphealthbar::-webkit-meter-bar {
     background-color: whiteSmoke;
     box-shadow: 0 5px 5px -5px #333 inset;
 }
+meter#healthbar{
+    background-color: #33FF33;
+    position: absolute;
+    z-index: 0;
+    left: 40px;
+    top: 40px;
+    width: 246px;
+    height: 19px;
+    border-radius: 4px;
+}
+meter#healthbar::-webkit-meter-optimum-value {
+    background: none;
+    background-color: #33FF33;
+    box-shadow: 0 5px 5px -5px #333 inset;
+    border-radius: 5px;
+}
+meter#healthbar::-webkit-meter-bar {
+    background: none; /* Required to get rid of the default background property */
+    background-color: whiteSmoke;
+    box-shadow: 0 5px 5px -5px #333 inset;
+}

@@ -32,22 +32,34 @@ function CustomAlert5(){
 }
 var battlemusic = document.getElementById("battlemusic")
 function fight() {
-    var damage = Math.floor((Math.random() * 25) + 15);
-    var health = document.getElementById("opphealthbar").value;
+    var oppdamage = Math.floor((Math.random() * 25) + 10);
+    var damage = Math.floor((Math.random() * 15) + 10);
+    var health = document.getElementById("healthbar").value;
+    var opphealth = document.getElementById("opphealthbar").value;
+    var oppoutput = opphealth - oppdamage;
     var output = health - damage;
-    document.getElementById("opphealthbar").value = output;
-    document.getElementById("opphealth").innerHTML = output;
+    document.getElementById("opphealthbar").value = oppoutput;
+    document.getElementById("opphealth").innerHTML = oppoutput;
+    opppokemons = document.getElementById("opppokemons").innerHTML;
+    setTimeout(function(){ document.getElementById("health").innerHTML = output; }, 2000);
+    setTimeout(function(){ document.getElementById("healthbar").value = output; }, 2000);
+    setTimeout(function(){ Alert.render( opppokemons + ' attacked Pikachu'); }, 1500);
     Alert.render('Pikachu used thunderbolt!');
     battlemusic.volume = 0.4;
     var fight = document.getElementById("thunderbolt");
     fight.volume = 1;
     fight.play();
     thunder.attack();
-    setTimeout('battlemusic.volume = 1', 3500);
-    setTimeout('thunder.done();', 3501);
-    setTimeout('Alert.ok()', 3500);
-    if (output < 0){
+    setTimeout('battlemusic.volume = 1', 3000);
+    setTimeout('thunder.done();', 1000);
+    setTimeout('Alert.ok()', 1499);
+    setTimeout('Alert.ok()', 3000);
+    if (oppoutput < 0){
         alert('Pokemon Defeated');
+        window.close();
+    }
+    else if (output < 0){
+        alert('Pikachu has fainted');
         window.close();
     }
 }
@@ -69,10 +81,20 @@ function run() {
     setTimeout('window.close()', 2000);
 }
 function bait() {
+    var oppdamage = Math.floor((Math.random() * 25) + 10);
+    var damage = Math.floor((Math.random() * 15) + 10);
+    var health = document.getElementById("healthbar").value;
+    var opphealth = document.getElementById("opphealthbar").value;
+    var oppoutput = opphealth - oppdamage;
+    var output = health - damage;
+    setTimeout(function(){ document.getElementById("health").innerHTML = output; }, 2000);
+    setTimeout(function(){ document.getElementById("healthbar").value = output; }, 2000);
+    setTimeout(function(){ Alert.render( opppokemons + ' attacked Pikachu'); }, 1500);
     battlemusic.volume = 0.4;
     var bait = document.getElementById("bait");
     bait.volume = 1;
     bait.play();
+    setTimeout('Alert.ok()', 1499);
+    setTimeout('Alert.ok()', 3000);
     setTimeout('battlemusic.volume = 1', 3500);
-    setTimeout('Alert.ok()', 3500);
 }
