@@ -136,7 +136,7 @@ if ($pokemonname == ""){
 <?php
 //Future Pokedex Coming Soon
 //Also prevents them from spaming the refresh button to Battle
-$username = $_POST['username'];
+/*$username = $_POST['username'];
 $password = $_POST['password'];
 $userlist = file ('save/' . $username . '.txt');
 $success = false;
@@ -158,7 +158,7 @@ if ($success) {
 else {
     echo "A Fatal Error has occurred";
     die();
-}
+}*/
 
 ?>
 
@@ -213,7 +213,7 @@ else {
 <div id="oppstatus" class="animated fadeInLeft">
     <img id="status" src="battle/oppenent%20status.png">
     <meter id="opphealthbar" value="<?php echo $pokemonhpmax; ?>" low="<?php echo $pokemonhp25; ?>" optimum="<?php echo $pokemonhp85; ?>" high="<?php echo $pokemonhp75; ?>" max="<?php echo $pokemonhpmax; ?>"></meter><br>
-    <p id="opp"><?php echo $pokemonname ?> <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $pokemonhpmax; ?></p>
+    <p id="opp"><?php echo $pokemonname ?> <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="opphealth"><?php echo $pokemonhpmax; ?></span></p>
 </div>
 <div id="menu" class="animated fadeInRight">
     <div>
