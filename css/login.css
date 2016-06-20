@@ -1,0 +1,52 @@
+.background1{
+	background: url('../img/bglogin.png') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+.loginbox{
+	width: 700px;
+	height: 320px;
+	background-color: #558DAF;
+	margin-left: -10px;
+}
+@font-face {
+    font-family:"Pokemon Pixel Font Regular";
+    src:url("../font/pokemon_pixel_font.eot?") format("eot"),url("../font/pokemon_pixel_font.woff") format("woff"),url("../font/pokemon_pixel_font.ttf") format("truetype"),url("../font/pokemon_pixel_font.svg#Pokemon-Pixel-Font") format("svg");
+    font-weight:normal;
+    font-style:normal;
+}
+p{
+
+    font-family: "Pokemon Pixel Font Regular";
+    font-size: 25px;
+}
+pre{
+
+    font-family: "Pokemon Pixel Font Regular";
+    font-size: 25px;
+}
+h1{
+
+    font-family: "Pokemon Pixel Font Regular";
+    font-size: 50px;
+}
+.btn-login{
+	height: 40px;
+	width: 80px;
+	background-color: #EBEB03;
+	border: 2px solid;
+	border-color: #C92500;
+}
+.promo1 {
+	background-image: url("../img/promo1.png");
+	width: 500px;
+	height: 400px;
+}
+.promo2 {
+	background-image: url("../img/promo2.png");
+	margin-left: 600px;
+	width: 500px;
+	height: 400px;
+}

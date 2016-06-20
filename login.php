@@ -26,9 +26,12 @@
     <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
     <link rel="manifest" href="favicon/manifest.json">
+    <link rel="stylesheet" type="text/css" href="css/login.css">
     <meta name="msapplication-TileColor" content="red">
     <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="red">
+    <body class="background1">
+
     <title>Login</title>
 </head>
 <body>
@@ -41,6 +44,8 @@
         color: blue;
     }
 </style>
+<div class="loginbox">
+<div style="margin-left: 20px;">
 <h1>Login</h1>
 <pre>To register click <a href="register.php"><b>here</b></a></pre>
 <pre>If you are getting redirected back here, Than your password/username is wrong</pre>
@@ -49,7 +54,14 @@
 <form action="index.php" method="post">
     <p>Username: <input type="text" name="username" maxlength="15" minlength="3" required/></p>
     <p>Password: <input type="password" name="password" maxlength="15" minlength="5" required/></p>
-    <p><input type="submit" value="Login"/></p>
-</form>
+    <p><input type="submit" class="btn-login" value="Login"/></p>
+    </form>
+  
+    <center>
+    <div class="promo1">
+    <div class="promo2"></div></div>
+    </center>
+      </div>
+    </div>
 </body>
 </html>
