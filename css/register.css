@@ -1,15 +1,16 @@
 .background1{
-	background: url('../img/bglogin.png') no-repeat center center fixed;
+	background: url('../img/bgregister.png') no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 }
-.loginbox{
-	width: 700px;
-	height: 355px;
+.registerbox{
+	width: 500px;
+	height: 580px;
 	background-color: #558DAF;
 	margin-left: -10px;
+	position: absolute;
 }
 @font-face {
     font-family:"Pokemon Pixel Font Regular";
@@ -25,30 +26,26 @@ p{
 pre{
 
     font-family: "Pokemon Pixel Font Regular";
-    font-size: 25px;
+    font-size: 20px;
 }
 h1{
 
     font-family: "Pokemon Pixel Font Regular";
     font-size: 50px;
 }
-.btn-login{
+.btn-register{
 	height: 40px;
 	width: 80px;
 	background-color: #EBEB03;
 	border: 2px solid;
 	border-color: #C92500;
 }
-.promo1 {
-	background-image: url("../img/promo1.png");
+.regpromo {
+	background-image: url("../img/regpromo.png");
 	width: 500px;
 	height: 400px;
-}
-.promo2 {
-	background-image: url("../img/promo2.png");
+	position: relative;
 	margin-left: 600px;
-	width: 500px;
-	height: 400px;
 }
 .usericon {
 	background-image: url("../img/username.png");

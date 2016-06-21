@@ -26,9 +26,11 @@
     <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
     <link rel="manifest" href="favicon/manifest.json">
+    <link rel="stylesheet" type="text/css" href="css/register.css">
     <meta name="msapplication-TileColor" content="red">
     <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="red">
+    <body class="background1">
     <title>Register</title>
 </head>
 <body>
@@ -41,8 +43,11 @@
         color: blue;
     }
 </style>
+<div class="registerbox">
+<div style="margin-left: 20px;">
 <h1>Register</h1>
-<pre>Your password will be saved as a hash (md5 & sha1), Meaning that noone will be able to access to your password *Not even me*</pre>
+<pre>Your password will be saved as a hash (md5 & sha1), 
+Meaning that noone will be able to access to your password *Not even me*</pre>
 <pre>The same thing that Google, Youtube, Facebook, etc... use</pre>
 <pre>currently used hash(whirlpool ,hash(sha256 ,md5(sha1(</pre>
 <pre>Your password will be encrypted 4 diffrent ways</pre>
@@ -53,7 +58,10 @@
     <p>Your gender: </p>
     <input type="radio" name="gender" value="male" checked required> Male<br>
     <input type="radio" name="gender" value="female" required> Female<br>
-    <p><input type="submit" /></p>
-</form>
+    <p><input class="btn-register" type="submit" /></p>
+    </form>
+    </div>
+    </div>
+
 </body>
 </html>

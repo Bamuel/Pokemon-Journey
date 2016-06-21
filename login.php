@@ -52,8 +52,8 @@
 <pre></pre>
 
 <form action="index.php" method="post">
-    <p>Username: <input type="text" name="username" maxlength="15" minlength="3" required/></p>
-    <p>Password: <input type="password" name="password" maxlength="15" minlength="5" required/></p>
+    <div class="usericon"><p style="margin-left: 35px;">Username: <input type="text" name="username" maxlength="15" minlength="3" required/></p>
+    <div class="passwordicon"><p style="margin-left: 35px;">Password: <input type="password" name="password" maxlength="15" minlength="5" required/></p>
     <p><input type="submit" class="btn-login" value="Login"/></p>
     </form>
   
