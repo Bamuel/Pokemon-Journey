@@ -1,4 +1,4 @@
-.background1{
+body{
 	background: url('../img/bgregister.png') no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -11,6 +11,7 @@
 	background-color: #558DAF;
 	margin-left: -10px;
 	position: absolute;
+	opacity: 0.8;
 }
 @font-face {
     font-family:"Pokemon Pixel Font Regular";
@@ -39,21 +40,4 @@ h1{
 	background-color: #EBEB03;
 	border: 2px solid;
 	border-color: #C92500;
-}
-.regpromo {
-	background-image: url("../img/regpromo.png");
-	width: 500px;
-	height: 400px;
-	position: relative;
-	margin-left: 600px;
-}
-.usericon {
-	background-image: url("../img/username.png");
-	width: 29px;
-	height: 29px;
-}
-.passwordicon {
-	background-image: url("../img/password.png");
-	width: 17px;
-	height: 34px;
 }

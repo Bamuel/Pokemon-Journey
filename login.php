@@ -26,12 +26,14 @@
     <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
     <link rel="manifest" href="favicon/manifest.json">
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="pragma" content="no-cache" />
     <link rel="stylesheet" type="text/css" href="css/login.css">
     <meta name="msapplication-TileColor" content="red">
     <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="red">
-    <body class="background1">
-
     <title>Login</title>
 </head>
 <body>
@@ -45,23 +47,25 @@
     }
 </style>
 <div class="loginbox">
-<div style="margin-left: 20px;">
-<h1>Login</h1>
-<pre>To register click <a href="register.php"><b>here</b></a></pre>
-<pre>If you are getting redirected back here, Than your password/username is wrong</pre>
-<pre></pre>
-
-<form action="index.php" method="post">
-    <div class="usericon"><p style="margin-left: 35px;">Username: <input type="text" name="username" maxlength="15" minlength="3" required/></p>
-    <div class="passwordicon"><p style="margin-left: 35px;">Password: <input type="password" name="password" maxlength="15" minlength="5" required/></p>
-    <p><input type="submit" class="btn-login" value="Login"/></p>
-    </form>
-  
-    <center>
-    <div class="promo1">
-    <div class="promo2"></div></div>
-    </center>
-      </div>
+    <div style="margin-left: 20px;">
+        <h1>Login</h1>
+        <pre>To register click <a href="register.php"><b>here</b></a></pre>
+        <pre>If you are getting redirected back here, Than your password/username is wrong</pre>
+        <pre></pre>
+        <form action="index.php" method="post">
+            <img id="usericon" src="img/username.png"><p style="margin-left: 35px;">Username: <input type="text" name="username" maxlength="15" minlength="3" required/></p>
+            <img id="passwordicon" src="img/password.png"><p style="margin-left: 35px;">Password: <input type="password" name="password" maxlength="15" minlength="5" required/></p>
+            <p><input type="submit" class="btn-login" value="Login"/></p>
+        </form>
     </div>
+</div>
+<br>
+<div id="promo">
+    <img id="promo1" src="img/promo1.PNG">
+    <img id="promo2" src="img/promo%202.PNG">
+</div>
+<footer style="color: ghostwhite">
+    This uses images from Game Freak Inc. (Pokemon)  and 3rd party sources. This game is only for educational and entertainment purposes
+</footer>
 </body>
 </html>
