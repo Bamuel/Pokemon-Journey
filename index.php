@@ -283,6 +283,10 @@ else {
     <meta name="msapplication-TileColor" content="red">
     <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="red">
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="pragma" content="no-cache" />
     <title>Pokémon Journey</title>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Anonymous+Pro" />
     <link href="css/main.css" rel="stylesheet">
@@ -363,7 +367,7 @@ else {
     <br>
     <h1>Hint</h1>
     <p>Press "M" to mute music</p>
-    <p>To unlock Premium you must walk till 900 steps, *then Save & Refresh</p>
+    <p>To unlock bike you must walk till 900 steps, *then Save & Refresh</p>
     <div id="footer">
         <a href="https://github.com/Bamuel/Pokemon-Journey">
             <img id="image" src="img/githubtransparent.png">
