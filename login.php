@@ -61,8 +61,11 @@
 </div>
 <br>
 <div id="promo">
-    <img id="promo1" src="img/promo1.PNG">
-    <img id="promo2" src="img/promo%202.PNG">
+    <iframe id="promo1" src="demobattle.php"  frameBorder="0"></iframe>
+    <div style="background-color: #36596F; width: 540px; height: 35px; text-align: center; position: absolute; z-index: 20; left: 668px; top: 407px; border-top-left-radius: 15px; border-top-right-radius: 15px; opacity: 0.8">
+        <p style="color: white; font-size: larger; margin-top: 5px; font-family: Arial">Explore the world</p>
+    </div>
+    <img id="promo2" src="img/promogif/final.gif">
 </div>
 <footer style="color: ghostwhite">
     This uses images from Game Freak Inc. (Pokemon)  and 3rd party sources. This game is only for educational and entertainment purposes

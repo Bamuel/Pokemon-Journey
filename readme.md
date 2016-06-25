@@ -10,6 +10,7 @@ If you manage to break the game in any sort of way make sure to create a github 
  - Samuel Levin
  - Sam Zhu
  - Jorge González 
+ - Edgar Sanou
  
 ### Sources
  - PokeAPI

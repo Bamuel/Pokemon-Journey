@@ -40,26 +40,21 @@ h1{
 	border: 2px solid;
 	border-color: #C92500;
 }
-/*.promo1 {
-	background-image: url("../img/promo1.png");
-	width: 500px;
-	height: 400px;
-}
-.promo2 {
-	background-image: url("../img/promo2.png");
-	margin-left: 600px;
-	width: 500px;
-	height: 400px;
-}*/
 div#promo{
     display: inline-flex;
 }
-img#promo1, img#promo2{
-	width: 500px;
+iframe#promo1{
+	width: 600px;
+	height: 400px;
+	border-radius: 15px;
+	opacity: 0.8;
+	margin-left: 5%;
+}
+img#promo2{
+	width: 600px;
 	height: 400px;
     border-radius: 15px;
     margin-left: 5%;
-    margin-right: 5%;
     opacity: 0.8;
 }
 img#usericon {
