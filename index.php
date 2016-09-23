@@ -1,44 +1,23 @@
 <?php
+session_start();
 error_reporting(0);
-$username = $_POST['username'];
-$password = hash('whirlpool' ,hash('sha256' ,md5(sha1($_POST['password']))));
-$userlist = file ('save/' . $username . '.txt');
-$oldpassword = md5(sha1($_POST['password']));
-
-$success = false;
-foreach ($userlist as $user) {
-    $user_details = explode('|', $user);
-    if ($user_details[0] == $username && $user_details[1] == $password) {
-        $gender = $user_details[2];
-        $step = $user_details[3];
-        $premiumuser = $user_details[4];
-        $startdate = $user_details[5];
-        $idnumber = $user_details[6];
-        $admin = $user_details[7];
-        $success = true;
-        break;
-    }
-    elseif ($user_details[0] == $username && $user_details[1] == $oldpassword) {
-        echo "We have updated the encryption of the password <br>";
-        echo "meaning that it is less hackable<br>";
-        echo "<form action=\"newpass.php\" method=\"post\">
-    <p>Your username: <input type=\"text\" name=\"username\" maxlength=\"15\" minlength=\"3\" required/></p>
-    <p>Old Password: <input type=\"password\" name=\"oldpassword\" maxlength=\"15\" minlength=\"5\" required/></p>
-    <p>New Password: <input type=\"password\" name=\"password\" maxlength=\"15\" minlength=\"5\" required/></p>
-    <p><input type=\"submit\" /></p>
-</form>";
-        echo "<br>You can use the same Password if you like";
-    }
-}
-if ($success) {
-    $idnumber2 = sprintf("%08d", $idnumber);
-} else {
-    header('Location: login.php');
+if (empty($_SESSION["username"])){
+    $_SESSION["error"] = "You have to login first";
+    header("Location: login.php");
     die();
 }
+$username = $_SESSION["username"];
+$gender = $_SESSION["gender"];
+$step = $_SESSION["step"];
+$premiumuser = $_SESSION["premiumuser"];
+$startdate = $_SESSION["startdate"];
+$idnumber = $_SESSION["idnumber"];
+$admin = $_SESSION["admin"];
+$idnumber2 = sprintf("%08d", $idnumber);
+
 if ($admin == "admin"){
 //    ADMIN PAGE
-    echo "<a href=\"admin.php\"><button class=\"btn-1\" style=\"float:left;\">Admin login</button></a><br>";
+    echo "<a href=\"admin2.php\"><button class=\"btn-1\" style=\"float:left;\">Admin login</button></a><br>";
 }
 if ($admin == "disable"){
 //    DISABLE PAGE
@@ -51,7 +30,7 @@ else{
 ?>
 <?php
 switch ($step){
-    case ($step < 0);
+    case ($step < -1);
         $badge1 = "img/badge0.png";
         $badge2 = "img/badge0.png";
         $badge3 = "img/badge0.png";
@@ -249,6 +228,25 @@ else {
     }
 }
 ?>
+
+<?php //save function
+if(isset($_POST['save'])){
+    $username = $_SESSION['username'];
+    $steps = $_POST['steps'];
+    $myfile = file_get_contents("save/$username.txt");
+    $userData = explode('|', $myfile);
+    $userData[3] = $steps;
+    file_put_contents("save/$username.txt", implode("|", $userData));
+    $_SESSION["step"] = $userData[3];
+    header("Location: index.php");
+    die();
+    //if error in save but redirect here
+}
+else{
+
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -300,6 +298,7 @@ else {
     </script>
 </head>
 <body>
+<button class="btn-2" style="float: right"><a href="logout.php">Logout</a></button>
 <script>
     function savestep(){
     var x = document.getElementById('steps').innerHTML;
@@ -345,10 +344,9 @@ else {
                     }
                 </script>
                 </a>
-                <form action="save.php" method="post" onclick="savestep()">
-                    <input type="hidden" name="username" value="<?php echo $username; ?>"/>
+                <form action="<?=$_SERVER['PHP_SELF'];?>" method="post" onclick="savestep()">
                     <input type="hidden" name="steps" id="stepss" value="" />
-                    <input class="btn-2" type="submit" value="Save & Logout"/>
+                    <input class="btn-2" name="save" type="submit" value="Save"/>
                 </form>
             </div>
         </div>

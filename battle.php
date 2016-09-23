@@ -1,4 +1,26 @@
 <?php
+//This code wont work because we have a new tab open which messes with teh session
+/*
+session_start();
+$username = $_SESSION["username"];
+//Future Pokedex Coming Soon
+//Also prevents them from spaming the refresh button to Battle
+$userlist = file ('save/' . $username . '.txt');
+$success = false;
+if (file_exists("save/" . $username . "/.txt")) {
+    $success = true;
+}
+if ($success) {
+    session_destroy();
+}
+else {
+    echo "Not Logined";
+    die();
+}
+*/
+?>
+
+<?php
 error_reporting(0);
 include 'src/PokemonAPI.php';
 include 'src/cookie clean.php';
@@ -138,33 +160,6 @@ $pikachuhp75 = $pikachuhpmax * 3 / 4;
 $pikachuhp25 = $pikachuhpmax * 1 / 4;
 
 
-?>
-<?php
-//Future Pokedex Coming Soon
-//Also prevents them from spaming the refresh button to Battle
-$username = $_POST['username'];
-$password = $_POST['password'];
-$userlist = file ('save/' . $username . '.txt');
-$success = false;
-foreach ($userlist as $user) {
-    $user_details = explode('|', $user);
-    if ($user_details[0] == $username && $user_details[1] == $password) {
-        $gender = $user_details[2];
-        $step = $user_details[3];
-        $premiumuser = $user_details[4];
-        $startdate = $user_details[5];
-        $idnumber = $user_details[6];
-        $admin = $user_details[7];
-        $success = true;
-        break;
-    }
-}
-if ($success) {
-}
-else {
-    echo "A Fatal Error has occurred";
-    die();
-}
 ?>
 
 <!DOCTYPE html>

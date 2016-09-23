@@ -1,27 +1,28 @@
 <?php
+session_start();
 error_reporting(0);
-$username = $_POST['username'];
-$password = hash('whirlpool' ,hash('sha256' ,md5(sha1($_POST['password']))));
-$userlist = file ('save/' . $username . '.txt');
-$ip = $_SERVER['REMOTE_ADDR'];
-$redirct = "<script> setTimeout(function () { window.location.href= 'index.php'; },3000); </script>";
-$success = false;
-foreach ($userlist as $user) {
-    $user_details = explode('|', $user);
-    if ($user_details[0] == $username && $user_details[1] == $password && $user_details[7] == "admin") {
-        $success = true;
-        break;
-    }
-}
-if ($success){
+
+if ($_SESSION["admin"] == "admin"){
 }
 else{
-    echo "Incorrect Password";
-    echo $redirct;
+    $_SESSION["error"] = "You are not admin";
+    header("Location: login.php");
     die();
 }
-$number = new FilesystemIterator('save/', FilesystemIterator::SKIP_DOTS);
-$idnumber = iterator_count($number);
+$ip = $_SERVER['REMOTE_ADDR'];
+
+if(isset($_POST['disable'])){
+    $usernametodisable = $_POST['username'];
+    if (file_exists("save/" . $usernametodisable . ".txt")) {
+        $myfile = file_get_contents("save/$usernametodisable.txt");
+        $userData = explode('|', $myfile);
+        $userData[7] = "disable";
+        file_put_contents("save/$usernametodisable.txt", implode("|", $userData));
+        echo "Account has been disabled";
+    }
+}
+else{
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
@@ -51,7 +52,7 @@ $idnumber = iterator_count($number);
 <table>
     <tr>
         <th>Your Username:</th>
-        <td><?php echo $username; ?></td>
+        <td><?php echo $_SESSION["username"]; ?></td>
     </tr>
     <tr>
         <th>Your IP Address</th>
@@ -59,14 +60,14 @@ $idnumber = iterator_count($number);
     </tr>
     <tr>
         <th>Registered Users</th>
-        <td><?php echo $idnumber; ?></td>
+        <td><?php echo $_SESSION["idnumber"]; ?></td>
     </tr>
 </table>
 <br>
 <pre>Disable an account</pre>
-<form action="disable.php" method="post">
+<form action="<?=$_SERVER['PHP_SELF'];?>" method="post" autocomplete="off">
     <p>Username: <input type="text" name="username"required/></p>
-    <p><input type="submit" /></p>
+    <p><input name="disable" type="submit" /></p>
 </form>
 <br>
 <pre>Registered Users</pre>

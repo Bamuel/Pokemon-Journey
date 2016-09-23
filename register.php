@@ -1,3 +1,45 @@
+<?php
+#The register page
+error_reporting(0);
+
+$username = htmlspecialchars($_POST['username']);
+$gender = htmlspecialchars($_POST['gender']);
+$password = hash('whirlpool' ,hash('sha256' ,md5(sha1($_POST['password']))));
+$number = new FilesystemIterator('save/', FilesystemIterator::SKIP_DOTS);
+$idnumber = iterator_count($number);
+
+if(isset($_POST['submit'])){
+    if (file_exists("save/" . $username . "/.txt")) {
+        $error = "Username already exist";
+    }
+    elseif ($_POST['password'] != $_POST['confirm_password']){
+        $error = "Password did not match";
+    }
+    elseif (empty($_POST['username'])){
+        $error = "You can not leave out username";
+    }
+    elseif (empty($_POST['password'])){
+        $error = "You can not leave out password";
+    }
+    elseif (strlen($_POST['password']) < 4) {
+        $error = "Your password needs to be longer";
+    }
+    elseif (strlen($_POST['username']) < 4) {
+        $error = "Your username needs to be longer";
+    }
+    elseif (strlen($_POST['gender']) == "Male" || strlen($_POST['gender']) == "Female"  ) {
+        $error = "Invalid Gender";
+    }
+    else {
+        $register = $username . "|" . $password . "|" . $gender . "|0|a|" . date("d/m/Y") . "|" . $idnumber ;
+        $myfile = fopen("save/" . $username . ".txt", "w") or die("Unable to open file!");
+        fwrite($myfile, $register);
+        fclose($myfile);
+        header("Location: index.php");
+        die();
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -51,13 +93,14 @@ Meaning that noone will be able to access to your password *Not even me*</pre>
 <pre>currently used hash(whirlpool ,hash(sha256 ,md5(sha1(</pre>
 <pre>Your password will be encrypted 4 diffrent ways</pre>
 <pre>For more information click <a href="http://php.net/manual/en/faq.passwords.php" target="_blank"><b>here</b></a> </pre>
-<form action="action.php" method="post">
+<form action="<?=$_SERVER['PHP_SELF'];?>" method="post">
     <p>Your username: <input type="text" name="username" maxlength="15" minlength="3" required/></p>
-    <p>Your password: <input type="password" name="password" maxlength="15" minlength="5" required/></p>
+    <p>Your Password: <input type="password" name="password" maxlength="15" minlength="5" required/></p>
+    <p>Confirm Password: <input type="password" name="confirm_password" maxlength="15" minlength="5" required/></p>
     <p>Your gender: </p>
     <input type="radio" name="gender" value="male" checked required> Male<br>
     <input type="radio" name="gender" value="female" required> Female<br>
-    <p><input class="btn-register" type="submit" /></p>
+    <p><input class="btn-register" name="submit" type="submit" /></p>
     </form>
     </div>
     </div>

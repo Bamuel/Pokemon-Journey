@@ -5,7 +5,7 @@ include 'src/cookie clean.php';
 ?>
 <?php
 $ip = "$_SERVER[REMOTE_ADDR]";
-if($ip === "127.0.0.1"  || $ip === "58.172.56.231"  || $ip === "203.29.155.29") { /*Only awesome people can have spacial field*/
+if($ip === "127.0.0.1") {
     $field = array(
         'battle/spacial.jpg'
     );
