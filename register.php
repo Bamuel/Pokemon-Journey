@@ -9,7 +9,7 @@ $number = new FilesystemIterator('save/', FilesystemIterator::SKIP_DOTS);
 $idnumber = iterator_count($number);
 
 if(isset($_POST['submit'])){
-    if (file_exists("save/" . $username . $username . "/.txt")) {
+    if (file_exists("save/" . $username . "/" . $username . ".txt")) {
         $error = "Username already exist";
     }
     elseif ($_POST['password'] != $_POST['confirm_password']){
@@ -32,6 +32,7 @@ if(isset($_POST['submit'])){
     }
     else {
         $register = $username . "|" . $password . "|" . $gender . "|0|a|" . date("d/m/Y") . "|" . $idnumber ;
+        mkdir('save/' . $username, 0777, true);
         $myfile = fopen("save/" . $username . "/" . $username . ".txt", "w") or die("Unable to open file!");
         fwrite($myfile, $register);
         fclose($myfile);
@@ -98,8 +99,8 @@ Meaning that noone will be able to access to your password *Not even me*</pre>
     <p>Your Password: <input type="password" name="password" maxlength="15" minlength="5" required/></p>
     <p>Confirm Password: <input type="password" name="confirm_password" maxlength="15" minlength="5" required/></p>
     <p>Your gender: </p>
-    <input type="radio" name="gender" value="male" checked required> Male<br>
-    <input type="radio" name="gender" value="female" required> Female<br>
+    <input type="radio" name="gender" value="Male" checked required> Male<br>
+    <input type="radio" name="gender" value="Female" required> Female<br>
     <p><input class="btn-register" name="submit" type="submit" /></p>
     </form>
     </div>
