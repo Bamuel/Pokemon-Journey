@@ -21,16 +21,16 @@ if ($admin == "admin"){
 }
 if ($admin == "disable"){
 //    DISABLE PAGE
-    echo "Your account has been blocked";
+    echo "Your account has been banned";
     die();
 }
-else{
-
-}
 ?>
+
+<!--badges start-->
 <?php
 switch ($step){
-    case ($step < -1);
+    case ($steps == "0"): // This is some weird PHP bug, to prevent the bug this has to be done
+        $achievement = "Zero Gym badge achieved <br> Try to get 100 steps and save the game";
         $badge1 = "img/badge0.png";
         $badge2 = "img/badge0.png";
         $badge3 = "img/badge0.png";
@@ -39,9 +39,9 @@ switch ($step){
         $badge6 = "img/badge0.png";
         $badge7 = "img/badge0.png";
         $badge8 = "img/badge0.png";
-        echo "Seriously stop breaking the game";
         break;
     case ($step >= 0 && $step < 100);
+        $achievement = "Zero Gym badge achieved <br> Try to get 100 steps and save the game";
         $badge1 = "img/badge0.png";
         $badge2 = "img/badge0.png";
         $badge3 = "img/badge0.png";
@@ -160,7 +160,16 @@ switch ($step){
         $badge8 = "img/badge8.png";
         break;
     default:
-        echo "a fatal error has occurred";
+        $achievement = "Seriously stop breaking the game";
+        $badge1 = "img/badge0.png";
+        $badge2 = "img/badge0.png";
+        $badge3 = "img/badge0.png";
+        $badge4 = "img/badge0.png";
+        $badge5 = "img/badge0.png";
+        $badge6 = "img/badge0.png";
+        $badge7 = "img/badge0.png";
+        $badge8 = "img/badge0.png";
+        break;
 }
 if ($steps >= 900){
     $username = $_GET['username'];
@@ -171,6 +180,9 @@ if ($steps >= 900){
     file_put_contents("save/$username.txt", implode("|", $userData));
 }
 ?>
+<!--badges end-->
+
+<!--character start-->
 <?php
 if ($gender == "Male"){
     $photo = "potagonist/trainer000.1.png";
@@ -228,7 +240,9 @@ else {
     }
 }
 ?>
+<!--character end-->
 
+<!--save start-->
 <?php //save function
 if(isset($_POST['save'])){
     $username = $_SESSION['username'];
@@ -243,9 +257,9 @@ if(isset($_POST['save'])){
     //if error in save but redirect here
 }
 else{
-
 }
 ?>
+<!--save end-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -298,7 +312,6 @@ else{
     </script>
 </head>
 <body>
-<button class="btn-2" style="float: right"><a href="logout.php">Logout</a></button>
 <script>
     function savestep(){
     var x = document.getElementById('steps').innerHTML;
@@ -314,39 +327,24 @@ else{
 <div id="intro" style="display: none;"></div>
 <div>
     <div>
-        <h1 style="text-align: center">Pokémon Journey</h1>
+        <h1 style="position:absolute; top: 10px; left: 50%; transform: translateX(-50%);">Pokémon Journey</h1>
         <img src="img/mute.png" onclick="mute()" style="position: absolute; right: 5px; top: 0; z-index: 20; width: 30px; height: 30px">
         <img id="ad" src="img/bg%20day.png">
         <img id="ad2" src="img/bg%20day.png" />
-        <button class="btn-1" style="float: right;" disabled>
+        <button class="btn-1" style="float: right; margin-top: 55px;" disabled>
             <script>var steps = <?php echo $step; ?>;</script>
             <p>Steps: <span id="steps"><?php echo $step; ?></span></p>
         </button>
+        <a href="logout.php"><button class="btn-2" style="position: absolute; right: 10px; top: 20px;">Logout</button></a>
         <div>
             <img id="rr" src="<?php echo $startchar; ?>">
-            <div id="step">
-                <button class="btn-2" onclick="trainerid.pop();"><?php echo $username; ?></button>
+            <div>
+                <button id="trainer" class="btn-2" onclick="trainerid.pop();" ><?php echo $username; ?></button>
                 <button class="btn" id="ag" onclick="chng(); onClick(); playAudio(); Alert.done(); trainerid.done(); savestep();" type="button"><p>Click to Move</p></button>
-                <form id="battle" name="view_form" method="post" action="battle.php"  target="Map" >
-                    <input type="hidden" value="<?php echo $username; ?>" name="username"/>
-                    <input type="hidden" value="<?php echo $password; ?>" name="password"/>
-                    <input type="submit" class="btn" id="ag2" style="display: none;" value="A wild Pokemon has appeared" onclick="battle(); pauseAudio();"   />
-                </form>
-                <script>
-                    function battle()
-                    {
-                        var mapForm = document.getElementById("battle");             map=window.open("","Map","status=0,title=0,height=600,width=800,scrollbars=0,menubar=0,toolbar=0");
-                        if (map) {
-                            mapForm.submit();
-                        } else {
-                            alert('You must allow popups for this map to work.');
-                        }
-                    }
-                </script>
-                </a>
-                <form action="<?=$_SERVER['PHP_SELF'];?>" method="post" onclick="savestep()">
+                <button class="btn" id="ag2" style="display: none;" onclick="battle(); pauseAudio();">A wild Pokemon has appeared</button>
+                <form action="<?=$_SERVER['PHP_SELF'];?>" id="save" method="post" onclick="savestep()">
                     <input type="hidden" name="steps" id="stepss" value="" />
-                    <input class="btn-2" name="save" type="submit" value="Save"/>
+                    <input  class="btn-2" name="save" type="submit" value="Save"/>
                 </form>
             </div>
         </div>
@@ -355,16 +353,17 @@ else{
 <div id="about">
     <h1>This is a Pokémon Clicker game</h1>
     <h3>Created by Samuel Levin and Sam Zhu</h3>
+    <h3><?php echo $achievement?></h3>
 </div>
 <div id="howto">
     <h1>How to play</h1>
     <h3>To play the game you spam "Click to Move" Button to gain steps,</h3>
     <h3>With the gradually going up, You will notice Pokémon will spawn in</h3>
     <h3>Your job is too catch them all.</h3>
-    <p>**This game is also semi-compatible on Mobile Phones**</p>
+    <p>**This game not recommended to play on Mobile Phones**</p>
     <br>
     <h1>Hint</h1>
-    <p>Press "M" to mute music</p>
+    <p>Press "M" to mute music</p><pre>note doesn't mute battle music</pre>
     <p>To unlock bike you must walk till 900 steps, *then Save & Refresh</p>
     <div id="footer">
         <a href="https://github.com/Bamuel/Pokemon-Journey">
@@ -401,5 +400,17 @@ else{
         </div>
     </div>
 </div>
+<object id="obj" width="800" height="600" data="battle.php" style="position: absolute; z-index: 10; left: 50%; top: 10px; transform: translateX(-50%); border: solid black; display: none;"></object>
+<script>
+    window.onmessage = function(e){
+        if(e.data === 'close-me'){
+            /*obj.parentNode.removeChild(obj);*/
+            document.getElementById("obj").style.display = "none";
+        }
+    };
+    function battle() {
+        document.getElementById("obj").style.display = "block";
+    }
+</script>
 </body>
 </html>

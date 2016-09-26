@@ -11,14 +11,28 @@ img {
 button, input {
     border-radius: 10px;
 }
-div#step {
+button#ag, button#ag2 {
+    text-align: center;
     position: absolute;
     vertical-align: middle;
     left: 50%;
     transform: translateX(-50%);
     top: 290px;
     opacity: 0.7;
-    display: inline-flex;
+}
+form#save{
+    position: absolute;
+    top: 290px;
+    left: calc(50% + 160px);
+    transform: translateX(-50%);
+    opacity: 0.7;
+}
+button#trainer{
+    position: absolute;
+    top: 290px;
+    left: calc(50% - 160px);
+    transform: translateX(-50%);
+    opacity: 0.7;
 }
 div#about {
     /*left it floating on the actual game*/

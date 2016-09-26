@@ -1,23 +1,9 @@
 <?php
-//This code wont work because we have a new tab open which messes with teh session
-/*
+//This code is for the future
+
 session_start();
 $username = $_SESSION["username"];
-//Future Pokedex Coming Soon
-//Also prevents them from spaming the refresh button to Battle
-$userlist = file ('save/' . $username . '.txt');
-$success = false;
-if (file_exists("save/" . $username . "/.txt")) {
-    $success = true;
-}
-if ($success) {
-    session_destroy();
-}
-else {
-    echo "Not Logined";
-    die();
-}
-*/
+
 ?>
 
 <?php
@@ -197,7 +183,7 @@ $pikachuhp25 = $pikachuhpmax * 1 / 4;
     <link rel="stylesheet" href="css/battle.css">
     <link rel="stylesheet" href="css/animate.css">
 </head>
-<body oncontextmenu="return false"> <!-- Prevent from right click-->
+<body oncontextmenu="return false" id="battle3"> <!-- Prevent from right click-->
 <audio autoplay id="battlemusic">
     <source src="music/Pokemon%20Stadium%20-%20Gym%20Leader%20Battle.mp3" type="audio/mpeg">
 </audio>
@@ -223,7 +209,7 @@ $pikachuhp25 = $pikachuhpmax * 1 / 4;
         <button id="" onclick="bait(); Alert.render('You threw some Bait at <?php echo $pokemonname ?>! <br> <?php echo $pokemonname ?> is eating!'); ">Bait</button>
         <br>
         <button id="" onclick="pokeball(); Alert.render('You caught a <?php echo $pokemonname ?> <br> ****COMING SOON****'); ">Pokeball</button>
-        <button id="" onclick="run(); ">Run</button>
+        <button id="" onclick="run();">Run</button>
     </div>
 </div>
 <div id="dialogbox">

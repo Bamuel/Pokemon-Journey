@@ -56,11 +56,11 @@ function fight() {
     setTimeout('Alert.ok()', 3000);
     if (oppoutput < 0){
         alert('Pokemon Defeated');
-        window.close();
+        setTimeout('close()', 2000);
     }
     else if (output < 0){
         alert('Pikachu has fainted');
-        window.close();
+        setTimeout('close()', 2000);
     }
 }
 function pokeball() {
@@ -68,8 +68,7 @@ function pokeball() {
     var pokeball = document.getElementById("pokeball");
     pokeball.volume = 1;
     pokeball.play();
-    setTimeout('Alert.ok()', 3500);
-    setTimeout('window.close()', 3500);
+    setTimeout('close()', 3500);
 }
 function run() {
     var run = document.getElementById("run");
@@ -77,14 +76,14 @@ function run() {
     run.volume = 1;
     run.play();
     Alert.render('Got away safely!');
-    setTimeout('battlemusic.volume = 1', 2000);
-    setTimeout('window.close()', 2000);
+    setTimeout('close()', 2000);
 }
 function bait() {
     var oppdamage = Math.floor((Math.random() * 25) + 10);
     var damage = Math.floor((Math.random() * 15) + 10);
     var health = document.getElementById("healthbar").value;
     var opphealth = document.getElementById("opphealthbar").value;
+    var opppokemons = document.getElementById("opppokemons").innerHTML;
     var oppoutput = opphealth - oppdamage;
     var output = health - damage;
     setTimeout(function(){ document.getElementById("health").innerHTML = output; }, 2000);
@@ -97,4 +96,8 @@ function bait() {
     setTimeout('Alert.ok()', 1499);
     setTimeout('Alert.ok()', 3000);
     setTimeout('battlemusic.volume = 1', 3500);
+}
+function close(){
+    battlemusic.volume = 0;
+    parent.postMessage('close-me', '*');
 }

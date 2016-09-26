@@ -10,6 +10,8 @@ else{
     die();
 }
 $ip = $_SERVER['REMOTE_ADDR'];
+$number = new FilesystemIterator('save/', FilesystemIterator::SKIP_DOTS);
+$idnumber = iterator_count($number);
 
 if(isset($_POST['disable'])){
     $usernametodisable = $_POST['username'];
@@ -60,7 +62,7 @@ else{
     </tr>
     <tr>
         <th>Registered Users</th>
-        <td><?php echo $_SESSION["idnumber"]; ?></td>
+        <td><?php echo $idnumber ?></td>
     </tr>
 </table>
 <br>
