@@ -5,7 +5,7 @@ error_reporting(0);
 $username = $_POST['username'];
 $password = hash('whirlpool' ,hash('sha256' ,md5(sha1($_POST['password']))));
 $success = false;
-$userlogin = file ('save/' . $username . '.txt');
+$userlogin = file ('save/' . $username . '/' . $username . '.txt');
 foreach ($userlogin as $user) {
     $user_details = explode('|', $user);
     if ($user_details[0] == $username && $user_details[1] == $password) {

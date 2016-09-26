@@ -89,7 +89,7 @@ $dir = "save/";
 $a = scandir($dir);
 foreach($a as $user) {
     $users = str_replace('.txt', '', $user);
-    $userlist = file ('save/' . $users . '.txt');
+    $userlist = file ('save/'. $users . '/' . $users . '.txt');
     foreach ($userlist as $user2) {
         $user_details = explode('|', $user2);
         $username2 = $user_details[0];

@@ -9,7 +9,7 @@ $number = new FilesystemIterator('save/', FilesystemIterator::SKIP_DOTS);
 $idnumber = iterator_count($number);
 
 if(isset($_POST['submit'])){
-    if (file_exists("save/" . $username . "/.txt")) {
+    if (file_exists("save/" . $username . $username . "/.txt")) {
         $error = "Username already exist";
     }
     elseif ($_POST['password'] != $_POST['confirm_password']){
@@ -32,7 +32,7 @@ if(isset($_POST['submit'])){
     }
     else {
         $register = $username . "|" . $password . "|" . $gender . "|0|a|" . date("d/m/Y") . "|" . $idnumber ;
-        $myfile = fopen("save/" . $username . ".txt", "w") or die("Unable to open file!");
+        $myfile = fopen("save/" . $username . "/" . $username . ".txt", "w") or die("Unable to open file!");
         fwrite($myfile, $register);
         fclose($myfile);
         header("Location: index.php");

@@ -247,10 +247,10 @@ else {
 if(isset($_POST['save'])){
     $username = $_SESSION['username'];
     $steps = $_POST['steps'];
-    $myfile = file_get_contents("save/$username.txt");
+    $myfile = file_get_contents("save/$username/$username.txt");
     $userData = explode('|', $myfile);
     $userData[3] = $steps;
-    file_put_contents("save/$username.txt", implode("|", $userData));
+    file_put_contents("save/$username/$username.txt", implode("|", $userData));
     $_SESSION["step"] = $userData[3];
     header("Location: index.php");
     die();
