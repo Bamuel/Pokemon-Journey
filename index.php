@@ -261,6 +261,7 @@ else{
 ?>
 <!--save end-->
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -400,7 +401,7 @@ else{
         </div>
     </div>
 </div>
-<object id="obj" width="800" height="600" data="battle.php" style="position: absolute; z-index: 10; left: 50%; top: 10px; transform: translateX(-50%); border: solid black; display: none;"></object>
+<object id="obj" width="800" height="600" data="battle.php" onload=""></object>
 <script>
     window.onmessage = function(e){
         if(e.data === 'close-me'){
@@ -410,6 +411,13 @@ else{
     };
     function battle() {
         document.getElementById("obj").style.display = "block";
+    }
+    window.onload = function(){
+        document.getElementById("obj").style.backgroundImage = "url('img/loading.gif')";
+        document.getElementById("obj").style.backgroundSize = "250px 250px";
+        document.getElementById("obj").style.backgroundRepeat = "no-repeat";
+        document.getElementById("obj").style.backgroundPosition = "50% 50%";
+        document.getElementById("obj").style.backgroundColor = "#181817";
     }
 </script>
 </body>

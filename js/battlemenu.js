@@ -55,7 +55,6 @@ function fight() {
     setTimeout('Alert.ok()', 1499);
     setTimeout('Alert.ok()', 3000);
     if (oppoutput < 0){
-        battlemusic.volume = 0;
         alert('Pokemon Defeated');
         setTimeout('close()', 2000);
     }
@@ -70,7 +69,6 @@ function pokeball() {
     var pokeball = document.getElementById("pokeball");
     pokeball.volume = 1;
     pokeball.play();
-    battlemusic.volume = 0;
     setTimeout('close()', 3500);
 }
 function run() {
@@ -79,7 +77,6 @@ function run() {
     run.volume = 1;
     run.play();
     Alert.render('Got away safely!');
-    battlemusic.volume = 0;
     setTimeout('close()', 2000);
 }
 function bait() {
