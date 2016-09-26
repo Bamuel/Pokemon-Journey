@@ -4,12 +4,18 @@
 session_start();
 $username = $_SESSION["username"];
 
+if (file_exists("save/" . $username . "/Pokemon.txt")) {
+}
+else{
+    $pokemoncaughtfile = fopen("save/" . $username . "/Pokemon.txt", "w") or die("A error has occured");
+    fclose($pokemoncaughtfile);
+}
+
 ?>
 
 <?php
 error_reporting(0);
 include 'src/PokemonAPI.php';
-include 'src/cookie clean.php';
 ?>
 <?php
 $ip = "$_SERVER[REMOTE_ADDR]";
@@ -145,6 +151,10 @@ $pikachuhp85 = $pikachuhpmax * 17 / 20;
 $pikachuhp75 = $pikachuhpmax * 3 / 4;
 $pikachuhp25 = $pikachuhpmax * 1 / 4;
 
+if ($pokemonname == "Error"){
+    header("Location: battle.php");
+    die();
+}
 
 ?>
 
@@ -183,7 +193,7 @@ $pikachuhp25 = $pikachuhpmax * 1 / 4;
     <link rel="stylesheet" href="css/battle.css">
     <link rel="stylesheet" href="css/animate.css">
 </head>
-<body oncontextmenu="return false" id="battle3"> <!-- Prevent from right click-->
+<body oncontextmenu="return false"> <!-- Prevent from right click-->
 <audio autoplay id="battlemusic">
     <source src="music/Pokemon%20Stadium%20-%20Gym%20Leader%20Battle.mp3" type="audio/mpeg">
 </audio>
