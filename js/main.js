@@ -51,3 +51,16 @@ function trainerid1(){
 		document.getElementById('white').style.display = "none";
 	}
 }
+var pokedex = new pokdex1();
+function pokdex1(){
+	this.pop = function () {
+		var z = document.getElementById('pkmndex');
+		z.style.display = "block";
+		var x = document.getElementById('pokedex');
+		x.style.display = "block";
+	};
+	this.done = function(){
+		document.getElementById('pkmndex').style.display = "none";
+		document.getElementById('pokedex').style.display = "none";
+	}
+}

@@ -69,7 +69,21 @@ function pokeball() {
     var pokeball = document.getElementById("pokeball");
     pokeball.volume = 1;
     pokeball.play();
-    setTimeout('close()', 3500);
+    var opppokemons = document.getElementById("opppokemons").innerHTML;
+    var maxhp = document.getElementById("opppokemonhp").innerHTML;
+    var curenthp = document.getElementById("opphealthbar").value;
+    var chance = ((3 * maxhp)-(2 * curenthp))/(3 * maxhp);
+    var random = Math.random();
+    if (random < chance){
+        setTimeout('Alert.ok()', 1999);
+        setTimeout(function(){ Alert.render('You caught a ' + opppokemons); }, 2000);
+        setTimeout('caught()', 3500);
+    }
+    else{
+        setTimeout('Alert.ok()', 1999);
+        setTimeout(function(){ Alert.render('Pokemon Broke free'); }, 2000);
+        setTimeout('Alert.ok()', 3000);
+    }
 }
 function run() {
     var run = document.getElementById("run");
@@ -101,4 +115,7 @@ function bait() {
 function close(){
     battlemusic.volume = 0;
     parent.postMessage('close-me', '*');
+}
+function caught(){
+    document.forms["caught"].submit();
 }

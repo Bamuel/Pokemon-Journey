@@ -10,7 +10,22 @@ else{
     $pokemoncaughtfile = fopen("save/" . $username . "/Pokemon.txt", "w") or die("A error has occured");
     fclose($pokemoncaughtfile);
 }
+if (file_exists("save/" . $username . "/Seen.txt")) {
+}
+else{
+    $seen = fopen("save/" . $username . "/Seen.txt", "w") or die("A error has occured");
+    fclose($seen);
+}
 
+?>
+<?php
+    if(isset($_POST['caught'])){
+        $pokemoncaughtfile = fopen("save/" . $username . "/Pokemon.txt", "a+") or die("A error has occured");
+        fwrite($pokemoncaughtfile, $_POST['caught'] . "|");
+        fclose($pokemoncaughtfile);
+        echo "<script>parent.postMessage('close-me', '*');</script>";
+        die();
+    }
 ?>
 
 <?php
@@ -45,7 +60,7 @@ $opp7 = str_replace('-5', '', $opp6);
 $opp8 = str_replace('-megax', '', $opp7);
 $opp9 = str_replace('-megay', '', $opp8);
 $opp10 = str_replace('-mega', '', $opp9);
-$opp11 = str_replace('-m', '', $opp10);
+$opp11 = str_replace('-male', '', $opp10);
 $opp12 = str_replace('-f', '', $opp11);
 $opp13 = str_replace('-pirouette', '', $opp12);
 $opp14 = str_replace('-large', '', $opp13);
@@ -120,24 +135,20 @@ $opp82 = str_replace('-marine', '', $opp81);
 $opp83 = str_replace('-meadow', '', $opp82);
 $opp84 = str_replace('-modern', '', $opp83);
 $opp85 = str_replace('-monsoon', '', $opp84);
-$opp86 = str_replace('-ocean', '', $opp85);
-$opp87 = str_replace('-pokeball', '', $opp86);
-$opp88 = str_replace('-polar', '', $opp87);
-$opp89 = str_replace('-sandstorm', '', $opp88);
-$opp90 = str_replace('-savannah', '', $opp89);
-$opp91 = str_replace('-sun', '', $opp90);
-$opp92 = str_replace('-tundra', '', $opp91);
-$opp93 = str_replace('-sandy', '', $opp92);
-$opp94 = str_replace('-trash', '', $opp93);
+$opp86 = str_replace('-average', '', $opp85);
+$opp87 = str_replace('-m', '', $opp86);
+$opp88 = str_replace('-aria', '', $opp87);
+$opp89 = str_replace('-ordinary', '', $opp88);
+$opp90 = str_replace('-incarnate', '', $opp89);
+$opp91 = str_replace('-red-striped', '', $opp90);
+$opp92 = str_replace('-land', '', $opp91);
+$opp93 = str_replace('-plant', '', $opp92);
+$opp94 = str_replace('-altered', '', $opp93);
 $opp95= ucfirst($opp94);
 
 $opplast = new \PokemonAPI\Pokemon($opp95);
 $pokemonname = $opplast->getName();
 $pokemonhp = $opplast->getHp();
-if ($pokemonname == ""){
-    $pokemonname = "Error";
-    $pokemonhp = "50";
-}
 $pokemonhpmax = $pokemonhp;
 $pokemonhp85 = $pokemonhpmax * 17 / 20;
 $pokemonhp75 = $pokemonhpmax * 3 / 4;
@@ -151,11 +162,34 @@ $pikachuhp85 = $pikachuhpmax * 17 / 20;
 $pikachuhp75 = $pikachuhpmax * 3 / 4;
 $pikachuhp25 = $pikachuhpmax * 1 / 4;
 
-if ($pokemonname == "Error"){
+if ($pokemonname == ""){
     header("Location: battle.php");
     die();
 }
 
+$seenfile = file ('save/' . $username . '/Seen.txt');
+foreach ($seenfile as $seen1) {
+    $seenpkmn = explode('|', $seen1);
+}
+if (in_array($pokemonname, $seenpkmn)){
+    echo "Seen";
+}
+else{
+    $seen2 = fopen("save/" . $username . "/Seen.txt", "a+") or die("A error has occured");
+    fwrite($seen2, $pokemonname . "|");
+    fclose($seen2);
+}
+
+
+
+
+$caughtfile = file ('save/' . $username . '/Pokemon.txt');
+foreach ($caughtfile as $caught1) {
+    $caughtpkmn = explode('|', $caught1);
+}
+if (in_array($pokemonname, $caughtpkmn)){
+    echo "Caught";
+}
 ?>
 
 <!DOCTYPE html>
@@ -198,6 +232,7 @@ if ($pokemonname == "Error"){
     <source src="music/Pokemon%20Stadium%20-%20Gym%20Leader%20Battle.mp3" type="audio/mpeg">
 </audio>
 <span style="display: none" id="opppokemons"><?php echo $pokemonname ?></span>
+<span style="display: none" id="opppokemonhp"><?php echo $pokemonhpmax ?></span>
 <!--<script src="js/disable.js"></script>-->
 <script src="js/battlemenu.js"></script>
 <img id="bg" src="<?php echo $field[rand(0, count($field) - 1)]; ?>">
@@ -218,7 +253,7 @@ if ($pokemonname == "Error"){
         <button id="" onclick="fight();">Fight</button>
         <button id="" onclick="bait(); Alert.render('You threw some Bait at <?php echo $pokemonname ?>! <br> <?php echo $pokemonname ?> is eating!'); ">Bait</button>
         <br>
-        <button id="" onclick="pokeball(); Alert.render('You caught a <?php echo $pokemonname ?> <br> ****COMING SOON****'); ">Pokeball</button>
+        <button id="" onclick="pokeball(); Alert.render('You threw a Pokeball'); ">Pokeball</button>
         <button id="" onclick="run();">Run</button>
     </div>
 </div>
@@ -247,5 +282,9 @@ if ($pokemonname == "Error"){
 <div id="thunder">
     <img src="battle/thunderbolt.gif">
 </div>
+<form id="caught" name="caught" method="post" action="<?=$_SERVER['PHP_SELF'];?>">
+    <input type="hidden" name="caught" id="caught" value="<?php echo $pokemonname?>">
+    <a href="#" onclick="caught();"></a>
+</form>
 </body>
 </html>

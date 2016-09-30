@@ -34,6 +34,13 @@ button#trainer{
     transform: translateX(-50%);
     opacity: 0.7;
 }
+button#pokedex2{
+    position: absolute;
+    top: 290px;
+    left: calc(50% - 275px);
+    transform: translateX(-50%);
+    opacity: 0.7;
+}
 div#about {
     /*left it floating on the actual game*/
 }
@@ -182,3 +189,52 @@ object{
     border: solid black;
     display: none;
 }
+div#pkmndex{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #F3796B;
+    width: 100%;
+    text-align: center;
+    color: black;
+    font-size: 24px;
+}
+div#pokedex{
+    position: absolute;
+    background-color: white;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 265px;
+    width: 550px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    overflow-wrap: normal;
+    border-radius: 10px;
+    box-sizing: border-box;
+    display: none;
+}
+img#pkmn {
+    height: 35px;
+    width: auto;
+    max-width: 44px;
+    filter: brightness(25%);
+}
+img#pkmnc{
+    height: 35px;
+    width: auto;
+    max-width: 44px;
+    filter: brightness(100%);
+}
+img#pkmns{
+    height: 35px;
+    width: auto;
+    max-width: 44px;
+    filter: grayscale(100%);
+}
+
+/*
+filter: brightness(0%);
+img##:hover{
+    filter: brightness(100%);
+}*/

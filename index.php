@@ -242,8 +242,20 @@ else {
 ?>
 <!--character end-->
 
-<!--save start-->
+
 <?php //save function
+$seenfile = file ('save/' . $username . '/Seen.txt');
+foreach ($seenfile as $seen1) {
+    $seenpkmn = explode('|', $seen1);
+}
+$caughtfile = file ('save/' . $username . '/Pokemon.txt');
+foreach ($caughtfile as $caught1) {
+    $caughtpkmn = explode('|', $caught1);
+}
+?>
+
+<!--save start-->
+<?php
 if(isset($_POST['save'])){
     $username = $_SESSION['username'];
     $steps = $_POST['steps'];
@@ -341,6 +353,7 @@ else{
             <img id="rr" src="<?php echo $startchar; ?>">
             <div>
                 <button id="trainer" class="btn-2" onclick="trainerid.pop();" ><?php echo $username; ?></button>
+                <button id="pokedex2" class="btn-2" onclick="pokedex.pop();" >Pokedex</button>
                 <button class="btn" id="ag" onclick="chng(); onClick(); playAudio(); Alert.done(); trainerid.done(); savestep();" type="button"><p>Click to Move</p></button>
                 <button class="btn" id="ag2" style="display: none;" onclick="battle(); pauseAudio();">A wild Pokemon has appeared</button>
                 <form action="<?=$_SERVER['PHP_SELF'];?>" id="save" method="post" onclick="savestep()">
@@ -382,8 +395,8 @@ else{
     <div id="white">
         <img id="profile" src="<?php echo $photo; ?>">
         <div id="profileabout">
-            <pre>POKEMON SEEN : ###</pre>
-            <pre>POKEMON CAUGHT : ###</pre>
+            <pre>POKEMON SEEN : <?php echo count($seenpkmn); ?></pre>
+            <pre>POKEMON CAUGHT : <?php echo count($caughtpkmn); ?></pre>
             <pre>TRAINER ID : <?php echo $idnumber2; ?></pre>
             <pre>START DATE : <?php echo $startdate; ?></pre>
         </div>
@@ -419,6 +432,43 @@ else{
         document.getElementById("obj").style.backgroundPosition = "50% 50%";
         document.getElementById("obj").style.backgroundColor = "#181817";
     }
+
 </script>
+<div id="pokedex">
+    <div id="pkmndex">
+        <b>Pokedex</b>
+    </div>
+    <button onclick="pokedex.done()" style="float: right; position: relative; z-index: 13; top: 3px;">Close</button>
+    <br>
+    <br>
+    <pre style="float: right; font-size: x-small">This may take awhile to fully load</pre>
+<?php
+include 'src/PokemonAPI.php';
+ob_end_flush();
+ob_start();
+set_time_limit(0);
+
+$pokemonFileContents = file_get_contents('save/' . $username . '/Pokemon.txt');
+$pokemonseenFileContents = file_get_contents('save/' . $username . '/Seen.txt');
+foreach (range(1, 718) as $number) {
+    $pkmn2 = new \PokemonAPI\Pokemon($number);
+    $pkmn = $pkmn2->getName();
+
+    $imgClass = "pkmn";
+    if (preg_match("/(\|$pkmn)|($pkmn\|)/", $pokemonFileContents) || $pokemonFileContents == $pkmn) {
+        $imgClass = "pkmnc";
+    }
+    elseif (preg_match("/(\|$pkmn)|($pkmn\|)/", $pokemonseenFileContents) || $pokemonseenFileContents == $pkmn) {
+        $imgClass = "pkmns";
+    }
+    echo '<img src="pokemonsprites/' . $pkmn .
+        '.gif" id="' . $imgClass . '"/><p style="margin-left: 45px">' . $pkmn . '</p> <br>'."\n";
+
+    ob_flush();
+    flush(); //ie working must
+}
+?>
+
+</div>
 </body>
 </html>
