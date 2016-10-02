@@ -453,6 +453,7 @@ $pokemonseenFileContents = file_get_contents('save/' . $username . '/Seen.txt');
 foreach (range(1, 718) as $number) {
     $pkmn2 = new \PokemonAPI\Pokemon($number);
     $pkmn = $pkmn2->getName();
+    $lcpkmn = lcfirst($pkmn); //wtf it needs to be lowercased, cause WAMP & Apache works abit differently
 
     $imgClass = "pkmn";
     if (preg_match("/(\|$pkmn)|($pkmn\|)/", $pokemonFileContents) || $pokemonFileContents == $pkmn) {
@@ -461,7 +462,7 @@ foreach (range(1, 718) as $number) {
     elseif (preg_match("/(\|$pkmn)|($pkmn\|)/", $pokemonseenFileContents) || $pokemonseenFileContents == $pkmn) {
         $imgClass = "pkmns";
     }
-    echo '<img src="pokemonsprites/' . $pkmn .
+    echo '<img src="pokemonsprites/' . $lcpkmn .
         '.gif" id="' . $imgClass . '"/><p style="margin-left: 45px">' . $pkmn . '</p> <br>'."\n";
 
     ob_flush();
