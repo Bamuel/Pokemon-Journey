@@ -1,6 +1,6 @@
 <?php
-if (isset($_GET['action'])) {
-    $action = $_GET['action'];
+if (isset($_REQUEST['action'])) {
+    $action = $_REQUEST['action'];
 
     // Connect to your MySQL database using PDO
     try {
@@ -58,8 +58,8 @@ if (isset($_GET['action'])) {
         break;
 
         case "logout":
-            // Logout
-            if (session_status() === PHP_SESSION_ACTIVE) {
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
                 session_destroy();
             }
             echo json_encode(array(
