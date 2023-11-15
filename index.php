@@ -1,5 +1,7 @@
 <?php
 session_start();
+print_r($_SESSION);
+exit();
 error_reporting(0);
 if (empty($_SESSION["username"])){
     $_SESSION["error"] = "You have to login first";
