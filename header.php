@@ -2,11 +2,6 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-// Check if the "logged_in" session variable is not set or is not true
-if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true && $_SERVER['PHP_SELF'] != "/login.php") {
-    header("Location: login.php");
-    exit(); // Use exit() instead of die()
-}
 
 ?>
 <!DOCTYPE html>
