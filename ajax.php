@@ -18,7 +18,9 @@ if (isset($_GET['action'])) {
 
     switch ($action) {
         case "login":
-            session_start();
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
             // Login
             $username = strtolower($_POST['username']);
             $password = $_POST['password'];
@@ -57,8 +59,9 @@ if (isset($_GET['action'])) {
 
         case "logout":
             // Logout
-            session_start();
-            session_destroy();
+            if (session_status() === PHP_SESSION_ACTIVE) {
+                session_destroy();
+            }
             echo json_encode(array(
                 "success" => true,
                 "message" => "You have been logged out."));
@@ -66,7 +69,9 @@ if (isset($_GET['action'])) {
 
         case "register":
             // Registration
-            session_start();
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
             $username = $_POST['username'];
             $usernamelower = strtolower($_POST['username']);
             $password = $_POST['password'];
