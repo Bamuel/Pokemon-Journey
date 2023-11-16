@@ -6,11 +6,45 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
     exit(); // Use exit() instead of die()
 }
 ?>
+<style>
+    #menu_buttons {
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        display: block;
+        text-align: left;
+    }
+
+    #menu_buttons span {
+        margin-bottom: 10px;
+        display: block;
+        padding: 10px 20px 10px 20px;
+        background: #8a8a8a;
+        border-radius: 7px;
+    }
+
+    #menu_buttons span a {
+        color: white; /* Text color */
+        text-decoration: none;
+    }
+
+    #menu_buttons span a:hover {
+        color: #007bff; /* Hover color */
+    }
+</style>
 <body>
 <div id="background"></div>
-<p>Hello <?= $_SESSION['username'] ?></p>
 <button id="move" type="button" class="btn btn-secondary" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%)">Move</button>
-<button id="logout" type="button" class="btn btn-secondary" style="position: absolute; top: 20px; right: 20px;">Logout</button>
+<button id="ToggleMenu" type="button" class="btn btn-secondary" style="position: absolute; top: 20px; right: 20px;"><i class="fa-solid fa-bars"></i></button>
+<div id="menu_buttons" style="display: none">
+    <span id="pokedex" class=""><a href="#">Pokedex</a></span>
+    <span id="pokemon" class=""><a href="#">Pokemon</a></span>
+    <span id="user" class=""><a href="#"><?= $_SESSION['username'] ?></a></span>
+    <span id="save" class=""><a href="#">Save</a></span>
+    <span id="options" class=""><a href="#">Options</a></span>
+    <span id="logout" class=""><a href="#">Logout</a></span>
+</div>
+
 <img id="character" alt="character" style="position: absolute; bottom: 100px; left: 10%;"/>
 
 </body>
@@ -37,6 +71,10 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
         };
         $('#character').attr('src', 'assets/potagonist/m' + defaultcharacter + '.png');
         $('#background').css(backgroundDay);
+
+        $("#ToggleMenu").click(function () {
+            $("#menu_buttons").toggle();
+        });
 
         $('#move').click(function () {
             BackgroundMovement();
