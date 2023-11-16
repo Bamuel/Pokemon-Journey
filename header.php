@@ -33,9 +33,9 @@ if (session_status() === PHP_SESSION_NONE) {
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png"/>
     <link rel="manifest" href="assets/favicon/manifest.json">
 
-    <meta name="msapplication-TileColor" content="red">
+    <meta name="msapplication-TileColor" content="#78c7f7">
     <meta name="msapplication-TileImage" content="assets/favicon/ms-icon-144x144.png">
-    <meta name="theme-color" content="red">
+    <meta name="theme-color" content="#78c7f7">
     <meta http-equiv="cache-control" content="max-age=0"/>
     <meta http-equiv="cache-control" content="no-cache"/>
     <meta http-equiv="expires" content="0"/>
