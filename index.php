@@ -7,6 +7,10 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
 }
 ?>
 <style>
+    body, html {
+        overflow: hidden;
+    }
+
     #menu_buttons {
         position: absolute;
         top: 70px;
