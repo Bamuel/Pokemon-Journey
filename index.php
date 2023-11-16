@@ -85,8 +85,8 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
         });
 
         $('#move').click(function () {
-            BackgroundMovement();
             CharacterMovement(gender);
+            BackgroundMovement();
             currentsteps++;
             $('#currentstep').text(currentsteps);
         });
