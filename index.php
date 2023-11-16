@@ -126,5 +126,15 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
         });
 
     });
+
+    // Disable pinch zoom and double-tap zoom
+    document.addEventListener('gesturestart', function (e) {
+        e.preventDefault();
+    });
+
+    // Disable scrolling
+    document.addEventListener('touchmove', function (e) {
+        e.preventDefault();
+    });
 </script>
 </html>
