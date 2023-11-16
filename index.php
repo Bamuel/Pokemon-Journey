@@ -55,11 +55,34 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
 </body>
 <script>
     $(document).ready(function () {
-        var currentsteps = 0;
+
+        //on page load
+        $.ajax({
+            url: "ajax.php",
+            type: "POST",
+            data: {
+                action: "getuserdata"
+            },
+            dataType: "json",
+            success: function (data) {
+                if (data.success) {
+                    console.log(data);
+                    currentsteps = data.currentsteps;
+                    $('#currentstep').text(currentsteps);
+                    gender = data.gender;
+                    if (gender === 'boy') {
+                        $('#character').attr('src', 'assets/potagonist/m1.png');
+                    } else if (gender === 'girl') {
+                        $('#character').attr('src', 'assets/potagonist/f1.png');
+                    }
+                }
+            }
+        });
+
         var backgroundOffset = 0; //start offset for background
         var backgroundSpeed = 0.3; //set backgroundSpeed
         var defaultcharacter = 1; //set default character to 1.png
-        var gender = 'boy';
+
         var backgroundDay = {
             'width': '100%',
             'height': '100%',
@@ -75,7 +98,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
             'background-repeat': 'repeat-x',
             'background-position': 'left ' + backgroundOffset + 'px bottom'
         };
-        $('#character').attr('src', 'assets/potagonist/m' + defaultcharacter + '.png');
+
         $('#background').css(backgroundDay);
 
 
@@ -89,9 +112,31 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
             BackgroundMovement();
             currentsteps++;
             $('#currentstep').text(currentsteps);
+            SaveCurrentSteps(currentsteps);
         });
 
+        function SaveCurrentSteps(currentsteps) {
+            $.ajax({
+                url: "ajax.php",
+                type: "POST",
+                data: {
+                    action: "savecurrentsteps",
+                    currentsteps: currentsteps
+                },
+                dataType: "json",
+                success: function (data) {
+                    if (data.success) {
+                        console.log(data);
+                    }
+                }
+            });
+        }
+
+        var imageCache = {};
+        
+
         function CharacterMovement(gender) {
+            //todo: instead of looping png file, 1 PNG file which automatically changes the character via a sprite sheet
             defaultcharacter++;
             if (gender === 'boy') {
                 $('#character').attr('src', 'assets/potagonist/m' + defaultcharacter + '.png').fadeIn(400);

@@ -111,6 +111,64 @@ if (isset($_REQUEST['action'])) {
 
         break;
 
+        case "savecurrentsteps":
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+            $username = $_SESSION['username'];
+            $currentsteps = $_POST['currentsteps'];
+
+            // Check if the username already exists
+            //$stmt = $pdo->prepare("SELECT * FROM pkmnjourney_users WHERE username = :username");
+            //$stmt->bindParam(':username', $username);
+            //$stmt->execute();
+            //$existingUser = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            //if ($existingUser) {
+            if (true) {
+                // Username already taken
+                $stmt = $pdo->prepare("UPDATE pkmnjourney_users SET steps = :currentsteps WHERE username = :username");
+                $stmt->bindParam(':username', $username);
+                $stmt->bindParam(':currentsteps', $currentsteps);
+                $stmt->execute();
+                echo json_encode(array(
+                    "success" => true,
+                    "message" => "Current steps saved."));
+            }
+            else {
+                echo json_encode(array(
+                    "success" => false,
+                    "message" => "Current steps not saved."));
+            }
+        break;
+
+        case "getuserdata":
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+            $username = $_SESSION['username'];
+
+            // Check if the username already exists
+            $stmt = $pdo->prepare("SELECT * FROM pkmnjourney_users WHERE username = :username");
+            $stmt->bindParam(':username', $username);
+            $stmt->execute();
+            $existingUser = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($existingUser) {
+                // Username already taken
+                echo json_encode(array(
+                    "success" => true,
+                    "message" => "Current steps retrieved.",
+                    "currentsteps" => $existingUser['steps'],
+                    "gender" => $existingUser['gender']));
+            }
+            else {
+                echo json_encode(array(
+                    "success" => false,
+                    "message" => "Current steps not retrieved."));
+            }
+        break;
+
         default:
             echo json_encode(array(
                 "success" => false,
