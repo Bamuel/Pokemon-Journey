@@ -10,8 +10,10 @@ if (session_status() === PHP_SESSION_NONE) {
     <meta charset="UTF-8">
     <!-- Favicons -->
     <!-- Phone  https://goo.gl/CvCEpm -->
-    <meta name="theme-color" content="red"><!-- Chrome, Firefox OS and Opera -->
-    <meta name="msapplication-navbutton-color" content="red"><!-- Windows Phone -->
+    <meta name="theme-color" content="#78c7f7"><!-- Chrome, Firefox OS and Opera -->
+    <meta name="msapplication-navbutton-color" content="#78c7f7"><!-- Windows Phone -->
+    <meta name="msapplication-TileColor" content="#78c7f7">
+    <meta name="msapplication-TileImage" content="assets/favicon/ms-icon-144x144.png">
     <meta name="apple-mobile-web-app-capable" content="yes"><!-- iOS Safari -->
     <meta name="apple-mobile-web-app-status-bar-style" content="red"> <!-- iOS Safari -->
     <!-- Phone END -->
@@ -33,9 +35,6 @@ if (session_status() === PHP_SESSION_NONE) {
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png"/>
     <link rel="manifest" href="assets/favicon/manifest.json">
 
-    <meta name="msapplication-TileColor" content="#78c7f7">
-    <meta name="msapplication-TileImage" content="assets/favicon/ms-icon-144x144.png">
-    <meta name="theme-color" content="#78c7f7">
     <meta http-equiv="cache-control" content="max-age=0"/>
     <meta http-equiv="cache-control" content="no-cache"/>
     <meta http-equiv="expires" content="0"/>
