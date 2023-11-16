@@ -50,7 +50,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
     <span id="logout" class=""><a href="#"><i class="fa-solid fa-right-from-bracket fa-fw"></i> Logout</a></span>
 </div>
 
-<img id="character" alt="character" style="position: absolute; bottom: 100px; left: 10%;"/>
+<span id="character" style="position: absolute; bottom: 100px; left: 10%; width: 64px; height: 56px"/>
 
 </body>
 <script>
@@ -67,14 +67,12 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
             success: function (data) {
                 if (data.success) {
                     console.log(data);
+
                     currentsteps = data.currentsteps;
                     $('#currentstep').text(currentsteps);
+
                     gender = data.gender;
-                    if (gender === 'boy') {
-                        $('#character').attr('src', 'assets/potagonist/m1.png');
-                    } else if (gender === 'girl') {
-                        $('#character').attr('src', 'assets/potagonist/f1.png');
-                    }
+                    CharacterMovement(gender)
                 }
             }
         });
@@ -82,6 +80,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
         var backgroundOffset = 0; //start offset for background
         var backgroundSpeed = 0.3; //set backgroundSpeed
         var defaultcharacter = 1; //set default character to 1.png
+        var numberOfFramesPerRow = 4; // Define the number of frames per row in the sprite sheet
 
         var backgroundDay = {
             'width': '100%',
@@ -131,18 +130,44 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
                 }
             });
         }
-
-        var imageCache = {};
         
 
         function CharacterMovement(gender) {
-            //todo: instead of looping png file, 1 PNG file which automatically changes the character via a sprite sheet
-            defaultcharacter++;
+            // Specify the sprite sheet image
             if (gender === 'boy') {
-                $('#character').attr('src', 'assets/potagonist/m' + defaultcharacter + '.png').fadeIn(400);
+                var spriteSheet = 'assets/potagonist/ColeRunBW.png';
             } else if (gender === 'girl') {
-                $('#character').attr('src', 'assets/potagonist/f' + defaultcharacter + '.png').fadeIn(400);
+                var spriteSheet = 'assets/potagonist/BWEllaRunning.png';
+            } else {
+                var spriteSheet = 'assets/potagonist/BWEllaRunning.png';
             }
+
+
+            // Set the dimensions of each frame in the sprite sheet
+            var frameWidth = 64;
+            var frameHeight = 56;
+
+            // Increase the frame index
+            defaultcharacter++;
+
+            // Calculate the position of the current frame in the sprite sheet
+            var frameX = (defaultcharacter % numberOfFramesPerRow) * frameWidth;
+            var frameY = Math.floor(defaultcharacter / numberOfFramesPerRow) * frameHeight;
+
+            if (gender === 'boy') {
+                $('#character').css({
+                    'background-image': 'url(' + spriteSheet + ')',
+                    'background-position': -frameX + 'px ' + -frameY + 'px',
+                })
+            } else if (gender === 'girl') {
+                // Assuming the girl's sprite sheet is in the same format
+                $('#character').css({
+                    'background-image': 'url(' + spriteSheet + ')',
+                    'background-position': frameX + 'px ' + frameY + 'px'
+                })
+            }
+
+            // Reset the frame index if it reaches the maximum number of frames
             if (defaultcharacter === 4) {
                 defaultcharacter = 0;
             }
