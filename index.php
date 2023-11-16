@@ -17,8 +17,9 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
 <script>
     $(document).ready(function () {
         var backgroundOffset = 0; //start offset for background
+        var backgroundSpeed = 0.3; //set backgroundSpeed
         var defaultcharacter = 1; //set default character to 1.png
-        var gender = 'girl';
+        var gender = 'boy';
         var backgroundDay = {
             'width': '100%',
             'height': '100%',
@@ -34,18 +35,12 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
             'background-repeat': 'repeat-x',
             'background-position': 'left ' + backgroundOffset + 'px bottom'
         };
-
-
         $('#character').attr('src', 'assets/potagonist/m' + defaultcharacter + '.png');
         $('#background').css(backgroundDay);
 
         $('#move').click(function () {
-            backgroundOffset -= 30; // Adjust the value according to your needs
-            backgroundSpeed = 0.3; // Adjust the value according to your needs
-            $('#background').css('background-position', 'left ' + backgroundOffset + 'px bottom').css('transition', 'background-position ' + backgroundSpeed + 's ease');
-
+            BackgroundMovement();
             CharacterMovement(gender);
-
         });
 
         function CharacterMovement(gender) {
@@ -58,7 +53,12 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
             if (defaultcharacter === 4) {
                 defaultcharacter = 1;
             }
+        }
 
+        function BackgroundMovement() {
+            backgroundOffset -= 30; // Adjust the value according to your needs
+            backgroundSpeed = 0.3; // Adjust the value according to your needs
+            $('#background').css('background-position', 'left ' + backgroundOffset + 'px bottom').css('transition', 'background-position ' + backgroundSpeed + 's ease');
         }
 
         $('#logout').click(function () {
