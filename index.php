@@ -36,14 +36,14 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
 <div id="background"></div>
 <button id="move" type="button" class="btn btn-secondary" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%)"><i class="fa-solid fa-person-walking"></i> Move</button>
 <span class="btn btn-secondary" style="position: absolute; top: 20px; left: 20px;">Steps: <span id="currentstep">0</span></span>
-<button id="ToggleMenu" type="button" class="btn btn-secondary" style="position: absolute; top: 20px; right: 20px;"><i class="fa-solid fa-bars"></i></button>
+<button id="ToggleMenu" type="button" class="btn btn-secondary" style="position: absolute; top: 20px; right: 20px;"><i id="toggle_icon" class="fa-solid fa-bars fa-fw"></i></button>
 <div id="menu_buttons" style="display: none">
     <span id="pokedex" class=""><a href="#">Pokedex</a></span>
     <span id="pokemon" class=""><a href="#">Pokemon</a></span>
-    <span id="user" class=""><a href="#"><i class="fa-solid fa-user"></i> <?= $_SESSION['username'] ?></a></span>
-    <span id="save" class=""><a href="#"><i class="fa-solid fa-floppy-disk"></i> Save</a></span>
-    <span id="options" class=""><a href="#"><i class="fa-solid fa-gear"></i> Options</a></span>
-    <span id="logout" class=""><a href="#"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></span>
+    <span id="user" class=""><a href="#"><i class="fa-solid fa-user fa-fw"></i> <?= $_SESSION['username'] ?></a></span>
+    <span id="save" class=""><a href="#"><i class="fa-solid fa-floppy-disk fa-fw"></i> Save</a></span>
+    <span id="options" class=""><a href="#"><i class="fa-solid fa-gear fa-fw"></i> Options</a></span>
+    <span id="logout" class=""><a href="#"><i class="fa-solid fa-right-from-bracket fa-fw"></i> Logout</a></span>
 </div>
 
 <img id="character" alt="character" style="position: absolute; bottom: 100px; left: 10%;"/>
@@ -77,6 +77,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
 
         $("#ToggleMenu").click(function () {
             $("#menu_buttons").toggle();
+            $("#toggle_icon").toggleClass('fa-bars fa-xmark');
         });
 
         $('#move').click(function () {
