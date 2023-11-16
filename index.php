@@ -95,7 +95,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
                 $('#character').attr('src', 'assets/potagonist/f' + defaultcharacter + '.png').fadeIn(400);
             }
             if (defaultcharacter === 4) {
-                defaultcharacter = 1;
+                defaultcharacter = 0;
             }
         }
 
