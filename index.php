@@ -25,29 +25,39 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
         padding: 10px 20px 10px 20px;
         background: #8a8a8a;
         border-radius: 7px;
-    }
-
-    #menu_buttons span a {
         color: white; /* Text color */
-        text-decoration: none;
     }
 
-    #menu_buttons span a:hover {
-        color: #007bff; /* Hover color */
-    }
 </style>
 <body>
 <div id="background"></div>
 <button id="move" type="button" class="btn btn-secondary" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%)"><i class="fa-solid fa-person-walking"></i> Move</button>
 <span class="btn btn-secondary" style="position: absolute; top: 20px; left: 20px;">Steps: <span id="currentstep">0</span></span>
 <button id="ToggleMenu" type="button" class="btn btn-secondary" style="position: absolute; top: 20px; right: 20px;"><i id="toggle_icon" class="fa-solid fa-bars fa-fw"></i></button>
-<div id="menu_buttons" style="display: none">
-    <span id="pokedex" class=""><a href="#">Pokedex</a></span>
-    <span id="pokemon" class=""><a href="#">Pokemon</a></span>
-    <span id="user" class=""><a href="#"><i class="fa-solid fa-user fa-fw"></i> <?= $_SESSION['username'] ?></a></span>
-    <span id="save" class=""><a href="#"><i class="fa-solid fa-floppy-disk fa-fw"></i> Save</a></span>
-    <span id="options" class=""><a href="#"><i class="fa-solid fa-gear fa-fw"></i> Options</a></span>
-    <span id="logout" class=""><a href="#"><i class="fa-solid fa-right-from-bracket fa-fw"></i> Logout</a></span>
+<div id="menu_buttons" style="display: none; cursor: pointer">
+    <span id="pokedex">Pokedex</span>
+    <span id="pokemon">Pokemon</span>
+    <span id="user" data-bs-toggle="modal" data-bs-target="#userModal"><i class="fa-solid fa-user fa-fw"></i> <?= $_SESSION['username'] ?></span>
+    <span id="save"><i class="fa-solid fa-floppy-disk fa-fw"></i> Save</span>
+    <span id="options"><i class="fa-solid fa-gear fa-fw"></i> Options</span>
+    <span id="logout"><i class="fa-solid fa-right-from-bracket fa-fw"></i> Logout</span>
+</div>
+
+<div class="modal fade menu-modal" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Trainer Card</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Cool Profile settings here.
+            </div>
+            <div class="modal-footer">
+                Collectable Badges here
+            </div>
+        </div>
+    </div>
 </div>
 
 <span id="character" style="position: absolute; bottom: 100px; left: 10%; width: 64px; height: 56px"/>
@@ -105,6 +115,11 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
             $("#menu_buttons").toggle();
             $("#toggle_icon").toggleClass('fa-bars fa-xmark');
         });
+        // Add a click event listener for the userModal
+        $(".menu-modal").on('show.bs.modal', function () {
+            $("#menu_buttons").toggle();
+            $("#toggle_icon").toggleClass('fa-bars fa-xmark');
+        });
 
         $('#move').click(function () {
             CharacterMovement(gender);
@@ -130,7 +145,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
                 }
             });
         }
-        
+
 
         function CharacterMovement(gender) {
             // Specify the sprite sheet image
