@@ -28,6 +28,38 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
         color: white; /* Text color */
     }
 
+    @font-face {
+        font-family: 'pokeball';
+        src: url('assets/customicons/pokeball.eot');
+        src: url('assets/customicons/pokeball.eot?5fv3ss#iefix') format('embedded-opentype'),
+        url('assets/customicons/pokeball.ttf?5fv3ss') format('truetype'),
+        url('assets/customicons/pokeball.woff?5fv3ss') format('woff'),
+        url('assets/customicons/pokeball.svg?5fv3ss#pokeball') format('svg');
+        font-weight: normal;
+        font-style: normal;
+        font-display: block;
+    }
+
+    .icon-pokeball {
+        /* use !important to prevent issues with browser extensions that change fonts */
+        font-family: 'pokeball' !important;
+        speak: never;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+
+        /* Better Font Rendering =========== */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .icon-pokeball:before {
+        content: "\e900";
+    }
+
+
 </style>
 <body>
 <div id="background"></div>
@@ -39,8 +71,8 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
 <span class="btn btn-secondary" style="position: fixed; top: 20px; left: 20px;">Steps: <span id="currentstep">0</span></span>
 <button id="ToggleMenu" type="button" class="btn btn-secondary" style="position: fixed; top: 20px; right: 20px;"><i id="toggle_icon" class="fa-solid fa-bars fa-fw"></i></button>
 <div id="menu_buttons" style="display: none; cursor: pointer">
-    <span id="pokedex">Pokedex</span>
-    <span id="pokemon">Pokemon</span>
+    <span id="pokedex"><i class="icon-pokeball"></i> Pokedex</span>
+    <span id="pokemon"><i class="icon-pokeball"></i> Pokemon</span>
     <span id="user" data-bs-toggle="modal" data-bs-target="#userModal"><i class="fa-solid fa-user fa-fw"></i> <?= $_SESSION['username'] ?></span>
     <span id="save"><i class="fa-solid fa-floppy-disk fa-fw"></i> Save</span>
     <span id="options"><i class="fa-solid fa-gear fa-fw"></i> Options</span>
@@ -122,7 +154,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
         $("#ToggleMenu").click(function () {
             $("#menu_buttons").toggle();
             $("#toggle_icon").toggleClass('fa-bars fa-xmark');
-            load(); //reloads data if out of sync, Only possible if the user has multiple tabs open or if the user is using multiple devices
+            //load(); //reloads data if out of sync, Only possible if the user has multiple tabs open or if the user is using multiple devices
         });
         // Add a click event listener for the userModal
         $(".menu-modal").on('show.bs.modal', function () {
