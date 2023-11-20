@@ -119,26 +119,39 @@ if (isset($_REQUEST['action'])) {
             $currentsteps = $_POST['currentsteps'];
 
             // Check if the username already exists
-            //$stmt = $pdo->prepare("SELECT * FROM pkmnjourney_users WHERE username = :username");
-            //$stmt->bindParam(':username', $username);
-            //$stmt->execute();
-            //$existingUser = $stmt->fetch(PDO::FETCH_ASSOC);
+            $stmt = $pdo->prepare("SELECT * FROM pkmnjourney_users WHERE username = :username");
+            $stmt->bindParam(':username', $username);
+            $stmt->execute();
+            $existingUser = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            //if ($existingUser) {
-            if (true) {
-                // Username already taken
-                $stmt = $pdo->prepare("UPDATE pkmnjourney_users SET steps = :currentsteps WHERE username = :username");
-                $stmt->bindParam(':username', $username);
-                $stmt->bindParam(':currentsteps', $currentsteps);
-                $stmt->execute();
-                echo json_encode(array(
-                    "success" => true,
-                    "message" => "Current steps saved."));
+            if ($existingUser) {
+                // User exists
+                $lastRecordedSteps = $existingUser['steps'];
+                //I wonder if the client side can be out of sync with the server side
+                //todo: check if the client side is out of sync with the server side
+                if ($currentsteps == $lastRecordedSteps + 1) {
+                    // Increment by exactly one
+                    $stmt = $pdo->prepare("UPDATE pkmnjourney_users SET steps = :currentsteps WHERE username = :username");
+                    $stmt->bindParam(':username', $username);
+                    $stmt->bindParam(':currentsteps', $currentsteps);
+                    $stmt->execute();
+
+                    echo json_encode(array(
+                        "success" => true,
+                        "message" => "Current steps saved."));
+                }
+                else {
+                    // Invalid increment
+                    echo json_encode(array(
+                        "success" => false,
+                        "message" => "Invalid steps increment."));
+                }
             }
             else {
+                // User not found
                 echo json_encode(array(
                     "success" => false,
-                    "message" => "Current steps not saved."));
+                    "message" => "User not found."));
             }
         break;
 
@@ -158,7 +171,6 @@ if (isset($_REQUEST['action'])) {
                 // Username already taken
                 echo json_encode(array(
                     "success" => true,
-                    "message" => "Current steps retrieved.",
                     "currentsteps" => $existingUser['steps'],
                     "gender" => $existingUser['gender']));
             }
