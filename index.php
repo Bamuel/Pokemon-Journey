@@ -111,14 +111,18 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
     </div>
 </div>
 
-<span id="character" style="position: fixed; bottom: 100px; left: 10%; width: 64px; height: 56px"></span>
+<span id="character" style="position: fixed; bottom: 100px; left: 50px; width: 64px; height: 56px"></span>
+<div id="multiplayer"></div>
 
 </body>
 <script>
     $(document).ready(function () {
+
+
         //$('#userModal').modal('show');
         //on page load
         load();
+        multiplayer();
 
         function load() {
             console.log('Loading Data');
@@ -153,6 +157,59 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
                         }
 
                         setPofileBadge(data);
+                    }
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        }
+
+        function multiplayer() {
+            $.ajax({
+                url: "ajax.php",
+                type: "POST",
+                data: {
+                    action: "getmultiplayerdata"
+                },
+                dataType: "json",
+                success: function (data) {
+                    if (data.success) {
+                        var userContainer = $("#multiplayer");
+
+                        // Loop through each user data and create a div for each
+                        $.each(data.data, function (index, user) {
+                            var randomNumber = Math.floor(Math.random() * (190 - 10 + 1) + 10);
+
+                            // Adjust the left position calculation based on currentsteps
+                            var leftposition = ((user.steps - currentsteps) * 30) + 50;
+
+                            var spriteSheet = (user.gender === 'boy') ? 'assets/potagonist/ColeRunBW.png' : 'assets/potagonist/BWEllaRunning.png';
+
+                            var userDiv = $("<div>", {
+                                class: "multiplayerUsers", // Add any necessary classes
+                                //position: fixed; bottom: 150px; width: 64px; height: 56px
+                                css: {
+                                    'background-image': 'url(' + spriteSheet + ')',
+                                    'background-position': '64px 56px',
+                                    'position': 'fixed',
+                                    'bottom': randomNumber + 'px',
+                                    'width': '64px',
+                                    'height': '56px',
+                                    'left': leftposition + 'px',
+                                    'z-index': '-1'
+                                    // Add additional styles as needed
+                                }
+                            });
+
+                            // Append the user div to the container
+                            userContainer.append(userDiv);
+
+                            // You can also append user information within the div if needed
+                            userDiv.append("<p style='color: red'>Username: " + user.username + "</p>");
+                            //userDiv.append("<p>Steps: " + user.steps + "</p>");
+                            // Add more user information as needed
+                        });
                     }
                 },
                 error: function (data) {
@@ -229,6 +286,11 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
             currentsteps++;
             $('#currentstep').text(currentsteps);
             SaveCurrentSteps(currentsteps);
+
+            $('.multiplayerUsers').each(function () {
+                var currentLeft = parseInt($(this).css('left'), 10);
+                $(this).css('left', (currentLeft - 30) + 'px');
+            });
         });
 
         function SaveCurrentSteps(currentsteps) {
@@ -292,7 +354,6 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
 
         function BackgroundMovement() {
             backgroundOffset -= 30; // Adjust the value according to your needs
-            backgroundSpeed = 0.3; // Adjust the value according to your needs
             $('#background').css('background-position', 'left ' + backgroundOffset + 'px bottom').css('transition', 'background-position ' + backgroundSpeed + 's ease');
         }
 

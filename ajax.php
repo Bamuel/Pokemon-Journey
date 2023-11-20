@@ -194,6 +194,46 @@ if (isset($_REQUEST['action'])) {
             }
         break;
 
+        case "getmultiplayerdata":
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+            $username = $_SESSION['username'];
+            $userData = array();
+
+            // Check if the username already exists
+            $stmt = $pdo->prepare("SELECT * FROM pkmnjourney_users WHERE username != :username");
+            $stmt->bindParam(':username', $username);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            if ($result) {
+                foreach ($result as $row) {
+                    $userDataRow = array();
+                    foreach ($row as $key => $value) {
+                        if ($key == "username" || $key == "steps" || $key == "gender") {
+                            $userDataRow[$key] = $value;
+                        }
+                        if ($key == 'user_id') {
+                            $userDataRow['trainer_id'] = sprintf("%08d", $value);
+                        }
+                    }
+                    $userData[] = $userDataRow;
+                }
+
+                // Data retrieval successful
+                echo json_encode(array(
+                    "success" => true,
+                    "data" => $userData));
+            }
+            else {
+                // No matching users found
+                echo json_encode(array(
+                    "success" => false,
+                    "message" => "Current steps not retrieved."));
+            }
+        break;
+
         default:
             echo json_encode(array(
                 "success" => false,
