@@ -171,6 +171,14 @@ if (isset($_REQUEST['action'])) {
                 if ($key != "password") {
                     $userData[$key] = $value;
                 }
+
+                if ($key == 'user_id') {
+                    $userData['trainer_id'] = sprintf("%08d", $value);
+                }
+                else if ($key == 'registration_date') {
+                    $userData['registration_date'] = date("Y-m-d", strtotime($value));
+                }
+
             }
 
             if ($existingUser) {

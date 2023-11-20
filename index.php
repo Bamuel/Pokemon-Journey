@@ -142,7 +142,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
 
                         $('#profile_pokemon_seen').text(0);
                         $('#profile_pokemon_caught').text(0);
-                        $('#profile_trainer_id').text(data.user_id);
+                        $('#profile_trainer_id').text(data.trainer_id);
                         $('#profile_start_date').text(data.registration_date);
                         if (gender === 'boy') {
                             $('#profile_image').attr('src', 'assets/potagonist/trainer000.1.png');
