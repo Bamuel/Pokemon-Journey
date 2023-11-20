@@ -23,7 +23,7 @@ include_once 'header.php';
 <div class="container login-container">
     <div class="card">
         <div class="card-body">
-            <div id="login-form">
+            <form id="login-form">
                 <h1 class="card-title text-center mb-4">Login</h1>
                 <p class="card-text">To register an account click <a href="javascript:void(0);" onclick="switchForm()"><b>here</b></a></p>
 
@@ -38,9 +38,9 @@ include_once 'header.php';
                     <input type="password" class="form-control" id="password" name="password" required>
                 </div>
                 <button type="button" id="login-btn" class="btn btn-primary btn-block">Login</button>
-            </div>
+            </form>
 
-            <div id="register-form" class="register-form" style="display: none;">
+            <form id="register-form" class="register-form" style="display: none;">
                 <h1 class="card-title text-center mb-4">Register</h1>
                 <p class="card-text">Already have an account? Click <a href="javascript:void(0);" onclick="switchForm()"><b>here</b></a> to login.</p>
 
@@ -56,7 +56,7 @@ include_once 'header.php';
                     </div>
                     <button type="button" id="register-btn" class="btn btn-primary btn-block">Register</button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
@@ -124,6 +124,18 @@ include_once 'header.php';
                     $("#error-message").text("An error occurred while processing your request.").show();
                 }
             });
+        });
+
+        $("#password").keypress(function (e) {
+            if (e.which === 13 || e.key === "Enter") {
+                $("#login-btn").click();
+            }
+        });
+
+        $("#register-password").keypress(function (e) {
+            if (e.which === 13 || e.key === "Enter") {
+                $("#register-btn").click();
+            }
         });
     });
 </script>
