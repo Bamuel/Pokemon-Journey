@@ -188,6 +188,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
 
                             var userDiv = $("<div>", {
                                 class: "multiplayerUsers", // Add any necessary classes
+                                id: user.trainer_id, // Add the id attribute
                                 //position: fixed; bottom: 150px; width: 64px; height: 56px
                                 css: {
                                     'background-image': 'url(' + spriteSheet + ')',
@@ -280,17 +281,23 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
             $("#toggle_icon").toggleClass('fa-bars fa-xmark');
         });
 
+        function UpdateMultiplayerUsers() {
+            $('.multiplayerUsers').each(function () {
+                var currentLeft = parseInt($(this).css('left'), 10);
+                $(this).css('left', (currentLeft - 30) + 'px');
+                //console.log($(this).attr('id')); // Log the id attribute
+                //todo: reload multiplayer elements to show live time movements.
+            });
+
+        }
+
         $('#move').click(function () {
             CharacterMovement(gender);
             BackgroundMovement();
             currentsteps++;
             $('#currentstep').text(currentsteps);
             SaveCurrentSteps(currentsteps);
-
-            $('.multiplayerUsers').each(function () {
-                var currentLeft = parseInt($(this).css('left'), 10);
-                $(this).css('left', (currentLeft - 30) + 'px');
-            });
+            UpdateMultiplayerUsers();
         });
 
         function SaveCurrentSteps(currentsteps) {
