@@ -160,21 +160,24 @@ if (isset($_REQUEST['action'])) {
                 session_start();
             }
             $username = $_SESSION['username'];
+            $userData = array();
 
             // Check if the username already exists
             $stmt = $pdo->prepare("SELECT * FROM pkmnjourney_users WHERE username = :username");
             $stmt->bindParam(':username', $username);
             $stmt->execute();
             $existingUser = $stmt->fetch(PDO::FETCH_ASSOC);
+            foreach ($existingUser as $key => $value) {
+                if ($key != "password") {
+                    $userData[$key] = $value;
+                }
+            }
 
             if ($existingUser) {
                 // Username already taken
                 echo json_encode(array(
                     "success" => true,
-                    "currentsteps" => $existingUser['steps'],
-                    "start_date" => date('Y-m-d', strtotime($existingUser['registration_date'])),
-                    "trainer_id" => sprintf("%08d", $existingUser['user_id']),
-                    "gender" => $existingUser['gender']));
+                    "data" => $userData));
             }
             else {
                 echo json_encode(array(

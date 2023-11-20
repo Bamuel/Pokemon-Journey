@@ -116,7 +116,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
 </body>
 <script>
     $(document).ready(function () {
-        $('#userModal').modal('show');
+        //$('#userModal').modal('show');
         //on page load
         load();
 
@@ -131,9 +131,10 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
                 dataType: "json",
                 success: function (data) {
                     if (data.success) {
+                        data = data.data;
                         console.log(data);
 
-                        currentsteps = data.currentsteps;
+                        currentsteps = data.steps;
                         $('#currentstep').text(currentsteps);
 
                         gender = data.gender;
@@ -141,8 +142,8 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
 
                         $('#profile_pokemon_seen').text(0);
                         $('#profile_pokemon_caught').text(0);
-                        $('#profile_trainer_id').text(data.trainer_id);
-                        $('#profile_start_date').text(data.start_date);
+                        $('#profile_trainer_id').text(data.user_id);
+                        $('#profile_start_date').text(data.registration_date);
                         if (gender === 'boy') {
                             $('#profile_image').attr('src', 'assets/potagonist/trainer000.1.png');
                         } else if (gender === 'girl') {
@@ -150,12 +151,41 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
                         } else {
                             $('#profile_image').attr('src', 'assets/potagonist/trainer000.1.png');
                         }
+
+                        setPofileBadge(data);
                     }
                 },
                 error: function (data) {
                     console.log(data);
                 }
             });
+        }
+
+        function setPofileBadge(data) {
+            if (data.badge1 === 1) {
+                $('#profile_badge1').attr('src', 'assets/img/badge1.png');
+            }
+            if (data.badge2 === 1) {
+                $('#profile_badge2').attr('src', 'assets/img/badge2.png');
+            }
+            if (data.badge3 === 1) {
+                $('#profile_badge3').attr('src', 'assets/img/badge3.png');
+            }
+            if (data.badge4 === 1) {
+                $('#profile_badge4').attr('src', 'assets/img/badge4.png');
+            }
+            if (data.badge5 === 1) {
+                $('#profile_badge5').attr('src', 'assets/img/badge5.png');
+            }
+            if (data.badge6 === 1) {
+                $('#profile_badge6').attr('src', 'assets/img/badge6.png');
+            }
+            if (data.badge7 === 1) {
+                $('#profile_badge7').attr('src', 'assets/img/badge7.png');
+            }
+            if (data.badge8 === 1) {
+                $('#profile_badge8').attr('src', 'assets/img/badge8.png');
+            }
         }
 
         var backgroundOffset = 0; //start offset for background
