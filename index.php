@@ -67,25 +67,29 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
     $(document).ready(function () {
 
         //on page load
-        $.ajax({
-            url: "ajax.php",
-            type: "POST",
-            data: {
-                action: "getuserdata"
-            },
-            dataType: "json",
-            success: function (data) {
-                if (data.success) {
-                    console.log(data);
+        load();
 
-                    currentsteps = data.currentsteps;
-                    $('#currentstep').text(currentsteps);
+        function load() {
+            $.ajax({
+                url: "ajax.php",
+                type: "POST",
+                data: {
+                    action: "getuserdata"
+                },
+                dataType: "json",
+                success: function (data) {
+                    if (data.success) {
+                        console.log(data);
 
-                    gender = data.gender;
-                    CharacterMovement(gender)
+                        currentsteps = data.currentsteps;
+                        $('#currentstep').text(currentsteps);
+
+                        gender = data.gender;
+                        CharacterMovement(gender)
+                    }
                 }
-            }
-        });
+            });
+        }
 
         var backgroundOffset = 0; //start offset for background
         var backgroundSpeed = 0.3; //set backgroundSpeed
@@ -114,6 +118,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
         $("#ToggleMenu").click(function () {
             $("#menu_buttons").toggle();
             $("#toggle_icon").toggleClass('fa-bars fa-xmark');
+            load(); //reloads data if out of sync, Only possible if the user has multiple tabs open or if the user is using multiple devices
         });
         // Add a click event listener for the userModal
         $(".menu-modal").on('show.bs.modal', function () {
