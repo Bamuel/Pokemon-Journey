@@ -75,7 +75,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
     <span id="pokemon"><i class="icon-pokeball"></i> Pokemon</span>
     <span id="user" data-bs-toggle="modal" data-bs-target="#userModal"><i class="fa-solid fa-user fa-fw"></i> <?= $_SESSION['username'] ?></span>
     <span id="save"><i class="fa-solid fa-floppy-disk fa-fw"></i> Save</span>
-    <span id="options"><i class="fa-solid fa-gear fa-fw"></i> Options</span>
+    <span id="options" data-bs-toggle="modal" data-bs-target="#userOptions"><i class="fa-solid fa-gear fa-fw"></i> Options</span>
     <span id="logout"><i class="fa-solid fa-right-from-bracket fa-fw"></i> Logout</span>
 </div>
 
@@ -110,6 +110,52 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
         </div>
     </div>
 </div>
+<div class="modal fade menu-modal" id="userOptions" tabindex="-1" role="dialog" aria-labelledby="userOptions" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Options</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <label for="musicVolume">Music Volume</label>
+                <input type="range" class="form-range" id="musicVolume" min="0" max="100">
+
+                <label for="seVolume">SE Volume</label>
+                <input type="range" class="form-range" id="seVolume" min="0" max="100">
+
+                <label for="textSpeed">Text Speed</label>
+                <select class="form-select" id="textSpeed">
+                    <option value="slow">Slow</option>
+                    <option value="medium">Medium</option>
+                    <option value="fast">Fast</option>
+                </select>
+                <br>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="battleEffects">
+                    <label class="form-check-label" for="battleEffects">Battle Effects</label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="battleStyle">
+                    <label class="form-check-label" for="battleStyle">Battle Style</label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="multiplayer">
+                    <label class="form-check-label" for="multiplayer">Multiplayer</label>
+                </div>
+
+                <hr>
+                <button type="button" class="btn btn-primary mt-3">Change Password</button>
+            </div>
+            <div class="modal-footer">
+                <p>Developed by <a href="https://github.com/Bamuel/Pokemon-Journey" target="_blank">Bamuel</a></p>
+            </div>
+        </div>
+    </div>
+</div>
 
 <span id="character" style="position: fixed; bottom: 100px; left: 50px; width: 64px; height: 56px"></span>
 <div id="multiplayer"></div>
@@ -117,9 +163,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
 </body>
 <script>
     $(document).ready(function () {
-
-
-        //$('#userModal').modal('show');
+        //$('#userOptions').modal('show');
         //on page load
         load();
 
@@ -176,6 +220,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
                 success: function (data) {
                     if (data.success) {
                         var userContainer = $("#multiplayer");
+                        console.log(data.data);
 
                         // Loop through each user data and create a div for each
                         $.each(data.data, function (index, user) {
@@ -384,11 +429,6 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
 
     // Disable pinch zoom and double-tap zoom
     document.addEventListener('gesturestart', function (e) {
-        e.preventDefault();
-    });
-
-    // Disable scrolling
-    document.addEventListener('touchmove', function (e) {
         e.preventDefault();
     });
 </script>
