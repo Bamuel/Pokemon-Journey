@@ -31,7 +31,11 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
 </style>
 <body>
 <div id="background"></div>
-<button id="move" type="button" class="btn btn-secondary" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%)"><i class="fa-solid fa-person-walking"></i> Move</button>
+<div id="move" style="position: fixed; bottom: 0; width: 100%; height: 150px;">
+    <button type="button" class="btn btn-secondary" style="position: relative; left: 50%; top: 50%; transform: translateY(-50%)  translateX(-50%); box-sizing: border-box;">
+        <i class="fa-solid fa-person-walking"></i> Move
+    </button>
+</div>
 <span class="btn btn-secondary" style="position: fixed; top: 20px; left: 20px;">Steps: <span id="currentstep">0</span></span>
 <button id="ToggleMenu" type="button" class="btn btn-secondary" style="position: fixed; top: 20px; right: 20px;"><i id="toggle_icon" class="fa-solid fa-bars fa-fw"></i></button>
 <div id="menu_buttons" style="display: none; cursor: pointer">
