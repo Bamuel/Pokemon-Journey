@@ -122,7 +122,6 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
         //$('#userModal').modal('show');
         //on page load
         load();
-        multiplayer();
 
         function load() {
             console.log('Loading Data');
@@ -157,6 +156,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
                         }
 
                         setPofileBadge(data);
+                        multiplayer();
                     }
                 },
                 error: function (data) {
@@ -179,7 +179,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
 
                         // Loop through each user data and create a div for each
                         $.each(data.data, function (index, user) {
-                            var randomNumber = Math.floor(Math.random() * (190 - 10 + 1) + 10);
+                            var heightposition = Math.floor(Math.random() * (161));
 
                             // Adjust the left position calculation based on currentsteps
                             var leftposition = ((user.steps - currentsteps) * 30) + 50;
@@ -193,7 +193,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
                                     'background-image': 'url(' + spriteSheet + ')',
                                     'background-position': '64px 56px',
                                     'position': 'fixed',
-                                    'bottom': randomNumber + 'px',
+                                    'bottom': heightposition + 'px',
                                     'width': '64px',
                                     'height': '56px',
                                     'left': leftposition + 'px',
@@ -206,7 +206,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
                             userContainer.append(userDiv);
 
                             // You can also append user information within the div if needed
-                            userDiv.append("<p style='color: red'>Username: " + user.username + "</p>");
+                            userDiv.append("<p style='color: black; margin-top: -20px; text-align: center'>" + user.username + "</p>");
                             //userDiv.append("<p>Steps: " + user.steps + "</p>");
                             // Add more user information as needed
                         });
