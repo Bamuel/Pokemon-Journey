@@ -162,28 +162,28 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
         }
 
         function setPofileBadge(data) {
-            if (data.badge1 === 1) {
+            if (data.badge1 == 1) {
                 $('#profile_badge1').attr('src', 'assets/img/badge1.png');
             }
-            if (data.badge2 === 1) {
+            if (data.badge2 == 1) {
                 $('#profile_badge2').attr('src', 'assets/img/badge2.png');
             }
-            if (data.badge3 === 1) {
+            if (data.badge3 == 1) {
                 $('#profile_badge3').attr('src', 'assets/img/badge3.png');
             }
-            if (data.badge4 === 1) {
+            if (data.badge4 == 1) {
                 $('#profile_badge4').attr('src', 'assets/img/badge4.png');
             }
-            if (data.badge5 === 1) {
+            if (data.badge5 == 1) {
                 $('#profile_badge5').attr('src', 'assets/img/badge5.png');
             }
-            if (data.badge6 === 1) {
+            if (data.badge6 == 1) {
                 $('#profile_badge6').attr('src', 'assets/img/badge6.png');
             }
-            if (data.badge7 === 1) {
+            if (data.badge7 == 1) {
                 $('#profile_badge7').attr('src', 'assets/img/badge7.png');
             }
-            if (data.badge8 === 1) {
+            if (data.badge8 == 1) {
                 $('#profile_badge8').attr('src', 'assets/img/badge8.png');
             }
         }
