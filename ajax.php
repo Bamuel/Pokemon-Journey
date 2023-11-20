@@ -172,6 +172,8 @@ if (isset($_REQUEST['action'])) {
                 echo json_encode(array(
                     "success" => true,
                     "currentsteps" => $existingUser['steps'],
+                    "start_date" => date('Y-m-d', strtotime($existingUser['registration_date'])),
+                    "trainer_id" => sprintf("%08d", $existingUser['user_id']),
                     "gender" => $existingUser['gender']));
             }
             else {

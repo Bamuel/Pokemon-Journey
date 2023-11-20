@@ -86,26 +86,42 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Trainer Card</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                Cool Profile settings here.
+            <div class="modal-body" style="display: inline-flex;">
+                <img id="profile_image" style="padding-right: 30px">
+                <div id="profileabout">
+                    <pre>Trainer ID: <span id="profile_trainer_id"></span></pre>
+                    <pre>Pokemon Seen: <span id="profile_pokemon_seen"></span></pre>
+                    <pre>Pokemon Caught: <span id="profile_pokemon_caught"></span></pre>
+                    <pre>Start Date: <span id="profile_start_date"></span></pre>
+                </div>
             </div>
             <div class="modal-footer">
-                Collectable Badges here
+                <div style="display: inline-flex">
+                    <img id="profile_badge1" style="width: 30px; padding: 5px" src="assets/img/badge0.png">
+                    <img id="profile_badge2" style="width: 30px; padding: 5px" src="assets/img/badge0.png">
+                    <img id="profile_badge3" style="width: 30px; padding: 5px" src="assets/img/badge0.png">
+                    <img id="profile_badge4" style="width: 30px; padding: 5px" src="assets/img/badge0.png">
+                    <img id="profile_badge5" style="width: 30px; padding: 5px" src="assets/img/badge0.png">
+                    <img id="profile_badge6" style="width: 30px; padding: 5px" src="assets/img/badge0.png">
+                    <img id="profile_badge7" style="width: 30px; padding: 5px" src="assets/img/badge0.png">
+                    <img id="profile_badge8" style="width: 30px; padding: 5px" src="assets/img/badge0.png">
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<span id="character" style="position: fixed; bottom: 100px; left: 10%; width: 64px; height: 56px"/>
+<span id="character" style="position: fixed; bottom: 100px; left: 10%; width: 64px; height: 56px"></span>
 
 </body>
 <script>
     $(document).ready(function () {
-
+        $('#userModal').modal('show');
         //on page load
         load();
 
         function load() {
+            console.log('Loading Data');
             $.ajax({
                 url: "ajax.php",
                 type: "POST",
@@ -121,8 +137,23 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
                         $('#currentstep').text(currentsteps);
 
                         gender = data.gender;
-                        CharacterMovement(gender)
+                        CharacterMovement(gender);
+
+                        $('#profile_pokemon_seen').text(0);
+                        $('#profile_pokemon_caught').text(0);
+                        $('#profile_trainer_id').text(data.trainer_id);
+                        $('#profile_start_date').text(data.start_date);
+                        if (gender === 'boy') {
+                            $('#profile_image').attr('src', 'assets/potagonist/trainer000.1.png');
+                        } else if (gender === 'girl') {
+                            $('#profile_image').attr('src', 'assets/potagonist/trainer001.1.png');
+                        } else {
+                            $('#profile_image').attr('src', 'assets/potagonist/trainer000.1.png');
+                        }
                     }
+                },
+                error: function (data) {
+                    console.log(data);
                 }
             });
         }
