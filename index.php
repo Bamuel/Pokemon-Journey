@@ -215,6 +215,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
 
                         setPofileBadge(data);
                         multiplayer();
+                        setInterval(multiplayer, 500);
                     }
                 },
                 error: function (data) {
@@ -233,7 +234,6 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
                 dataType: "json",
                 success: function (data) {
                     if (data.success) {
-                        setInterval(multiplayer, 500);
                         $('#multiplayer').empty();
                         var userContainer = $("#multiplayer");
                         console.log(data.data);
