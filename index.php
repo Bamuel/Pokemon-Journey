@@ -233,6 +233,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
                 dataType: "json",
                 success: function (data) {
                     if (data.success) {
+                        setInterval(multiplayer, 500);
                         $('#multiplayer').empty();
                         var userContainer = $("#multiplayer");
                         console.log(data.data);
@@ -348,7 +349,6 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
                 //$(this).css('left', (currentLeft - 30) + 'px');
                 $(this).animate({left: (currentLeft - 30) + 'px'}, {duration: 'fast', easing: 'swing'});
                 //console.log($(this).attr('id')); // Log the id attribute
-                multiplayer();
             });
 
         }
