@@ -143,8 +143,8 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="multiplayer">
-                    <label class="form-check-label" for="multiplayer">Multiplayer</label>
+                    <input class="form-check-input" type="checkbox" id="multiplayercheck">
+                    <label class="form-check-label" for="multiplayercheck">Multiplayer</label>
                 </div>
 
                 <hr>
