@@ -71,14 +71,28 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
 <span class="btn btn-secondary" style="position: fixed; top: 20px; left: 20px;">Steps: <span id="currentstep">0</span></span>
 <button id="ToggleMenu" type="button" class="btn btn-secondary" style="position: fixed; top: 20px; right: 20px;"><i id="toggle_icon" class="fa-solid fa-bars fa-fw"></i></button>
 <div id="menu_buttons" style="display: none; cursor: pointer">
-    <span id="pokedex"><i class="icon-pokeball"></i> Pokedex</span>
-    <span id="pokemon"><i class="icon-pokeball"></i> Pokemon</span>
+    <span id="pokemon" data-bs-toggle="modal" data-bs-target="#userPokemon"><i class="icon-pokeball"></i> Pokemon</span>
     <span id="user" data-bs-toggle="modal" data-bs-target="#userModal"><i class="fa-solid fa-user fa-fw"></i> <?= $_SESSION['username'] ?></span>
-    <span id="save"><i class="fa-solid fa-floppy-disk fa-fw"></i> Save</span>
     <span id="options" data-bs-toggle="modal" data-bs-target="#userOptions"><i class="fa-solid fa-gear fa-fw"></i> Options</span>
     <span id="logout"><i class="fa-solid fa-right-from-bracket fa-fw"></i> Logout</span>
 </div>
 
+<div class="modal fade menu-modal" id="userPokemon" tabindex="-1" role="dialog" aria-labelledby="userPokemonLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Pokemon</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="display: inline-flex;">
+                <p>Cool Pokemon Here</p>
+            </div>
+            <div class="modal-footer">
+                <p>xxx/xxx Pokemon Discovered</p>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="modal fade menu-modal" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -110,7 +124,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
         </div>
     </div>
 </div>
-<div class="modal fade menu-modal" id="userOptions" tabindex="-1" role="dialog" aria-labelledby="userOptions" aria-hidden="true">
+<div class="modal fade menu-modal" id="userOptions" tabindex="-1" role="dialog" aria-labelledby="userOptionsLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -127,7 +141,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
                 <label for="textSpeed">Text Speed</label>
                 <select class="form-select" id="textSpeed">
                     <option value="slow">Slow</option>
-                    <option value="medium">Medium</option>
+                    <option value="medium" selected>Medium</option>
                     <option value="fast">Fast</option>
                 </select>
                 <br>
