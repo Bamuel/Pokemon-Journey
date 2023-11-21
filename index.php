@@ -329,7 +329,8 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
         function UpdateMultiplayerUsers() {
             $('.multiplayerUsers').each(function () {
                 var currentLeft = parseInt($(this).css('left'), 10);
-                $(this).css('left', (currentLeft - 30) + 'px');
+                //$(this).css('left', (currentLeft - 30) + 'px');
+                $(this).animate({left: (currentLeft - 30) + 'px'}, {duration: 'fast', easing: 'swing'});
                 //console.log($(this).attr('id')); // Log the id attribute
                 //todo: reload multiplayer elements to show live time movements.
             });
