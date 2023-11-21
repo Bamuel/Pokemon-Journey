@@ -233,12 +233,14 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
                 dataType: "json",
                 success: function (data) {
                     if (data.success) {
+                        $('#multiplayer').empty();
                         var userContainer = $("#multiplayer");
                         console.log(data.data);
 
                         // Loop through each user data and create a div for each
                         $.each(data.data, function (index, user) {
-                            var heightposition = Math.floor(Math.random() * (161));
+                            //var heightposition = Math.floor(Math.random() * (161));
+                            var heightposition = 160;
 
                             // Adjust the left position calculation based on currentsteps
                             var leftposition = ((user.steps - currentsteps) * 30) + 50;
@@ -346,7 +348,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
                 //$(this).css('left', (currentLeft - 30) + 'px');
                 $(this).animate({left: (currentLeft - 30) + 'px'}, {duration: 'fast', easing: 'swing'});
                 //console.log($(this).attr('id')); // Log the id attribute
-                //todo: reload multiplayer elements to show live time movements.
+                multiplayer();
             });
 
         }
