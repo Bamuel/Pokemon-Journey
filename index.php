@@ -215,7 +215,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
 
                         setPofileBadge(data);
                         multiplayer();
-                        setInterval(multiplayer, 500);
+                        setInterval(multiplayer, 150);
                     }
                 },
                 error: function (data) {
