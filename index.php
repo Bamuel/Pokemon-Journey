@@ -248,13 +248,23 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
 
                             var spriteSheet = (user.gender === 'boy') ? 'assets/potagonist/ColeRunBW.png' : 'assets/potagonist/BWEllaRunning.png';
 
+                            if (user.steps % 4 === 0) {
+                                var backgroundposition = '0px -56px';
+                            } else if (user.steps % 4 === 1) {
+                                var backgroundposition = '-64px 0px';
+                            } else if (user.steps % 4 === 2) {
+                                var backgroundposition = '-128px 0px';
+                            } else if (user.steps % 4 === 3) {
+                                var backgroundposition = '-192px 0px';
+                            }
+
                             var userDiv = $("<div>", {
                                 class: "multiplayerUsers", // Add any necessary classes
                                 id: user.trainer_id, // Add the id attribute
                                 //position: fixed; bottom: 150px; width: 64px; height: 56px
                                 css: {
                                     'background-image': 'url(' + spriteSheet + ')',
-                                    'background-position': '64px 56px',
+                                    'background-position': backgroundposition,
                                     'position': 'fixed',
                                     'bottom': heightposition + 'px',
                                     'width': '64px',
