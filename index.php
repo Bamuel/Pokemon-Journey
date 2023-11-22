@@ -183,7 +183,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
         load();
 
         function load() {
-            console.log('Loading Data');
+            //console.log('Loading Data');
             $.ajax({
                 url: "ajax.php",
                 type: "POST",
@@ -194,7 +194,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
                 success: function (data) {
                     if (data.success) {
                         data = data.data;
-                        console.log(data);
+                        //console.log(data);
 
                         currentsteps = data.steps;
                         $('#currentstep').text(currentsteps);
@@ -238,7 +238,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
                     if (data.success) {
                         $('#multiplayer').empty();
                         var userContainer = $("#multiplayer");
-                        console.log(data.data);
+                        //console.log(data.data);
 
                         // Loop through each user data and create a div for each
                         $.each(data.data, function (index, user) {
@@ -367,8 +367,8 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
 
         $('#move').click(function () {
             currentsteps++;
-            CharacterMovement(gender, currentsteps);
             BackgroundMovement();
+            CharacterMovement(gender, currentsteps);
             $('#currentstep').text(currentsteps);
             SaveCurrentSteps(currentsteps);
             UpdateMultiplayerUsers();
@@ -385,7 +385,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
                 dataType: "json",
                 success: function (data) {
                     if (data.success) {
-                        console.log(data);
+                        //console.log(data);
                     }
                 }
             });
