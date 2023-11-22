@@ -179,6 +179,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
     $(document).ready(function () {
         //$('#userOptions').modal('show');
         //on page load
+        var MultiplayerLoop;
         load();
 
         function load() {
@@ -215,7 +216,8 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
 
                         setPofileBadge(data);
                         multiplayer();
-                        setInterval(multiplayer, 150);
+                        clearInterval(MultiplayerLoop);
+                        MultiplayerLoop = setInterval(multiplayer, 150);
                     }
                 },
                 error: function (data) {
@@ -345,7 +347,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
         $("#ToggleMenu").click(function () {
             $("#menu_buttons").toggle();
             $("#toggle_icon").toggleClass('fa-bars fa-xmark');
-            //load(); //reloads data if out of sync, Only possible if the user has multiple tabs open or if the user is using multiple devices
+            load(); //reloads data if out of sync, Only possible if the user has multiple tabs open or if the user is using multiple devices
         });
         // Add a click event listener for the userModal
         $(".menu-modal").on('show.bs.modal', function () {
