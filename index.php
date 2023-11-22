@@ -200,7 +200,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
                         $('#currentstep').text(currentsteps);
 
                         gender = data.gender;
-                        CharacterMovement(gender);
+                        CharacterMovement(gender, currentsteps);
 
                         $('#profile_pokemon_seen').text(0);
                         $('#profile_pokemon_caught').text(0);
@@ -366,9 +366,9 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
         }
 
         $('#move').click(function () {
-            CharacterMovement(gender);
-            BackgroundMovement();
             currentsteps++;
+            CharacterMovement(gender, currentsteps);
+            BackgroundMovement();
             $('#currentstep').text(currentsteps);
             SaveCurrentSteps(currentsteps);
             UpdateMultiplayerUsers();
@@ -392,7 +392,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
         }
 
 
-        function CharacterMovement(gender) {
+        function CharacterMovement(gender, steps) {
             // Specify the sprite sheet image
             if (gender === 'boy') {
                 var spriteSheet = 'assets/potagonist/ColeRunBW.png';
@@ -403,33 +403,27 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
             }
 
 
-            // Set the dimensions of each frame in the sprite sheet
-            var frameWidth = 64;
-            var frameHeight = 56;
-
-            // Increase the frame index
-            defaultcharacter++;
-
-            // Calculate the position of the current frame in the sprite sheet
-            var frameX = (defaultcharacter % numberOfFramesPerRow) * frameWidth;
-            var frameY = Math.floor(defaultcharacter / numberOfFramesPerRow) * frameHeight;
+            if (steps % 4 === 0) {
+                var backgroundposition = '0px -56px';
+            } else if (steps % 4 === 1) {
+                var backgroundposition = '-64px 0px';
+            } else if (steps % 4 === 2) {
+                var backgroundposition = '-128px 0px';
+            } else if (steps % 4 === 3) {
+                var backgroundposition = '-192px 0px';
+            }
 
             if (gender === 'boy') {
                 $('#character').css({
                     'background-image': 'url(' + spriteSheet + ')',
-                    'background-position': -frameX + 'px ' + -frameY + 'px',
+                    'background-position': backgroundposition,
                 })
             } else if (gender === 'girl') {
                 // Assuming the girl's sprite sheet is in the same format
                 $('#character').css({
                     'background-image': 'url(' + spriteSheet + ')',
-                    'background-position': frameX + 'px ' + frameY + 'px'
+                    'background-position': backgroundposition
                 })
-            }
-
-            // Reset the frame index if it reaches the maximum number of frames
-            if (defaultcharacter === 4) {
-                defaultcharacter = 0;
             }
         }
 
