@@ -217,7 +217,8 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
                         setPofileBadge(data);
                         multiplayer();
                         clearInterval(MultiplayerLoop);
-                        MultiplayerLoop = setInterval(multiplayer, 150);
+                        //every second update multiplayer
+                        MultiplayerLoop = setInterval(multiplayer, 700);
                     }
                 },
                 error: function (data) {
@@ -355,23 +356,13 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
             $("#toggle_icon").toggleClass('fa-bars fa-xmark');
         });
 
-        function UpdateMultiplayerUsers() {
-            $('.multiplayerUsers').each(function () {
-                var currentLeft = parseInt($(this).css('left'), 10);
-                //$(this).css('left', (currentLeft - 30) + 'px');
-                $(this).animate({left: (currentLeft - 30) + 'px'}, {duration: 'fast', easing: 'swing'});
-                //console.log($(this).attr('id')); // Log the id attribute
-            });
-
-        }
-
         $('#move').click(function () {
             currentsteps++;
             BackgroundMovement();
             CharacterMovement(gender, currentsteps);
             $('#currentstep').text(currentsteps);
             SaveCurrentSteps(currentsteps);
-            UpdateMultiplayerUsers();
+            multiplayer();
         });
 
         function SaveCurrentSteps(currentsteps) {
