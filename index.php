@@ -157,7 +157,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
                 </div>
 
                 <hr>
-                <button type="button" class="btn btn-primary mt-3">Change Password</button>
+                <button type="button" class="btn btn-primary mt-3 disabled">Change Password</button>
             </div>
             <div class="modal-footer">
                 <p>Developed by <a href="https://github.com/Bamuel/Pokemon-Journey" target="_blank">Bamuel</a></p>
