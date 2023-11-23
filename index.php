@@ -133,13 +133,13 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
             </div>
             <div class="modal-body">
                 <label for="musicVolume">Music Volume</label>
-                <input type="range" class="form-range" id="musicVolume" min="0" max="100">
+                <input type="range" class="form-range" id="musicVolume" min="0" max="100" value="0" disabled>
 
                 <label for="seVolume">SE Volume</label>
-                <input type="range" class="form-range" id="seVolume" min="0" max="100">
+                <input type="range" class="form-range" id="seVolume" min="0" max="100" value="0" disabled>
 
                 <label for="textSpeed">Text Speed</label>
-                <select class="form-select" id="textSpeed">
+                <select class="form-select" id="textSpeed" disabled>
                     <option value="slow">Slow</option>
                     <option value="medium" selected>Medium</option>
                     <option value="fast">Fast</option>
@@ -147,17 +147,12 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
                 <br>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="battleEffects">
+                    <input class="form-check-input" type="checkbox" id="battleEffects" checked disabled>
                     <label class="form-check-label" for="battleEffects">Battle Effects</label>
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="battleStyle">
-                    <label class="form-check-label" for="battleStyle">Battle Style</label>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="multiplayercheck">
+                    <input class="form-check-input" type="checkbox" id="multiplayercheck" checked disabled>
                     <label class="form-check-label" for="multiplayercheck">Multiplayer</label>
                 </div>
 
@@ -177,7 +172,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
 </body>
 <script>
     $(document).ready(function () {
-        //$('#userOptions').modal('show');
+        $('#userOptions').modal('show');
         //on page load
         var MultiplayerLoop;
         load();
