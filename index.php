@@ -172,7 +172,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
 </body>
 <script>
     $(document).ready(function () {
-        $('#userOptions').modal('show');
+        //$('#userOptions').modal('show');
         //on page load
         var MultiplayerLoop;
         load();
