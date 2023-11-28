@@ -168,6 +168,8 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
 
 <span id="character" style="position: fixed; bottom: 100px; left: 50px; width: 64px; height: 56px"></span>
 <div id="multiplayer"></div>
+<div id="event"></div>
+<div id="chat"></div>
 
 </body>
 <script>
@@ -211,6 +213,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
 
                         setPofileBadge(data);
                         multiplayer();
+                        event();
                         clearInterval(MultiplayerLoop);
                         //every second update multiplayer
                         MultiplayerLoop = setInterval(multiplayer, 700);
@@ -316,6 +319,61 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
             }
         }
 
+        function event() {
+            $.ajax({
+                url: "ajax.php",
+                type: "POST",
+                data: {
+                    action: "getevents"
+                },
+                dataType: "json",
+                success: function (data) {
+                    if (data.success) {
+                        $('#event').empty();
+                        var eventContainer = $("#event");
+                        //console.log(data.data);
+
+                        // Loop through each event data and create a div for each
+                        $.each(data.data, function (index, event) {
+
+                            // Adjust the left position calculation based on currentsteps + 30px to be 1 step ahead
+                            var leftposition = ((event.event_trigger - currentsteps) * 30) + 50 + 30;
+
+                            var spriteSheet = event.event_overworld_sprite;
+                            //var backgroundposition = event.event_overworld_sprite_position;
+
+                            var eventDiv = $("<div>", {
+                                id: event.trainer_id, // Add the id attribute
+                                css: {
+                                    'background-image': 'url(' + spriteSheet + ')',
+                                    'background-size': 'cover',
+                                    'background-repeat': 'no-repeat',
+                                    'position': 'fixed',
+                                    'bottom': '100px',
+                                    'width': '64px',
+                                    'height': '64px',
+                                    'left': leftposition + 'px',
+                                    'z-index': '-1'
+                                    // Add additional styles as needed
+                                }
+                            });
+
+                            // Append the event div to the container
+                            eventContainer.append(eventDiv);
+
+                            // You can also append event information within the div if needed
+                            eventDiv.append("<p style='color: black; margin-top: -20px; text-align: center'>" + event.event_name + "</p>");
+                            //eventDiv.append("<p>Steps: " + event.steps + "</p>");
+                            // Add more event information as needed
+                        });
+                    }
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        }
+
         var backgroundOffset = 0; //start offset for background
         var backgroundSpeed = 0.3; //set backgroundSpeed
         var defaultcharacter = 1; //set default character to 1.png
@@ -358,6 +416,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
             $('#currentstep').text(currentsteps);
             SaveCurrentSteps(currentsteps);
             multiplayer();
+            event();
         });
 
         function SaveCurrentSteps(currentsteps) {

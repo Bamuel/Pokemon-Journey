@@ -234,6 +234,33 @@ if (isset($_REQUEST['action'])) {
             }
         break;
 
+        case "getevents":
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+            $eventData = array();
+
+            // Check if the username already exists
+            $stmt = $pdo->prepare("SELECT * FROM pkmnjourney_events");
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if ($result) {
+                foreach ($result as $row) {
+                    $eventData[] = $row;
+                }
+                // Data retrieval successful
+                echo json_encode(array(
+                    "success" => true,
+                    "data" => $eventData));
+            }
+            else {
+                // No matching users found
+                echo json_encode(array(
+                    "success" => false,
+                    "message" => "Current steps not retrieved."));
+            }
+        break;
+
         default:
             echo json_encode(array(
                 "success" => false,
