@@ -447,7 +447,7 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
                 var spriteSheet = 'assets/potagonist/BWEllaRunning.png';
             }
 
-
+            steps = Math.abs(steps);
             if (steps % 4 === 0) {
                 var backgroundposition = '0px -56px';
             } else if (steps % 4 === 1) {
