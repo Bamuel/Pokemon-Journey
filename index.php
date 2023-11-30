@@ -212,8 +212,8 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
                         }
 
                         setPofileBadge(data);
-                        multiplayer();
                         event();
+                        multiplayer();
                         clearInterval(MultiplayerLoop);
                         //every second update multiplayer
                         MultiplayerLoop = setInterval(multiplayer, 700);
@@ -415,8 +415,8 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
             CharacterMovement(gender, currentsteps);
             $('#currentstep').text(currentsteps);
             SaveCurrentSteps(currentsteps);
-            multiplayer();
             event();
+            multiplayer();
         });
 
         function SaveCurrentSteps(currentsteps) {
