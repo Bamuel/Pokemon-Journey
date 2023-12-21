@@ -54,6 +54,14 @@ include_once 'header.php';
                         <label for="register-password" class="form-label"><i class="fa-solid fa-key"></i> Password:</label>
                         <input type="password" class="form-control" id="register-password" name="register-password" required>
                     </div>
+                    <div class="mb-3">
+                        <label for="register-gender" class="form-label"><i class="fa-solid fa-venus-mars"></i> Gender:</label>
+                        <div id="register-gender">
+                            <input type="radio" name="gender" value="boy" required checked="checked"> <label>Boy</label>
+                            <br>
+                            <input type="radio" name="gender" value="girl"> <label>Girl</label>
+                        </div>
+                    </div>
                     <button type="button" id="register-btn" class="btn btn-primary btn-block">Register</button>
                 </div>
             </form>
@@ -100,13 +108,15 @@ include_once 'header.php';
         $("#register-btn").on("click", function () {
             var username = $("#register-username").val();
             var password = $("#register-password").val();
+            var gender = $("#register-gender input:checked").val();
 
             $.ajax({
                 type: "POST",
                 url: "/ajax.php?action=register",
                 data: {
                     username: username,
-                    password: password
+                    password: password,
+                    gender: gender
                 },
                 success: function (response) {
                     response = JSON.parse(response);
@@ -116,12 +126,12 @@ include_once 'header.php';
                         location.href = "/index.php";
                     } else {
                         // Login failed
-                        $("#error-message").text(response.message).show();
+                        $("#error-message-register").text(response.message).show();
                     }
                 },
                 error: function (xhr, status, error) {
                     console.error(xhr.responseText);
-                    $("#error-message").text("An error occurred while processing your request.").show();
+                    $("#error-message-register").text("An error occurred while processing your request.").show();
                 }
             });
         });

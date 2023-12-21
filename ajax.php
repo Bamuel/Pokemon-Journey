@@ -75,6 +75,39 @@ if (isset($_REQUEST['action'])) {
             $username = $_POST['username'];
             $usernamelower = strtolower($_POST['username']);
             $password = $_POST['password'];
+            $gender = $_POST['gender'];
+
+            if ($username == "") {
+                echo json_encode(array(
+                    "success" => false,
+                    "message" => "Username cannot be empty."));
+                break;
+            }
+            if ($password == "") {
+                echo json_encode(array(
+                    "success" => false,
+                    "message" => "Password cannot be empty."));
+                break;
+            }
+            if ($gender == "") {
+                echo json_encode(array(
+                    "success" => false,
+                    "message" => "Please select Gender"));
+                break;
+            }
+            if (strlen($username) > 20) {
+                echo json_encode(array(
+                    "success" => false,
+                    "message" => "Username cannot be longer than 20 characters."));
+                break;
+            }
+            if ($gender != 'boy' && $gender != 'girl') {
+                echo json_encode(array(
+                    "success" => false,
+                    "message" => "Dodgy injection detected."));
+                break;
+            }
+
 
             // Check if the username already exists
             $stmt = $pdo->prepare("SELECT * FROM pkmnjourney_users WHERE LOWER(username) = :username");
@@ -91,9 +124,10 @@ if (isset($_REQUEST['action'])) {
             else {
                 // Insert new user into the database
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-                $stmt = $pdo->prepare("INSERT INTO pkmnjourney_users (username, password) VALUES (:username, :password)");
+                $stmt = $pdo->prepare("INSERT INTO pkmnjourney_users (username, password, gender) VALUES (:username, :password, :gender)");
                 $stmt->bindParam(':username', $username);
                 $stmt->bindParam(':password', $hashedPassword);
+                $stmt->bindParam(':gender', $gender);
 
                 if ($stmt->execute()) {
                     $_SESSION['logged_in'] = true;
@@ -108,7 +142,6 @@ if (isset($_REQUEST['action'])) {
                         "message" => "Registration failed. Please try again later."));
                 }
             }
-
         break;
 
         case "savecurrentsteps":
