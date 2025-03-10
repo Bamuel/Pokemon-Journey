@@ -12,7 +12,7 @@ jobs:
     environment: production  # Specify the environment here
     steps:
       - name: Execute remote SSH commands using SSH key
-        uses: appleboy/ssh-action@v1.2.1
+        uses: appleboy/ssh-action@v1.2.2
         with:
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USER }}
